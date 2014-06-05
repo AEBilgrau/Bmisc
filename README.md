@@ -13,4 +13,5 @@ devtools::install_github("AEBilgrau/GMCM")
 ```
 The package may be unstable. Be sure that you have the 
 [package development prerequisites](http://www.rstudio.com/ide/docs/packages/prerequisites) if you wish to install the package from the source.
+
 ---
