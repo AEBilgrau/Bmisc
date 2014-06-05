@@ -1,6 +1,6 @@
+[![Build Status](https://api.travis-ci.org/AEBilgrau/Bmisc.svg?branch=master)](https://travis-ci.org/AEBilgrau/Bmisc)
 Miscellaneous functions
 -------------------------------------------------------
-[![Build Status](https://api.travis-ci.org/AEBilgrau/Bmisc.svg?branch=master)](https://travis-ci.org/AEBilgrau/Bmisc)
 
 My frequently used miscellaneous R functions.
 
