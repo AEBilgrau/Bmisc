@@ -1,3 +1,4 @@
+exportPattern("^[^\\.]")
 useDynLib(Bmisc)
 
 # http://adv-r.had.co.nz/Rcpp.html#adding-rcpp-to-an-existing-package-rcpp-0.10.7
