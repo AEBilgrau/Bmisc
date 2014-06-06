@@ -49,12 +49,12 @@ Anders Ellern Bilgrau \email{abilgrau@math.aau.dk}
 }
 \examples{
 set.seed(1)
-x <- lapply(1:4, function(i) sample(LETTERS, 3+i))
-y <- lapply(1:2, function(i) sample(LETTERS, 4+i))
+x <- lapply(2:6, function(i) sample(LETTERS, 10+i))
+y <- lapply(1:3, function(i) sample(LETTERS, 2+i))
 
-Union(x)
-Intersect(x)
-Setdiff(x, y)
+Union(x)  # The union of all vectors in x
+Intersect(x)  # The intersection of all vectors in x
+Setdiff(x, y)  # All elements in the intersection of x, but not in any y
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
