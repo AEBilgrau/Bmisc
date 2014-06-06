@@ -27,15 +27,18 @@ Setdiff(x, y)
 %}
 \value{
 All functions return a single character vector.
+
 \code{Union} returns the union all character vectors in \code{x}.
+
 \code{Intersect} returns the intersections of all character vectors in \code{x}.
+
 \code{Setdiff} returns the intersection of \code{x} minus the union of \code{y}. 
 }
 %\references{
 %% ~put references to the literature/web site here ~
 %}
 \author{
-Anders Ellern Bilgrau \email{abilgrau@math.aau.dk}
+Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 }
 %\note{
 %%  ~~further notes~~
