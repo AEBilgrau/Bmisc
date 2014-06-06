@@ -10,4 +10,4 @@ License: GPL (>=2)
 Imports: Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
 Suggests: biomaRt
-URL: https://github.com/AEBilgrau/B-misc, http://people.math.aau.dk/~abilgrau
+URL: https://github.com/AEBilgrau/B-misc
