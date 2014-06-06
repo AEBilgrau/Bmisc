@@ -21,7 +21,7 @@ An ExpressionSet object.
 The features on the array to look up. Default is to use all features on the array.
 }
 \item{attributes}{
-a \code{character} with additional attributes to look up on biomart. See \code{\link{listFilters}}.
+a \code{character} with additional attributes to look up on biomart. See \code{\link[biomaRt]{listFilters}}.
 }
 }
 %\details{
@@ -43,7 +43,10 @@ Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{useMart}}, \code{\link{listMarts}}, \code{\link{useDataset}}, \code{\link{listDatasets}}
+\code{\link[biomaRt]{useMart}}, 
+\code{\link[biomaRt]{listMarts}}, 
+\code{\link[biomaRt]{useDataset}}, 
+\code{\link[biomaRt]{listDatasets}}
 }
 %\examples{
 
