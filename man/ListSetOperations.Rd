@@ -36,7 +36,7 @@ All functions return a single character vector.
 %% ~put references to the literature/web site here ~
 %}
 \author{
-Anders Ellern Bilgrau
+Anders Ellern Bilgrau \email{abilgrau@math.aau.dk}
 }
 %\note{
 %%  ~~further notes~~
