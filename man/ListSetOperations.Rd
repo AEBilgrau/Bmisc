@@ -1,4 +1,4 @@
-\name{Union}
+\name{SetOperations}
 \alias{Union}
 \alias{Intersect}
 \alias{Setdiff}
