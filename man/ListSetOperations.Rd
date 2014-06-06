@@ -14,7 +14,6 @@ Union(x)
 Intersect(x)
 Setdiff(x, y)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
     A \code{list} of \code{character} vectors.
