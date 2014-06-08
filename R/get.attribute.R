@@ -2,7 +2,7 @@
 # es is an ExpressionSet object
 get.attribute <- function(es) {
   array <-
-    switch(annotation(es), 
+    switch(biomaRt::annotation(es), 
            "hgu133plus2"  = "affy_hg_u133_plus_2",
            "hgu133a"      = "affy_hg_u133a",
            "hgu133b"      = "affy_hg_u133b",
