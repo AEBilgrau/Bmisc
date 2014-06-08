@@ -9,7 +9,7 @@ Get hugo and esembl gene symbols from biomaRt
 These functions uses biomaRt to get gene symbols and ensembl gene identifies for an ExpressionSet object.
 }
 \usage{
-get.SYMBOL(es, subset = featureNames(es), attributes = NULL)
+get.SYMBOL(es, subset = biomaRt::featureNames(es), attributes = NULL)
 get.attribute(es)
 }
 %- maybe also 'usage' for other objects documented here.
