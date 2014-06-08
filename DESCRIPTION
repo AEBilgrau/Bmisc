@@ -9,5 +9,5 @@ Description: My miscellaneous functions in analog til Hmisc.
 License: GPL (>=2)
 Imports: Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
-Suggests: biomaRt
+Depends: biomaRt
 URL: https://github.com/AEBilgrau/B-misc
