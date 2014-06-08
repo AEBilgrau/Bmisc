@@ -7,7 +7,7 @@ Add Carriage Return
 Unix system only use different characters for the newline. Windows uses carriage return. This function adds the carriage return.
 }
 \usage{
-addCarriageReturn(file.in, file.out = file.out)
+addCarriageReturn(file.in, file.out = file.in)
 }
 \arguments{
 \item{file.in}{
