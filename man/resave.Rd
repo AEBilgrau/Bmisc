@@ -1,11 +1,10 @@
 \name{resave}
 \alias{resave}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Update objects in .RData files
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+\code{resave} updates existing objects in an .RData file. If the resaved objects do not exist in the file, the objects are added to the file. If the file does not exist, \code{resave} functions as \code{save}.
 }
 \usage{
 resave(..., list = character(), file)
