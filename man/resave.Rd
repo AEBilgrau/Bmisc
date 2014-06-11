@@ -12,60 +12,40 @@ resave(..., list = character(), file)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  The R objects to be resaved.
 }
   \item{list}{
-%%     ~~Describe \code{list} here~~
+  A character of the names of the optional list of names to be resaved.
 }
   \item{file}{
-%%     ~~Describe \code{file} here~~
+  The \code{.RData} file to save the object into.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+%\details{
+%The \code{resave} function resaves
+%}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+The \code{.RData}-file specified by \code{file} is written or overwritten to the harddrive. 
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Anders Ellern Bilgrau
 }
 \note{
-%%  ~~further notes~~
+This is a modified version of a function created by user "flodel" at \href{stack overflow.}{http://stackoverflow.com/questions/11813096/updating-an-existing-rdata-file}
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See Also: \code{\link{save}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (..., list = character(), file) 
-{
-    if (!file.exists(file)) {
-        save(..., list = list, file = file)
-    }
-    previous <- load(file)
-    var.names <- c(list, as.character(substitute(list(...)))[-1L])
-    for (var in var.names) {
-        assign(var, get(var, envir = parent.frame()))
-    }
-    save(list = unique(c(previous, var.names)), file = file)
-  }
+file <- file.path(tempdir(), "/myFile.RData")
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
