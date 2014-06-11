@@ -44,7 +44,20 @@ See Also: \code{\link{save}}
 }
 \examples{
 
-file <- file.path(tempdir(), "/myFile.RData")
+
+file <- file.path(tempdir(), "myFile.RData")
+
+
+a <- list(LETTERS)
+
+# Save a
+resave(a, file = file)
+
+b <- pi
+a <- c(a, list(letters))
+
+# Update a and add b
+resave(a, b, file = file)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
