@@ -27,9 +27,9 @@ resave(..., list = character(), file)
 \value{
 The \code{.RData}-file specified by \code{file} is written or overwritten to the harddrive. 
 }
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 \author{
 Anders Ellern Bilgrau
 }
@@ -37,8 +37,6 @@ Anders Ellern Bilgrau
 This is a modified version of a function created by user "flodel" at \href{stack overflow.}{http://stackoverflow.com/questions/11813096/updating-an-existing-rdata-file}
 
 }
-
-
 \seealso{
 See Also: \code{\link{save}}
 }
