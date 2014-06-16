@@ -8,7 +8,8 @@ My packaged frequently used miscellaneous R functions.
 If you wish to install the latest version of Bmisc directly from the master branch here at GitHub, run 
 
 ```R
-install.packages("devtools")
+#install.packages("devtools")
+library("devtools")
 devtools::install_github("AEBilgrau/GMCM")
 ```
 The package may be unstable. Be sure that you have the 
