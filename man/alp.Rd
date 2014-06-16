@@ -19,6 +19,10 @@ A character of hexadecimal values with alpha value added.
 The function adds transparency to a character of colours names or
 hexadecimal values.
 }
+\examples{
+x <- c("Blue", "#402000", NA, "Tomato", "#00FF0250")
+alp(x, alpha = 0.5)
+}
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
