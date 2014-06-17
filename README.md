@@ -9,7 +9,6 @@ If you wish to install the latest version of Bmisc directly from the master bran
 
 ```R
 #install.packages("devtools")
-library("devtools")
 devtools::install_github("AEBilgrau/GMCM")
 ```
 The package may be unstable. Be sure that you have the 
