@@ -2,9 +2,9 @@
 #'
 #' The function adds transparency to a character of colours names or 
 #' hexadecimal values.
-#' @param A character of colours. Either as names (e.g. \code{"blue"}) or 
+#' @param x A character of colours. Either as names (e.g. \code{"blue"}) or 
 #'  hexadecimal (\code{"#00FF00"}). 
-#' @param A numeric value with the alpha level. If \code{alpha = 0} is 
+#' @param alpha A numeric value with the alpha level. If \code{alpha = 0} is 
 #'  completely transparent and  \code{alpha = 1} is opaque.
 #' @return A character of hexadecimal values with alpha value added.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
