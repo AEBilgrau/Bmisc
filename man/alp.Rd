@@ -6,10 +6,10 @@
 alp(x, alpha)
 }
 \arguments{
-\item{A}{character of colours. Either as names (e.g. \code{"blue"}) or
+\item{x}{A character of colours. Either as names (e.g. \code{"blue"}) or
 hexadecimal (\code{"#00FF00"}).}
 
-\item{A}{numeric value with the alpha level. If \code{alpha = 0} is
+\item{alpha}{A numeric value with the alpha level. If \code{alpha = 0} is
 completely transparent and  \code{alpha = 1} is opaque.}
 }
 \value{
