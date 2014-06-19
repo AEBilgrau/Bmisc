@@ -7,7 +7,9 @@ Author: Anders Ellern Bilgrau
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 Description: My miscellaneous functions in analog til Hmisc.
 License: GPL (>=2)
-Imports: Rcpp (>= 0.10.6)
+Imports:
+    Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
-Depends: biomaRt
+Depends:
+    biomaRt
 URL: https://github.com/AEBilgrau/B-misc
