@@ -1,5 +1,9 @@
-# Convert from bioconductor array name to biomaRt's array names
-# es is an ExpressionSet object
+#' Convert from bioconductor database array name to biomaRt's array names
+#' 
+#' @param es is an ExpressionSet object
+#' @return A character of length \code{1} with the biomaRt array name
+#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @note Note, 
 get.attribute <- function(es) {
   array <-
     switch(annotation(es), 
