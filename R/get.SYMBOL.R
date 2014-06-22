@@ -13,7 +13,8 @@
 #' @export
 get.SYMBOL <- function(es,
                        subset = featureNames(es), 
-                       attributes = NULL) {
+                       attributes = NULL, 
+                       ...) {
   if (require(biomaRt)) {
     mart <- useMart("ensembl")
     ensembl <- useDataset("hasapiens_gene_ensembl", mart = mart)
