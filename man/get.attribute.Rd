@@ -15,9 +15,13 @@ A character of length \code{1} with the biomaRt array name
 Convert from bioconductor database array name to biomaRt's array names
 }
 \note{
-Note,
+Note, not all arrays are implemented.
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+}
+\seealso{
+\code{\link[biomaRt]{useMart}}, \code{\link[biomaRt]{listMarts}},
+  \code{\link[biomaRt]{useDataset}}, \code{\link[biomaRt]{listDatasets}}
 }
 
