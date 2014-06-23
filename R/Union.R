@@ -1,5 +1,6 @@
-# Multiple set version of union
-# x is a list of characters
+#' @rdname ListSetOperations
+#' @return \code{Union} returns the union all character vectors in \code{x}.
+#' @export
 Union <- function (x) {  
   if (length(x) == 1) {
     unlist(x)
@@ -9,3 +10,5 @@ Union <- function (x) {
     union(x[[1]], Union(x[-1]))
   }
 }
+
+
