@@ -1,5 +1,6 @@
-# Multiple set version of intersect
-# x is a list of characters
+#' @rdname ListSetOperations
+#' @return \code{Intersect} returns the intersection of all vectors in \code{x}.
+#' @export
 Intersect <- function (x) {  
   if (length(x) == 1) {
     unlist(x)
