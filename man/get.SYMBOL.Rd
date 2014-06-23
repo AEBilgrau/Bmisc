@@ -3,7 +3,7 @@
 \alias{get.SYMBOL}
 \title{Get Hugo gene symbols and ensembl gene identifiers}
 \usage{
-get.SYMBOL(es, subset = featureNames(es), attributes = NULL)
+get.SYMBOL(es, subset = featureNames(es), attributes = NULL, ...)
 }
 \arguments{
 \item{es}{in an ExpressionSet object}
