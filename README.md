@@ -1,5 +1,5 @@
-Miscellaneous functions
--------------------------------------------------------
+Biostatistical miscellaneous functions and utilities
+----------------------------------------------------
 [![Build Status](https://api.travis-ci.org/AEBilgrau/Bmisc.svg?branch=master)](https://travis-ci.org/AEBilgrau/Bmisc)
 
 My packaged frequently used biostatisical miscellaneous R functions and utilities.
