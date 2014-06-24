@@ -9,6 +9,7 @@
 #'   \code{diag == TRUE}, then the length is \code{ncol(x)*(ncol(x)-1)/2}. If 
 #'   \code{FALSE}, then the length is \code{ncol(x)*(ncol(x)+1)/2}.
 #' @seealso \link{\code{lower.tri}}, \link{\code{upper.tri}}
+#' @author Anders Ellern Bilgrau (abilgrau (at) math.aau.dk)
 #' @examples
 #' print(x <- matrix(1:25, ncol = 5))
 #' get.lower.tri(x)
