@@ -34,14 +34,14 @@ The returned length is dependent on \code{diag}. If
 print(x <- matrix(1:25, ncol = 5))
 get.lower.tri(x)
 get.lower.tri(x, diag = TRUE)
-print(x <- matrix(1:25, ncol = 3))
+print(x <- matrix(1:9, ncol = 3))
 get.upper.tri(x)
 get.upper.tri(x, diag = TRUE)
 }
 \author{
-Anders Ellern Bilgrau (abilgrau (at) math.aau.dk)
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \seealso{
-\link{\code{lower.tri}}, \link{\code{upper.tri}}
+\code{\link{lower.tri}}, \code{\link{upper.tri}}
 }
 
