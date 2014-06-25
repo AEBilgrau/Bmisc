@@ -12,7 +12,7 @@ fillLines(x, y1, y2 = rep(0, length(x)), ...)
 
 \item{y2}{A numeric vector of y-coordiantes. Defaults to zero.}
 
-\item{dots}{Arguments passed to \code{polygon}.}
+\item{\dots}{Arguments passed to \code{polygon}.}
 }
 \description{
 This function fills or shades the area between two curves or under a curve.
