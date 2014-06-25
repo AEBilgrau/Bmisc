@@ -1,7 +1,7 @@
 #' @name ListSetOperations
 #' @aliases Intersect
 #' @aliases Union
-#' @aliases Setdiif
+#' @aliases Setdiff
 #' @title Set operations on lists of character vectors.
 #' @details These functions perform basic set operations on lists of character 
 #'   vectors in a recursive manner. The work analogous to \code{union}, 
