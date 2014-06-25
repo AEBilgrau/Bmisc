@@ -5,7 +5,7 @@
 #' @param x A numeric vector of x-coordinates.
 #' @param y1 A numeric vector of y-coordinates.
 #' @param y2 A numeric vector of y-coordiantes. Defaults to zero.
-#' @param dots Arguments passed to \code{polygon}.
+#' @param \dots Arguments passed to \code{polygon}.
 #' @details The function fills or shades the area between two lines as drawn by 
 #'   \code{lines(x, y1)} and \code{lines(x, y2)}. If \code{y2} is not supplied
 #'   the area between the curve and the x-axis is drawn. A seen in the examples,
