@@ -1,6 +1,8 @@
 #' My biostatstical miscellaneous functions 
 #'
-#' My biostatstical miscellaneous functions in analog til Hmisc.
+#' My frequently used biostatisical miscellaneous R functions and utilities. 
+#' Useful for general microarray analysis, gene network analysis, and other 
+#' biostatistical applications.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @docType package
 #' @name Bmisc
