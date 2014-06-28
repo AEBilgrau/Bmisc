@@ -10,6 +10,6 @@ License: GPL (>=2)
 Imports:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
-Depends:
-    biomaRt
+Suggests:
+    biomaRt, digest
 URL: https://github.com/AEBilgrau/B-misc
