@@ -3,9 +3,11 @@
 \name{Bmisc}
 \alias{Bmisc}
 \alias{Bmisc-package}
-\title{My miscellaneous functions}
+\title{My biostatstical miscellaneous functions}
 \description{
-My miscellaneous functions in analog til Hmisc.
+My frequently used biostatisical miscellaneous R functions and utilities.
+Useful for general microarray analysis, gene network analysis, and other
+biostatistical applications.
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
