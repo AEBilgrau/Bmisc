@@ -8,7 +8,7 @@ My frequently used biostatisical miscellaneous R functions and utilities. Useful
 If you wish to install the latest version of Bmisc directly from the master branch here at GitHub, run 
 
 ```R
-#install.packages("devtools")
+#install.packages("devtools")  # Uncomment if devtools is not installed
 devtools::install_github("AEBilgrau/GMCM")
 ```
 The package may be unstable. Be sure that you have the 
