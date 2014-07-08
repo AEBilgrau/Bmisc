@@ -9,6 +9,7 @@
 #' @param y A character or numeric vector.
 #' @return The functions returns a vector of the elements in x which does not appear in y.
 #' @note These functions are identical to \code{\link{setdiff}} but sometimes more easy to use.
+#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @examples
 #' print(x <- LETTERS[1:10])
 #' print(y <- LETTERS[5:15])
