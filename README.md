@@ -3,7 +3,7 @@ Biostatistical miscellaneous functions and utilities
 -----------------------------------------------------------------
 [![Build Status](https://api.travis-ci.org/AEBilgrau/Bmisc.svg?branch=master)](https://travis-ci.org/AEBilgrau/Bmisc)
 
-My frequently used biostatisical miscellaneous R functions and utilities. The package is aimed to particularly useful for general microarray analysis, gene network analysis, and other biostatistical applications.
+My frequently used biostatisical miscellaneous R functions and utilities. While many functions are useful in general, the package aim is to particularly useful for general microarray analysis, gene network analysis, and other biostatistical applications.
 
 `Bmisc` uses `Roxygen2` for documentation of the package.
 
