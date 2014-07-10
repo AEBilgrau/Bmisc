@@ -29,4 +29,7 @@ x \%w/o\% y
 without(x, y)
 setdiff(x, y)
 }
+\author{
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+}
 
