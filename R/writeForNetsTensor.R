@@ -7,7 +7,7 @@
 #' @param out.dir character. The path to the output dir where the files are to
 #'   be written.
 #' @param verbose logical. Should the progress be outputted?
-#' @return Returns invisibly a \code{list} with the content of the
+#' @return Returns invisibly a \code{list} of length 4 with the content of the
 #'   written files. Writes the formatted networks to
 #'   the disk in the directory specified by \code{out.dir}.
 #' @references
