@@ -1,6 +1,9 @@
 #' @rdname ListSetOperations
 #' @return \code{Setdiff} returns the intersection of \code{x} minus the
 #'   union of \code{y}. 
+#' @include
+#'   Union.R
+#'   Intersect.R
 #' @export
 Setdiff <- function (x, y) {
   xx <- Intersect(x)
