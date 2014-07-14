@@ -34,7 +34,7 @@ writeForNetsTensor <- function(x.list,
   # Sorting all matrices as the first matrix and format
   x.list <- lapply(x.list, function(x) x[rownames(x.list[[1]]),
                                          rownames(x.list[[1]])])
-  y.list <- lapply(x.list, format.for.nets)
+  y.list <- lapply(x.list, formatForNets)
   names(y.list) <- paste0("net", seq_along(y.list), ".network")
 
   # Write the networks
