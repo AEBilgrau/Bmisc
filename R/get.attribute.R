@@ -8,6 +8,9 @@
 #'   \code{\link[biomaRt]{useDataset}}, \code{\link[biomaRt]{listDatasets}}
 #' @export
 get.attribute <- function(es) {
+  if (!require("biomaRt")) {
+    stop("The package biomaRt is required to use the function.")
+  }
   array <-
     switch(annotation(es), 
            "hgu133plus2"  = "affy_hg_u133_plus_2",
