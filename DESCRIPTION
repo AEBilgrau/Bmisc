@@ -1,15 +1,17 @@
 Package: Bmisc
 Type: Package
-Title: Bilgrau's miscellaneous functions
+Title: Biostatistical miscellaneous functions
 Version: 0.1
-Date: 2014-01-30
+Date: 2014-07-14
 Author: Anders Ellern Bilgrau
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
-Description: My miscellaneous functions in analog til Hmisc.
+Description: Biostatisical miscellaneous functions and utilites.
 License: GPL (>=2)
 Imports:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
-    biomaRt, digest, igraph
+    biomaRt,
+    digest,
+    igraph
 URL: https://github.com/AEBilgrau/B-misc
