@@ -28,8 +28,10 @@ A Welch t-test is perform for each row in \code{x} and \code{y}.
   and the result is seen in the i'th row of the output.
 }
 \examples{
-x <- replicate(10,   rnorm(20, 0, 1))
+# Create some toy data
+x <- replicate(10, rnorm(20, 0, 1))
 y <- replicate(11, c(rnorm(10, 1, 1), rnorm(10, 0, 1)))
+rownames(x) <- rownames(y) <- paste0("Gene", 1:20)
 
 welch.t.tests(x, y)
 
