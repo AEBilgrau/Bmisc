@@ -3,7 +3,7 @@
 #' A function of for plotting the graphical representation of a weigted
 #' weighted adjacencey amatrix. Build for convenience and not for speed.
 #' 
-#' @param amat A numeric adjacency amatrix with values between 0 and 1.
+#' @param amat A numeric adjacency a matrix with values between 0 and 1.
 #' @param diff.exprs A numeric vector of lencth \code{ncol(amat)} giving the 
 #'   importance (e.g.\ evidence for differential expression) of the node/gene.
 #' @param label The labels of the nodes.
