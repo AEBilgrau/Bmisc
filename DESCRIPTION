@@ -11,5 +11,5 @@ Imports:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
-    biomaRt, digest
+    biomaRt, digest, igraph
 URL: https://github.com/AEBilgrau/B-misc
