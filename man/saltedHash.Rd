@@ -10,10 +10,12 @@ saltedHash(salt, x, algo = "sha256", ...)
 
 \item{x}{A character vector of the strings to be hashed.}
 
-\item{algo}{The hashing algorithm used. See \code{\link{digest}} for
+\item{algo}{The hashing algorithm used. See
+\code{\link[digest;digest]{digest}} for
 possible values.}
 
-\item{\dots}{Additional parameters passed to \code{\link{digest}}.}
+\item{\dots}{Additional parameters passed to
+\code{\link[digest;digest]{digest}}.}
 }
 \value{
 A character vector
@@ -31,6 +33,6 @@ digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5")
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \seealso{
-\code{\link{digest}}
+\code{\link[digest;digest]{digest}}
 }
 
