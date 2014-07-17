@@ -5,13 +5,13 @@
 #' @param salt A character containing the salt
 #' @param x A character vector of the strings to be hashed.
 #' @param algo The hashing algorithm used. See 
-#'   \code{\link[digest;digest]{digest}} for 
+#'   \code{\link[digest]{digest}} for 
 #'   possible values.
 #' @param \dots Additional parameters passed to 
-#'   \code{\link[digest;digest]{digest}}.
+#'   \code{\link[digest]{digest}}.
 #' @return A character vector
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
-#' @seealso \code{\link[digest;digest]{digest}}
+#' @seealso \code{\link[digest]{digest}}
 #' @examples
 #' x <- c("AVerySecretString", "AnotherSecretSting")
 #' saltedHash("SomeSalt", x = x, algo = "md5")
