@@ -3,10 +3,45 @@
 \alias{install.brainarray}
 \title{Installs brainarray CDF and probe information packages}
 \usage{
-install.brainarray(array, version, type = "ensg", force.reinstall = FALSE,
-  force.download = FALSE, use.temp.dir = TRUE, path)
+install.brainarray(array, version = "18.0.0", type = "ensg",
+  force.reinstall = FALSE, force.download = FALSE, use.temp.dir = TRUE,
+  path)
+}
+\arguments{
+\item{array}{A character of length 1 giving the giving the name of the
+array.}
+
+\item{version}{A character of length 1 giving the version to download.}
+
+\item{type}{A charcter giving the annotation type.}
+
+\item{force.reinstall}{logical. Should the package be installed again?}
+
+\item{force.download}{logical. Should the package be downloaded again?}
+
+\item{use.temp.dir}{logical. Should a temporary dir be used?}
+
+\item{path}{A charcter of length 1. The path describing where the downloaded
+files are saved.}
+}
+\value{
+Invisibly returns the location of the saved files.
 }
 \description{
-Installs brainarray CDF and probe information packages
+This package downloads, installs, and/or loads the brainarray CDF and probe
+enviroments from the Brainarray website.
+}
+\examples{
+tmp.path <- install.brainarray("hgu133a", version = "18.0.0", type = "ensg")
+print(tmp.path)
+}
+\author{
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk
+}
+\references{
+See \url{http://brainarray.mbni.med.umich.edu}.
+}
+\seealso{
+\code{\link{tempdir}}, \code{\link{install.packages}}
 }
 
