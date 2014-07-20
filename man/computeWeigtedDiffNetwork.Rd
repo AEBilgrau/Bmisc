@@ -38,6 +38,11 @@ Second it tests each partial correlation for differential correlation using
 Fishers Z transform and the normal distribution. If wanted, the topological
 overlap matrix is computed from the resulting matrix of P-values.
 }
+\details{
+If \code{pcor.type} is \code{"partial"} then all 1 order partial
+  correlations are computed (i.e. the partial correlation given a third
+  feature) and the minimal partial correlation is used.
+}
 \note{
 The toplogical overlap matrix is computed on the P-values.
 }

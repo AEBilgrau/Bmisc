@@ -20,6 +20,9 @@
 #' @param rho Non-negative numeric regularization parameter for lasso. rho = 0
 #'   means no regularization. Only used if pcor.type == "fullpartial"
 #' @return A list of containing the output (to be described better)
+#' @details If \code{pcor.type} is \code{"partial"} then all 1 order partial
+#'   correlations are computed (i.e. the partial correlation given a third
+#'   feature) and the minimal partial correlation is used.
 #' @note The toplogical overlap matrix is computed on the P-values.
 #' @export
 computeWeigtedDiffNetwork <- function(x,
