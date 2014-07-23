@@ -1,10 +1,10 @@
 #' Plot the graphical representation of a weighted adjacency amatrix
-#' 
+#'
 #' A function of for plotting the graphical representation of a weigted
 #' weighted adjacencey amatrix. Build for convenience and not for speed.
-#' 
+#'
 #' @param amat A numeric adjacency a matrix with values between 0 and 1.
-#' @param diff.exprs A numeric vector of lencth \code{ncol(amat)} giving the 
+#' @param diff.exprs A numeric vector of lencth \code{ncol(amat)} giving the
 #'   importance (e.g.\ evidence for differential expression) of the node/gene.
 #' @param label The labels of the nodes.
 #' @param vcol The colors of the nodes. Default is black.
@@ -16,7 +16,7 @@
 #' # Construct a random adjacency matrix
 #' amat <- replicate(10, runif(10))
 #' amat[upper.tri(amat)] <- amat[lower.tri(amat)]
-#' 
+#'
 #' # Plot the graph
 #' plotModuleGraph(amat,
 #'                 label = "",
@@ -32,34 +32,38 @@ plotModuleGraph <- function(amat,
   if (!require(igraph)) {
     stop("The igraph package is needed for this function.")
   }
-  
+
   diag(amat) <- NA
-  
+
   # Create full graph
   graph <- graph.adjacency(amat, mode = "undirected",
                            weighted = TRUE,
                            diag = FALSE)
-  
+
+
   # VERTICES
+  rs <- rowSums(1 - amat, na.rm = TRUE)
+
   V(graph)$color  <- vcol
-  V(graph)$weight <- rowSums(amat, na.rm = TRUE)
-  V(graph)$size   <- 3
-  
+  #V(graph)$weight <- rowSums(amat, na.rm = TRUE)
+  V(graph)$size   <- (rs - min(rs))/sd(rs)
+
   if (!is.null(diff.exprs)) {
     V(graph)$size <- diff.exprs
   }
-  
+
   # EDGES
-  tmp <- E(graph)$weight
+  tmp <- -log(E(graph)$weight)
+  tmp <- tmp/max(tmp)
   E(graph)$color  <- rgb(0,0,0, alpha = tmp)
-  E(graph)$width  <- 3*tmp
+  E(graph)$width  <- tmp
   E(graph)$curved <- 0.0
-  
+
   # Layout
   #l <- layout.fruchterman.reingold(graph, niter = 4000,
   #                                 weights = E(graph)$weight)
   l <- layout(graph)
-  
+
   plot(graph, layout = l,
        vertex.frame.color = NA,
        vertex.label.font = 3,
@@ -67,5 +71,5 @@ plotModuleGraph <- function(amat,
        vertex.label.color = "black",
        vertex.label.dist = 0.0,
        vertex.label = label,... )
-  
+
 }
