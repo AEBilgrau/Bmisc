@@ -28,7 +28,12 @@ of the P-values of the Fisher transformed tests?}
 means no regularization. Only used if pcor.type == "fullpartial"}
 }
 \value{
-A list of containing the output (to be described better)
+A list of length 3:
+  \item{Z.scores}{A matrix of Z-scores for differential (partial)
+    correlation.}
+  \item{adjacency}{A matrix of 1 - P-values for the hypothesis of no
+    differential (partial) correlation}
+  \item{tom.dissimilarity}{A matrix of topological overlap disimilarities.}
 }
 \description{
 This function attemps to find differential networks between two classes.
