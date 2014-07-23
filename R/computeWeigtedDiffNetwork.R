@@ -19,7 +19,12 @@
 #'   of the P-values of the Fisher transformed tests?
 #' @param rho Non-negative numeric regularization parameter for lasso. rho = 0
 #'   means no regularization. Only used if pcor.type == "fullpartial"
-#' @return A list of containing the output (to be described better)
+#' @return A list of length 3:
+#'   \item{Z.scores}{A matrix of Z-scores for differential (partial)
+#'     correlation.}
+#'   \item{adjacency}{A matrix of 1 - P-values for the hypothesis of no
+#'     differential (partial) correlation}
+#'   \item{tom.dissimilarity}{A matrix of topological overlap disimilarities.}
 #' @details If \code{pcor.type} is \code{"partial"} then all 1 order partial
 #'   correlations are computed (i.e. the partial correlation given a third
 #'   feature) and the minimal partial correlation is used.
