@@ -54,7 +54,7 @@ computeWeigtedDiffNetwork <- function(x,
   covariance.gcb <- cov(x.gcb)
 
   # Compute partial correlations (0'th order, min 1'st order, or Ni'th order)
-  pcor <- function(covariance.mat, # The correlation matrix
+  mycor <- function(covariance.mat, # The correlation matrix
                    pcor.type,   # Type of correlation to compute
                    rho = 0) {   # If glasso is used, the level of regularization
     if (pcor.type == "fullpartial") {
@@ -70,8 +70,8 @@ computeWeigtedDiffNetwork <- function(x,
            "fullpartial" = cov2cor(glasso(covariance.mat, rho = rho)$w))
   }
 
-  pcorrelation.abc <- pcor(covariance.abc, pcor.type = pcor.type, rho = rho)
-  pcorrelation.gcb <- pcor(covariance.gcb, pcor.type = pcor.type, rho = rho)
+  pcorrelation.abc <- mycor(covariance.abc, pcor.type = pcor.type, rho = rho)
+  pcorrelation.gcb <- mycor(covariance.gcb, pcor.type = pcor.type, rho = rho)
 
   dimnames(pcorrelation.abc) <- dimnames(covariance.abc)
   dimnames(pcorrelation.gcb) <- dimnames(covariance.gcb)
