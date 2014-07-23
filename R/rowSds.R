@@ -1,8 +1,8 @@
-#' @rdname rowSds
-#' @return \code{colSds} returns a numeric vector of length \code{m}.
+#' @rdname colSds
+#' @return \code{rowSds} returns a numeric vector of length \code{n}.
 #' @examples
 #' y <- matrix(rnorm(50), 10, 5)
-#' colSds(y)
+#' rowSds(y)
 #' @export
 rowSds <- function(x) {
   n <- ncol(x)
