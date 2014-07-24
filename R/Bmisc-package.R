@@ -6,5 +6,5 @@
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @docType package
 #' @name Bmisc-package
-#' @aliases Bmisc-package Bmisc
+#' @aliases Bmisc-package Bmisc bmisc
 NULL
