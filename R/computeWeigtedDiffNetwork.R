@@ -102,7 +102,7 @@ computeWeigtedDiffNetwork <- function(x,
 
     # Compute Z.scores for diff. coexpression
     # (N - 4 and not -3 because of partial correlaiton)
-    Z.scores <- (Z1 - Z2)/sqrt(1/(N1 - 4) + 1/(N2 - 4))
+    Z.scores <- (Z1 - Z2)/sqrt(1/(N1 - 3) + 1/(N2 - 3))
 
     # Normalizing Z.scores
     #Z.scores <-
