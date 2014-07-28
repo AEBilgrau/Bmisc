@@ -4,7 +4,7 @@
 \title{Plot the graphical representation of a weighted adjacency amatrix}
 \usage{
 plotModuleGraph(amat, diff.exprs = NULL, label = rownames(amat),
-  vcol = "Black", layout = layout.circle, ...)
+  vcol = "Black", ecol = "Black", layout = layout.circle, ...)
 }
 \arguments{
 \item{amat}{A numeric adjacency a matrix with values between 0 and 1.}
@@ -16,10 +16,10 @@ importance (e.g.\ evidence for differential expression) of the node/gene.}
 
 \item{vcol}{The colors of the nodes. Default is black.}
 
-\item{\dots}{Aguments passed to \code{plot.igraph}.}
-
 \item{layout}{A function providing the layout of the graph.
 See \link[igraph]{layout}.}
+
+\item{\dots}{Aguments passed to \code{plot.igraph}.}
 }
 \value{
 Invisibly returns the igraph-object

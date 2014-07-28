@@ -8,9 +8,9 @@
 #'   importance (e.g.\ evidence for differential expression) of the node/gene.
 #' @param label The labels of the nodes.
 #' @param vcol The colors of the nodes. Default is black.
-#' @param \dots Aguments passed to \code{plot.igraph}.
 #' @param layout A function providing the layout of the graph.
 #'   See \link[igraph]{layout}.
+#' @param \dots Aguments passed to \code{plot.igraph}.
 #' @return Invisibly returns the igraph-object
 #' @author Anders Ellern Bilgrau <abilgrau (at) amath.aau.dk>
 #' @examples
@@ -28,6 +28,7 @@ plotModuleGraph <- function(amat,
                             diff.exprs = NULL,
                             label = rownames(amat),
                             vcol = "Black",
+                            ecol = "Black",
                             layout = layout.circle,
                             ...) {
   if (!require(igraph)) {
@@ -42,9 +43,7 @@ plotModuleGraph <- function(amat,
 
   # VERTICES
   rs <- rowSums(amat, na.rm = TRUE)
-
   V(graph)$color  <- vcol
-  #V(graph)$weight <- rowSums(amat, na.rm = TRUE)
   V(graph)$size   <- (rs - min(rs))/sd(rs)
 
   if (!is.null(diff.exprs)) {
@@ -53,8 +52,9 @@ plotModuleGraph <- function(amat,
 
   # EDGES
   tmp <- -log(-log(E(graph)$weight))
-  tmp <- (tmp - min(tmp))/max(tmp - min(tmp))
-  E(graph)$color  <- rgb(0,0,0, alpha = tmp)
+  tmp <- tmp - min(tmp)  # Translate
+  tmp <- tmp/max(tmp)    # Scale
+  E(graph)$color  <- alp(ecol, alpha = tmp)
   E(graph)$width  <- tmp
   E(graph)$curved <- 0.0
 
