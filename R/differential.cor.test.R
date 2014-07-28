@@ -20,8 +20,8 @@
 #' N2 <- 8
 #' print(cor2 <- cor(t(replicate(N2, rnorm(5)))))
 #' 
-#' diff.cor.test(cor1, cor2, N1, N2)
-diff.cor.test <- function(cor1, cor2, N1, N2) {
+#' differential.cor.test(cor1, cor2, N1, N2)
+differential.cor.test <- function(cor1, cor2, N1, N2) {
 
   # Fisher Z transform the correlations
   # atanh is identical to fisher's z transformation

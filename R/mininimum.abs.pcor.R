@@ -1,4 +1,4 @@
-min.abs.pcor <- function(X) {
+mininimum.abs.pcor <- function(X) {
   current.min <- pcor(X, k = 1)
   current.min[is.nan(current.min)] <- 1
   for (k in 2:nrow(X)) {

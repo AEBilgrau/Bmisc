@@ -8,6 +8,7 @@
 #'   importance (e.g.\ evidence for differential expression) of the node/gene.
 #' @param label The labels of the nodes.
 #' @param vcol The colors of the nodes. Default is black.
+#' @param ecol The colour of the edges. Default is black.
 #' @param layout A function providing the layout of the graph.
 #'   See \link[igraph]{layout}.
 #' @param \dots Aguments passed to \code{plot.igraph}.

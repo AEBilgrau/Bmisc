@@ -5,7 +5,7 @@
 \usage{
 computeWeigtedDiffNetwork(x, class, gene.universe, name = "datasetname",
   pcor.type = c("marginal", "partial", "fullpartial"), use.TOM = TRUE,
-  rho = 0, recompute)
+  rho = 0)
 }
 \arguments{
 \item{x}{is the expression matrix where columns correspond to

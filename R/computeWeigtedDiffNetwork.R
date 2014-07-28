@@ -38,12 +38,8 @@ computeWeigtedDiffNetwork <- function(x,
                                                     "partial",
                                                     "fullpartial"),
                                       use.TOM = TRUE,
-                                      rho = 0,
-                                      recompute) {
+                                      rho = 0) {
   pcor.type <- match.arg(pcor.type)
-  if (missing(recompute)) {
-    recompute <- FALSE
-  }
 
   cat("Estimating network of", name, "using", pcor.type, "correlations.\n")
 
@@ -71,7 +67,7 @@ computeWeigtedDiffNetwork <- function(x,
     }
     switch(pcor.type,
            "marginal"    = correlation.mat,
-           "partial"     = min.abs.pcor(correlation.mat),
+           "partial"     = mininimum.abs.pcor(correlation.mat),
            "fullpartial" = cov2cor(glasso(covariance.mat, rho = rho)$w))
   }
 
@@ -89,7 +85,8 @@ computeWeigtedDiffNetwork <- function(x,
   # 
   
   cat("Testing for differential coexpression\n")
-  diff.cor <- diff.cor.test(pcorrelation.abc, pcorrelation.gcb, N.abc, N.gcb)
+  diff.cor <- 
+    differential.cor.test(pcorrelation.abc, pcorrelation.gcb, N.abc, N.gcb)
 
   # Adjacency matrix
   cat("Computing adjacency matrix\n"); flush.console()

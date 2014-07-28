@@ -16,6 +16,8 @@ importance (e.g.\ evidence for differential expression) of the node/gene.}
 
 \item{vcol}{The colors of the nodes. Default is black.}
 
+\item{ecol}{The colour of the edges. Default is black.}
+
 \item{layout}{A function providing the layout of the graph.
 See \link[igraph]{layout}.}
 
