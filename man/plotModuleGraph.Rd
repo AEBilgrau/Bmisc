@@ -21,6 +21,9 @@ importance (e.g.\ evidence for differential expression) of the node/gene.}
 \item{layout}{A function providing the layout of the graph.
 See \link[igraph]{layout}.}
 }
+\value{
+Invisibly returns the igraph-object
+}
 \description{
 A function of for plotting the graphical representation of a weigted
 weighted adjacencey amatrix. Build for convenience and not for speed.

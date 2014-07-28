@@ -11,6 +11,7 @@
 #' @param \dots Aguments passed to \code{plot.igraph}.
 #' @param layout A function providing the layout of the graph.
 #'   See \link[igraph]{layout}.
+#' @return Invisibly returns the igraph-object
 #' @author Anders Ellern Bilgrau <abilgrau (at) amath.aau.dk>
 #' @examples
 #' # Construct a random adjacency matrix
@@ -42,7 +43,7 @@ plotModuleGraph <- function(amat,
 
 
   # VERTICES
-  rs <- rowSums(1 - amat, na.rm = TRUE)
+  rs <- rowSums(amat, na.rm = TRUE)
 
   V(graph)$color  <- vcol
   #V(graph)$weight <- rowSums(amat, na.rm = TRUE)
@@ -53,8 +54,8 @@ plotModuleGraph <- function(amat,
   }
 
   # EDGES
-  tmp <- -log(E(graph)$weight)
-  tmp <- tmp/max(tmp)
+  tmp <- -log(-log(E(graph)$weight))
+  tmp <- (tmp - min(tmp))/max(tmp - min(tmp))
   E(graph)$color  <- rgb(0,0,0, alpha = tmp)
   E(graph)$width  <- tmp
   E(graph)$curved <- 0.0
@@ -72,4 +73,5 @@ plotModuleGraph <- function(amat,
        vertex.label.dist = 0.0,
        vertex.label = label,... )
 
+  return(invisible(graph))
 }
