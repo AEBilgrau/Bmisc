@@ -2,6 +2,7 @@
 #'
 #' This function computes the first order partial correlation given the
 #' \code{k}'th variable.
+#' 
 #' @param X an numeric correlation matrix
 #' @param k an integer. The variable to condition on.
 #' @return A matrix of the same size as \code{X} with \code{NaN}s in the
