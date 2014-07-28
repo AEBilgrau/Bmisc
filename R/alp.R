@@ -4,7 +4,8 @@
 #' hexadecimal values.
 #' @param x A character of colours. Either as names (e.g. \code{"blue"}) or 
 #'  hexadecimal (\code{"#00FF00"}). 
-#' @param alpha A numeric value with the alpha level. If \code{alpha = 0} is 
+#' @param alpha A numeric vector of values with the alpha level. 
+#'  If \code{alpha = 0} is 
 #'  completely transparent and  \code{alpha = 1} is opaque.
 #' @return A character of hexadecimal values with alpha value added.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
@@ -27,7 +28,7 @@ alp <- function (x, alpha) {
     x[nchar(x) == 9] <- substr(x[nchar(x) == 9], 1, 7)
   }
   
-  if (alpha >= 0 & alpha <= 1) {
+  if (all(alpha >= 0 & alpha <= 1)) {
     paste0(x, sprintf("%02X", round(255*alpha))) 
   } else if (grepl("[0-9a-fA-F]+", alpha) & nchar(alpha) == 2) {
     paste0(x, alpha)
