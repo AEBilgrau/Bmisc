@@ -86,42 +86,10 @@ computeWeigtedDiffNetwork <- function(x,
 
   #
   # Test for diff. coexpression
-  # See. http://core.ecu.edu/psyc/wuenschk/docs30/CompareCorrCoeff.pdf
-  #
-
-  # Function to transform correlation coefficients
-  diff.cor.test <- function(cor1, cor2, N1, N2) {
-    #x1 and x2 are correlation (matrices)
-    #N1 and N2 are the sample sizes
-
-    # Fisher Z transform the correlations
-    # atanh is identical to fisher's z transformation
-    Z1 <- atanh(cor1)
-    Z2 <- atanh(cor2)
-    diag(Z1) <- diag(Z2) <- Inf
-
-    # Compute Z.scores for diff. coexpression
-    # (N - 4 and not -3 because of partial correlaiton)
-    Z.scores <- (Z1 - Z2)/sqrt(1/(N1 - 3) + 1/(N2 - 3))
-
-    # Normalizing Z.scores
-    #Z.scores <-
-    #  (Z.scores - mean(Z.scores, na.rm = TRUE))/sd(Z.scores, na.rm = TRUE)
-    diag(Z.scores) <- 0
-
-    # Compute P-values
-    P.values <- 2*pnorm(-abs(Z.scores))
-
-    # Similarity matrix
-    similarity <- 1 - P.values
-
-    return(list(Z.scores = Z.scores, similarity = similarity))
-  }
-
+  # 
+  
   cat("Testing for differential coexpression\n")
-  diff.cor <- diff.cor.test(pcorrelation.abc,
-                            pcorrelation.gcb,
-                            N.abc, N.gcb)
+  diff.cor <- diff.cor.test(pcorrelation.abc, pcorrelation.gcb, N.abc, N.gcb)
 
   # Adjacency matrix
   cat("Computing adjacency matrix\n"); flush.console()
