@@ -34,8 +34,6 @@ plotModuleGraph <- function(amat,
     stop("The igraph package is needed for this function.")
   }
 
-  diag(amat) <- NA
-
   # Create full graph
   graph <- graph.adjacency(amat, mode = "undirected",
                            weighted = TRUE,
