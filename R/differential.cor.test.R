@@ -8,10 +8,10 @@
 #' @param N2 integer of lenth 1. The number of samples in group 2.
 #' @return A list of matrices or vector containing:
 #'   \item{\code{Z.scores}}{A numeric matrix of Z-scores for the hypothesis.}
-#'   \item{\code{similarity}}{A numeric matrix of the P-values.}
+#'   \item{\code{P.values}}{A numeric matrix of the P-values.}
 #' @details 
 #'   The function uses Fisher's Z transform (atanh) of correlations
-# atanh is identical to fisher's z transformation
+#    atanh is identical to fisher's z transformation
 #' @references 
 #'   \url{http://core.ecu.edu/psyc/wuenschk/docs30/CompareCorrCoeff.pdf}
 #' @examples
@@ -40,8 +40,5 @@ differential.cor.test <- function(cor1, cor2, N1, N2) {
   # Compute P-values
   P.values <- 2*pnorm(-abs(Z.scores))
   
-  # Similarity matrix
-  similarity <- 1 - P.values
-  
-  return(list(Z.scores = Z.scores, similarity = similarity))
+  return(list(Z.scores = Z.scores, P.values = P.values))
 }

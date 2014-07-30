@@ -82,15 +82,17 @@ computeWeigtedDiffNetwork <- function(x,
 
   #
   # Test for diff. coexpression
-  # 
-  
+  #
+
   cat("Testing for differential coexpression\n")
-  diff.cor <- 
-    differential.cor.test(pcorrelation.abc, pcorrelation.gcb, N.abc, N.gcb)
+  diff.cor <- differential.cor.test(pcorrelation.abc,
+                                    pcorrelation.gcb,
+                                    N.abc,
+                                    N.gcb)
 
   # Adjacency matrix
   cat("Computing adjacency matrix\n"); flush.console()
-  adjacency <- diff.cor$similarity
+  adjacency <- 1 - diff.cor$P.values
 
   # Topological overlap
   tom.dissimilarity <- NULL

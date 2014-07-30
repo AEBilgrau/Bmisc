@@ -17,7 +17,7 @@ differential.cor.test(cor1, cor2, N1, N2)
 \value{
 A list of matrices or vector containing:
   \item{\code{Z.scores}}{A numeric matrix of Z-scores for the hypothesis.}
-  \item{\code{similarity}}{A numeric matrix of the P-values.}
+  \item{\code{P.values}}{A numeric matrix of the P-values.}
 }
 \description{
 This functions tests the hypothesis of no difference in correlations.

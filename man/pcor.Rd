@@ -3,12 +3,12 @@
 \alias{pcor}
 \title{Compute first order partial correlations}
 \usage{
-pcor(X, k)
+pcor(c, k)
 }
 \arguments{
-\item{X}{an numeric correlation matrix}
+\item{S}{A numeric correlation matrix}
 
-\item{k}{an integer. The variable to condition on.}
+\item{k}{An integer. The variable to condition on.}
 }
 \value{
 A matrix of the same size as \code{X} with \code{NaN}s in the
@@ -20,8 +20,9 @@ This function computes the first order partial correlation given the
 }
 \examples{
 mat <- replicate(4, rnorm(10))
-X <- cor(mat)
-pcor(X, 2)
+dimnames(X) <- list(paste0("obs", 1:nrow(X)), paste0("var", 1:ncol(X)))
+S <- cor(X)
+pcor(S, 2)
 }
 \author{
 Anders Ellernsta Bilgrau <abilgrau (at) math.aau.dk>
