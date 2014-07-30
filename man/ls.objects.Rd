@@ -36,7 +36,7 @@ A \code{data.frame} with columns \code{"Type"}, \code{"Size"},
 }
 \description{
 This functions lists the object names, type, size, and number of rows and
-columns in the specificed enviroment. \code{lsos()} is a shorthand inteface
+columns in the specificed enviroment. \code{lsos()} is a shorthand interface
 to list the most memory heavy objects.
 }
 \examples{
