@@ -14,7 +14,7 @@
 #' dimnames(X) <- list(paste0("obs", 1:nrow(X)), paste0("var", 1:ncol(X)))
 #' S <- cor(X)
 #' pcor(S, 2)
-pcor <- function(c, k) {
+pcor <- function(S, k) {
   tmp <- sqrt(1 - S[k, ]^2)
   return((S - tcrossprod(S[k, ]))/tcrossprod(tmp))
 }

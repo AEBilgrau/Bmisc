@@ -3,7 +3,7 @@
 \alias{pcor}
 \title{Compute first order partial correlations}
 \usage{
-pcor(c, k)
+pcor(S, k)
 }
 \arguments{
 \item{S}{A numeric correlation matrix}
