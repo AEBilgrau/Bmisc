@@ -4,7 +4,8 @@
 \title{Plot the heatmap of a adjacency matrix}
 \usage{
 plotModuleImage(amat, print.xlab = TRUE, print.ylab = TRUE,
-  labels = rownames(amat), srt = 45, ...)
+  labels = rownames(amat), srt = 45, xlab.at = par("usr")[3] - 0.25,
+  ylab.at = par("usr")[1] - 0.25, ...)
 }
 \arguments{
 \item{amat}{An numeric adjacency matrix with values between 0 and 1.}
@@ -17,6 +18,10 @@ plotModuleImage(amat, print.xlab = TRUE, print.ylab = TRUE,
 y-axis.}
 
 \item{srt}{numeric. Rotation of the labels. See \code{\link{par}}.}
+
+\item{xlab.at}{The position of the labels in of the x-axis.}
+
+\item{ylab.at}{The position of the labels in of the y-axis.}
 
 \item{\dots}{Arguments passed to \code{\link{image}}.}
 }

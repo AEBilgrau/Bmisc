@@ -6,6 +6,8 @@
 #' @param labels character vector of labels to be printed at the x-axis and
 #'   y-axis.
 #' @param srt numeric. Rotation of the labels. See \code{\link{par}}.
+#' @param xlab.at The position of the labels in of the x-axis.
+#' @param ylab.at The position of the labels in of the y-axis.
 #' @param \dots Arguments passed to \code{\link{image}}.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @examples
@@ -23,6 +25,8 @@ plotModuleImage <- function(amat,
                             print.ylab = TRUE,
                             labels = rownames(amat),
                             srt = 45,
+                            xlab.at = par("usr")[3] - 0.25,
+                            ylab.at = par("usr")[1] - 0.25,
                             ...) {
 
   # Need to transpose (if not symmetric) and flip
@@ -37,12 +41,12 @@ plotModuleImage <- function(amat,
         axes = FALSE, ...)
 
   if (print.xlab) {
-    text(1:nrow(amat), par("usr")[1] - 0.25, labels = rev(labels),
+    text(1:nrow(amat), xlab.at, labels = rev(labels),
          srt = srt, adj = 1, xpd = NA)
   }
 
   if (print.ylab) {
-    text(par("usr")[1] - 0.25, 1:ncol(amat), labels = labels,
+    text(ylab.at, 1:ncol(amat), labels = labels,
          srt = srt, adj = 1, xpd = NA)
   }
 }
