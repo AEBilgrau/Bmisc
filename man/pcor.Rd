@@ -19,7 +19,7 @@ This function computes the first order partial correlation given the
 \code{k}'th variable.
 }
 \examples{
-mat <- replicate(4, rnorm(10))
+X <- replicate(4, rnorm(10))
 dimnames(X) <- list(paste0("obs", 1:nrow(X)), paste0("var", 1:ncol(X)))
 S <- cor(X)
 pcor(S, 2)
