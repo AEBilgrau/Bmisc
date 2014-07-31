@@ -47,5 +47,7 @@ Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \seealso{
 \code{\link{union}}, \code{\link{intersect}}, \code{\link{setdiff}}
+
+\code{\link{without}}
 }
 

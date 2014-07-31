@@ -4,6 +4,7 @@
 #' @include
 #'   Union.R
 #'   Intersect.R
+#' @seealso \code{\link{without}}
 #' @export
 Setdiff <- function (x, y) {
   xx <- Intersect(x)

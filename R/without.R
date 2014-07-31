@@ -1,7 +1,9 @@
 #' The relative complement or set difference
 #' 
-#' The relative complement of x with respect to y, i.e. x\\y or x minus y.
-#' @aliases %w/o%
+#' The page decribes different interfaces for the relative complement of x with 
+#' respect to y, i.e. x\\y or x minus y. It is faster than 
+#' 
+#' @aliases without %w/o% %\\%
 #' @usage 
 #' without(x, y)
 #' x \%w/o\% y
@@ -11,13 +13,22 @@
 #' @note These functions are identical to \code{\link{setdiff}} but sometimes more easy to use.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @examples
-#' print(x <- LETTERS[1:10])
-#' print(y <- LETTERS[5:15])
+#' print(A <- LETTERS[1:10])
+#' print(B <- LETTERS[5:15])
 #' 
-#' x %w/o% y
-#' without(x, y)
-#' setdiff(x, y)
+#' A %w/o% B 
+#' #A %\% B     # More mathematical notation, single backslash only!
+#' without(A, B)
+#' setdiff(A, B)
+#' 
+#' \dontrun{
+#' library(microbenchmark)
+#' microbenchmark(without(A, B), 
+#'                setdiff(A, B))
+#' }
 without <- 
-  "%w/o%" <- 
-    function(x, y) x[!(x %in% y)]
+  `%w/o%` <- 
+  `%\\%` <-
+  function(x, y) x[!(x %in% y)]
+
 
