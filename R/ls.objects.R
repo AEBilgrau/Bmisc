@@ -10,16 +10,16 @@
 #' @param pattern  an optional regular expression. Only names matching pattern
 #'   are returned.
 #' @param order.by A character giving the column-name to sort by. Can be one of
-#'   \code{"Type"}, \code{"Size"}, \code{"Rows"}, or 
+#'   \code{"Type"}, \code{"Size"}, \code{"Rows"}, or
 #'   \code{"Columns"}.
 #'   If not supplied, the \code{data.frame} is not ordered.
 #' @param decreasing logical. Should the rows be in decreasing order?
 #' @param head logical. Should only the rows be returned?
 #' @param n An integer giving the number of rows to be printed. Only used in
 #'   \code{head} is \code{TRUE}.
-#' @return A \code{data.frame} with columns \code{"Type"}, \code{"Size"}, 
+#' @return A \code{data.frame} with columns \code{"Type"}, \code{"Size"},
 #'   \code{"Rows"}, \code{"PrettySize"}, and \code{"Columns"}.
-#' @author Based on Dirk Eddelbuettel, Petr Pikal, David Hinds, Tony Breyal, 
+#' @author Based on Dirk Eddelbuettel, Petr Pikal, David Hinds, Tony Breyal,
 #'   JD Long
 #' @references From
 #'   \url{http://stackoverflow.com/questions/1358003/tricks-to-manage-the-available-memory-in-an-r-session}
@@ -27,8 +27,8 @@
 #' A <- 1
 #' B <- cbind(1:2, 2:3)
 #' C <- replicate(10, rnorm(1e6))
-#' ls.objects()
-#' ls.objects(order.by = "Size")
+#' Bmisc:::.ls.objects()
+#' Bmisc:::.ls.objects(order.by = "Size")
 #' lsos()
 .ls.objects <- function(pos = 1L,
                         pattern,
@@ -44,8 +44,8 @@
   obj.mode  <- napply(names, mode)
   obj.type  <- ifelse(is.na(obj.class), obj.mode, obj.class)
   obj.size  <- napply(names, object.size)
-  obj.prettysize <- 
-    napply(names, function(x) format(object.size(x), units = "auto")) 
+  obj.prettysize <-
+    napply(names, function(x) format(object.size(x), units = "auto"))
   obj.dim   <- t(napply(names, function(x)
     as.numeric(dim(x))[1:2]))
   vec <- is.na(obj.dim)[, 1] & (obj.type != "function")

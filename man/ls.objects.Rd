@@ -43,8 +43,8 @@ to list the most memory heavy objects.
 A <- 1
 B <- cbind(1:2, 2:3)
 C <- replicate(10, rnorm(1e6))
-ls.objects()
-ls.objects(order.by = "Size")
+Bmisc:::.ls.objects()
+Bmisc:::.ls.objects(order.by = "Size")
 lsos()
 }
 \author{
