@@ -2,7 +2,7 @@
 #'
 #' This function aids in drawing two directed graphNEL objects to have the same
 #' node layout but still preserving the edges. This is useful when comparing
-#' two graphs.
+#' two graphs. The function also highlights the differences in the edges.
 #'
 #' @param g1 A graphNEL object
 #' @param g2 A graphNEL object
@@ -17,7 +17,9 @@
 #'   unique edges of \code{g2} invisible in the merged graph and vice versa
 #'   for the unique edges of \code{g1}.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
-#' @seealso \code{\link{agopen}}, \code{\link{plot.graphNEL}}
+#' @seealso 
+#'   \code{\link[Rgraphviz]{agopen}}, 
+#'   \code{\link[Rgraphviz]{plot.graphNEL}}
 #' @examples
 #' library("gRbase")
 #' g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G))

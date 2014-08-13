@@ -26,7 +26,7 @@ A \code{list} of length three with the laid out graphs. The first
 \description{
 This function aids in drawing two directed graphNEL objects to have the same
 node layout but still preserving the edges. This is useful when comparing
-two graphs.
+two graphs. The function also highlights the differences in the edges.
 }
 \details{
 The function works by combining \code{g1} and \code{g2} and making
@@ -56,6 +56,7 @@ plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \seealso{
-\code{\link{agopen}}, \code{\link{plot.graphNEL}}
+\code{\link[Rgraphviz]{agopen}},
+  \code{\link[Rgraphviz]{plot.graphNEL}}
 }
 

@@ -96,7 +96,7 @@ computeWeigtedDiffNetwork <- function(x,
 
   # Topological overlap
   tom.dissimilarity <- NULL
-  if (use.TOM) {
+  if (use.TOM && require("WGCNA")) {
     cat("Computing TOM\n")
     tom.similarity    <- TOMsimilarity(adjacency, TOMType = "unsigned")
     tom.dissimilarity <- 1 - tom.similarity

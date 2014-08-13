@@ -12,7 +12,7 @@ If you wish to install the latest version of Bmisc directly from the master bran
 
 ```R
 #install.packages("devtools")  # Uncomment if devtools is not installed
-devtools::install_github("AEBilgrau/GMCM")
+devtools::install_github("AEBilgrau/Bmisc")
 ```
 
 The package is constantly under development and may be unstable. Be sure that you have the [package development prerequisites](http://www.rstudio.com/ide/docs/packages/prerequisites) if you wish to install the package from the source.

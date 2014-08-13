@@ -8,9 +8,14 @@ Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 Description: Biostatisical miscellaneous functions and utilites.
 License: GPL (>=2)
 Imports:
-    Rcpp (>= 0.10.6)
+    Rcpp (>= 0.10.6),
+    GMCM
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
+    glasso,
+    WGCNA,
+    Biobase,
+    BiocGenerics,
     biomaRt,
     digest,
     igraph,
