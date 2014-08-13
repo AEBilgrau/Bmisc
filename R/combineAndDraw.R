@@ -27,8 +27,10 @@
 #'   \code{\link[Rgraphviz]{plot.graphNEL}}
 #' @examples
 #' library("gRbase")
-#' g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G))
-#' g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A))
+#' g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
+#'                    ~J|K, ~K|J, ~L|M))
+#' g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A,           ~I|H,
+#'                    ~J|K, ~K|J, ~L|M, ~M|L))
 #' cc <- combineAndDraw(g1, g2)
 #'
 #' col1 <- rep("green", length(edgeNames(g1)))
@@ -36,8 +38,8 @@
 #' col2 <- rep("red", length(edgeNames(g2)))
 #' names(col2) <- edgeNames(g2)
 #'
-#' par(oma = c(0,0,0,0)+.2)
-#' layout(rbind(1:2,3,4:5))
+#' par(oma = c(0,0,0,0)+.4)
+#' layout(rbind(1:2,c(3,6),4:5))
 #' plot(g1, edgeAttrs = list(color = col1), main = "Graph 1"); box()
 #' plot(g2, edgeAttrs = list(color = col2), main = "Graph 2"); box()
 #' plot(cc[[3]], main = "Merged graph"); box()
@@ -47,9 +49,9 @@
 combineAndDraw <- function(g1, g2,
                            col1 = "green",
                            col2 = "red",
-                           cols = "Black",
-                           size = 10,
-                           fontsize = 40,
+                           cols = "orange",
+                           size = 0.5,
+                           fontsize = 10,
                            name = "",
                            ...) {
   stopifnot(require("igraph"))
@@ -59,16 +61,20 @@ combineAndDraw <- function(g1, g2,
   gu <- igraph.to.graphNEL(graph.union(igraph.from.graphNEL(g1),
                                        igraph.from.graphNEL(g2),
                                        byname = TRUE))
+  edgePresent <- function (u, v, g) {
+    v %in% graph::edges(g)[[u]]
+  }
 
-  test.orientation <- function(u, v) { # test for g1: u -> v && g2: u <- v
-    any(graph::edges(g1)[[u]] == v) &&
-      any(graph::edges(g2)[[v]] == u)
+  test.orientation <- function(u, v) {
+    # Test that g1: u -> v && g2: u <- v
+    edgePresent(u, v, g1) && edgePresent(v, u, g2)
+
   }
 
   test.unique <- function(u, v, g1, g2) {
     # TRUE if edge u -> v or v <- u is in g1 and not g2
-    (v %in% graph::edges(g1)[[u]] && !(v %in% graph::edges(g2)[[u]])) |
-      (u %in% graph::edges(g1)[[v]] && !(u %in% graph::edges(g2)[[v]]))
+    (edgePresent(u, v, g1) && !edgePresent(u, v, g2)) |
+      (edgePresent(v, u, g1) && !edgePresent(v, u, g2))
   }
 
   eu1 <- buildEdgeList(gu)
@@ -76,7 +82,6 @@ combineAndDraw <- function(g1, g2,
   eub <- buildEdgeList(gu)
 
   for (i in 1:length(eub)) {
-
     u <- from(eub[[i]])
     v <- to(eub[[i]])
 
@@ -84,19 +89,34 @@ combineAndDraw <- function(g1, g2,
       # Fix "bi-directed" edges, dir == "both"
       # Managing differing egde orientations
       if (test.orientation(u, v)) {
-        # g1: u -> v && g2: u <- v
+        # If g1: u -> v && g2: u <- v
         eu1[[i]]@attrs$color <- col1
         eu1[[i]]@attrs$dir <- "forward"
         eu2[[i]]@attrs$color <- col2
         eu2[[i]]@attrs$dir <- "back"
       }
       if (test.orientation(v, u)) {
-        # g1: u <- v && g2: u -> v
+        # If g1: u <- v && g2: u -> v
         eu1[[i]]@attrs$color <- col1
         eu1[[i]]@attrs$dir <- "back"
         eu2[[i]]@attrs$color <- col2
         eu2[[i]]@attrs$dir <- "forward"
       }
+
+      if (edgePresent(u, v, g1) && edgePresent(v, u, g1)) {
+        eu1[[i]]@attrs$dir <- "none"
+      }
+
+      if (edgePresent(u, v, g2) && edgePresent(v, u, g2)) {
+        eu2[[i]]@attrs$dir <- "none"
+      }
+
+      if (edgePresent(u, v, g1) && edgePresent(v, u, g1) &&
+            edgePresent(u, v, g2) && edgePresent(v, u, g2)) {
+        eu1[[i]]@attrs$color <- "Black"
+        eu2[[i]]@attrs$color <- "Black"
+      }
+
 
     } else {
 
