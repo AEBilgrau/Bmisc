@@ -3,7 +3,8 @@
 \alias{combineAndDraw}
 \title{Draw two oriented graphs with same layout}
 \usage{
-combineAndDraw(g1, g2, col1 = "green", col2 = "red", name = "", ...)
+combineAndDraw(g1, g2, col1 = "green", col2 = "red", cols = "Black",
+  size = 10, fontsize = 40, name = "", ...)
 }
 \arguments{
 \item{g1}{A graphNEL object}
@@ -13,6 +14,14 @@ combineAndDraw(g1, g2, col1 = "green", col2 = "red", name = "", ...)
 \item{col1}{Edge color of edges unique to g1}
 
 \item{col2}{Edge color of edges unique to g2}
+
+\item{cols}{Node colors. A named character vector of colors where the names
+are the node labels. If the length is 1 the color is reused.}
+
+\item{size}{A vector of node sizes. If the length is 1 the size is reused.}
+
+\item{fontsize}{A vector of the sizes of the node labels. If the length is 1
+the given size is reused.}
 
 \item{name}{The name of the graphs.}
 

@@ -8,6 +8,11 @@
 #' @param g2 A graphNEL object
 #' @param col1 Edge color of edges unique to g1
 #' @param col2 Edge color of edges unique to g2
+#' @param cols Node colors. A named character vector of colors where the names
+#'   are the node labels. If the length is 1 the color is reused.
+#' @param size A vector of node sizes. If the length is 1 the size is reused.
+#' @param fontsize A vector of the sizes of the node labels. If the length is 1
+#'   the given size is reused.
 #' @param name The name of the graphs.
 #' @param \dots Arguments passed to \code{agopen}.
 #' @return A \code{list} of length three with the laid out graphs. The first
@@ -17,8 +22,8 @@
 #'   unique edges of \code{g2} invisible in the merged graph and vice versa
 #'   for the unique edges of \code{g1}.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
-#' @seealso 
-#'   \code{\link[Rgraphviz]{agopen}}, 
+#' @seealso
+#'   \code{\link[Rgraphviz]{agopen}},
 #'   \code{\link[Rgraphviz]{plot.graphNEL}}
 #' @examples
 #' library("gRbase")
@@ -40,19 +45,23 @@
 #' plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
 #' @export
 combineAndDraw <- function(g1, g2,
-                           col1 = "green", col2 = "red",
+                           col1 = "green",
+                           col2 = "red",
+                           cols = "Black",
+                           size = 10,
+                           fontsize = 40,
                            name = "",
                            ...) {
   stopifnot(require("igraph"))
   stopifnot(require("Rgraphviz"))
   stopifnot(require("graph"))
-  
+
   gu <- igraph.to.graphNEL(graph.union(igraph.from.graphNEL(g1),
                                        igraph.from.graphNEL(g2),
                                        byname = TRUE))
 
   test.orientation <- function(u, v) { # test for g1: u -> v && g2: u <- v
-    any(graph::edges(g1)[[u]] == v) && 
+    any(graph::edges(g1)[[u]] == v) &&
       any(graph::edges(g2)[[v]] == u)
   }
 
@@ -90,7 +99,7 @@ combineAndDraw <- function(g1, g2,
       }
 
     } else {
-      
+
       # If not a bi-directed edges in the merged graph
       # Handle/colour unique edges
       if (test.unique(u, v, g1, g2)) {
@@ -103,20 +112,32 @@ combineAndDraw <- function(g1, g2,
       }
     }
 
+  }  ## End of for-loop
+
+  nodes <- buildNodeList(gu)
+
+  if (length(fontsize) == 1) {
+    fontsize <- rep(fontsize, length(nodes))
+  }
+  if (length(size) == 1) {
+    size <- rep(size, length(nodes))
+  }
+  if (length(cols) == 1) {
+    cols <- rep(cols, length(nodes))
+  }
+  for (i in 1:length(nodes)) {
+    stopifnot(names(nodes)[i] == names(cols)[i])
+    nodes[[i]]@attrs$fillcolor <- cols[i]
+    nodes[[i]]@attrs$color     <- cols[i]
+    nodes[[i]]@attrs$fontsize  <- fontsize[i]
+    nodes[[i]]@attrs$shape     <- "circle"
+    nodes[[i]]@attrs$fixedsize <- FALSE
+    nodes[[i]]@attrs$height    <- size[i]
+    nodes[[i]]@attrs$width     <- size[i]
   }
 
-#   for (i in 1:length(nodes)) {
-#     nodes[[i]]@attrs$fillcolor <- cols[i]
-#     nodes[[i]]@attrs$color <- cols[i]
-#     nodes[[i]]@attrs$fontsize  <- 10
-#     nodes[[i]]@attrs$shape <- "circle"
-#     nodes[[i]]@attrs$fixedsize <- TRUE
-#     nodes[[i]]@attrs$height <- 2
-#     nodes[[i]]@attrs$width <- 2
-#   }
-
-  aggu1 <- agopen(gu, edges = eu1, name = name, ...)
-  aggu2 <- agopen(gu, edges = eu2, name = name, ...)
+  aggu1 <- agopen(gu, edges = eu1, nodes = nodes, name = name, ...)
+  aggu2 <- agopen(gu, edges = eu2, nodes = nodes, name = name, ...)
   agguu <- agopen(gu, edges = eub, name = name, ...)
 
   return(list(aggu1, aggu2, agguu))
