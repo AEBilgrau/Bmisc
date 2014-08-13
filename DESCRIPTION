@@ -13,5 +13,8 @@ LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     biomaRt,
     digest,
-    igraph
+    igraph,
+    Rgraphviz,
+    gRbase,
+    graph
 URL: https://github.com/AEBilgrau/B-misc
