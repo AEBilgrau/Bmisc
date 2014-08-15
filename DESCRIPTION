@@ -10,6 +10,8 @@ License: GPL (>=2)
 Imports:
     Rcpp (>= 0.10.6),
     GMCM
+Depends:
+    utils
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     glasso,

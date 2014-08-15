@@ -16,6 +16,7 @@
 #' x <- c("AVerySecretString", "AnotherSecretSting")
 #' saltedHash("SomeSalt", x = x, algo = "md5")
 #' digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5")
+#' @export
 saltedHash <- function(salt, x, algo = "sha256", ...) {
   if (!require(digest)) {
     stop("Package digest is need to use the function.")

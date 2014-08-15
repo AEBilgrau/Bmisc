@@ -26,9 +26,12 @@
 #' microbenchmark(without(A, B), 
 #'                setdiff(A, B))
 #' }
-without <- 
-  `%w/o%` <- 
-  `%\\%` <-
-  function(x, y) x[!(x %in% y)]
+#' @export
+without <- function(x, y) x[!(x %in% y)]
+#' @export 
+`%w/o%` <- without
+#' @export
+`%\\%` <- without
+  
 
 

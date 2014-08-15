@@ -43,6 +43,7 @@
 #' plot(1, type = "n", xlim = c(-r,r), ylim = c(-h, h), asp = 1,
 #'      xlab = "", ylab = "")
 #' fillLines(x, y1, y2, col = "gold", lwd = 2, border = "orange") 
+#' @export
 fillLines <- function (x, y1, y2 = rep(0, length(x)), ...) {
   if (length(x) != length(y1) | length(x) != length(y2)) {
     stop("x, y1, and y2 must have the same length.")

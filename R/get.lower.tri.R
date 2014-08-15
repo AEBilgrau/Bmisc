@@ -16,6 +16,7 @@
 #' print(x <- matrix(1:25, ncol = 5))
 #' get.lower.tri(x)
 #' get.lower.tri(x, diag = TRUE)
+#' @export
 get.lower.tri <- function (x, diag = FALSE) {
   x[lower.tri(x, diag = diag)]
 }

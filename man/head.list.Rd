@@ -35,12 +35,12 @@ x <- list(A = letters[1:9],           B = matrix(runif(30), ncol = 3),
           D = combn(1:5, m = 4),      E = "A simple string.",
           F = data.frame("unif" = runif(10), "norm" = rnorm(10)))
 str(x)
-head.list(x, n = 3L)
-head.list(x, n = 2L, m = 7L)
-tail.list(x, n = 3L)
-tail.list(x, n = 3L, m = 3L)
+head(x, n = 3L)
+head(x, n = 2L, m = 7L)
+tail(x, n = 3L)
+tail(x, n = 3L, m = 3L)
 }
 \seealso{
-\code{\link{head}}
+\code{\link[utils]{head}}
 }
 

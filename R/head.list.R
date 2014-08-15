@@ -14,17 +14,19 @@
 #' @param \dots Arguments passed to \code{head}.
 #' @return Returns a list of length \code{m} of the first/last element of
 #'   \code{x} where the first \code{n} elements of each entry is shown.
-#' @seealso \code{\link{head}}
+#' @seealso \code{\link[utils]{head}}
 #' @examples
 #' x <- list(A = letters[1:9],           B = matrix(runif(30), ncol = 3),
 #'           C = as.list(LETTERS[1:10]), D = function(x) { x^2 + 2*x + 1},
 #'           D = combn(1:5, m = 4),      E = "A simple string.",
 #'           F = data.frame("unif" = runif(10), "norm" = rnorm(10)))
 #' str(x)
-#' head.list(x, n = 3L)
-#' head.list(x, n = 2L, m = 7L)
-#' tail.list(x, n = 3L)
-#' tail.list(x, n = 3L, m = 3L)
+#' head(x, n = 3L)
+#' head(x, n = 2L, m = 7L)
+#' tail(x, n = 3L)
+#' tail(x, n = 3L, m = 3L)
+#' @importFrom utils head
+#' @export 
 head.list <- function(x, n = 6L, m = n, ...) {
   stopifnot(length(n) == 1L & length(m) == 1L)
   m <- ifelse(m < 0L, max(length(x) + m, 0L), min(m, length(x)))

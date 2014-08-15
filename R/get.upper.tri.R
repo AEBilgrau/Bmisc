@@ -7,6 +7,7 @@
 #' print(x <- matrix(1:9, ncol = 3))
 #' get.upper.tri(x)
 #' get.upper.tri(x, diag = TRUE)
+#' @export
 get.upper.tri <- function (x, diag = FALSE) {
   x[upper.tri(x, diag = diag)]
 }

@@ -21,6 +21,7 @@
 #' print(cor2 <- cor(t(replicate(N2, rnorm(5)))))
 #' 
 #' differential.cor.test(cor1, cor2, N1, N2)
+#' @export
 differential.cor.test <- function(cor1, cor2, N1, N2) {
 
   # Fisher Z transform the correlations

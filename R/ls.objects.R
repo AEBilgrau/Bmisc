@@ -63,6 +63,7 @@
 
 #' @rdname ls.objects
 #' @param \dots Parameters assed to \code{ls.objects}.
+#' @export
 lsos <- function(..., n = 10) { # Shorthand usage of .ls.objects
   .ls.objects(..., order.by="Size", decreasing = TRUE, head = TRUE, n = n)
 }

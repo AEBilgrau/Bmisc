@@ -7,4 +7,6 @@
 #' @docType package
 #' @name Bmisc-package
 #' @aliases Bmisc-package Bmisc bmisc
+#' @useDynLib Bmisc
+#' @importFrom Rcpp evalCpp
 NULL

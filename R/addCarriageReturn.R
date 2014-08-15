@@ -14,16 +14,16 @@
 #' file.in <- file.path(tmp.dir, "NewFile.txt")
 #' file.out <- file.path(tmp.dir, "NewFileForWindows.txt")
 #'
-#'# Write the file
-#'cat("This is some text on.\n Hello, newline.", file = file.in)
+#' # Write the file
+#' cat("This is some text on.\n Hello, newline.", file = file.in)
 #'
-#'# Add carriage return if on a unix system
-#'addCarriageReturn(file.in, file.out)
+#' # Add carriage return if on a unix system
+#' addCarriageReturn(file.in, file.out)
 #'
-#'# If on unix, run to see files:
-#'#system(paste("open", file.in))
-#'#system(paste("open", file.out))
-
+#' # If on unix, run to see files:
+#' #system(paste("open", file.in))
+#' #system(paste("open", file.out))
+#' @export
 addCarriageReturn <- function(file.in, file.out = file.in) {
   file.in <- path.expand(file.in)
   file.out <- path.expand(file.out)
@@ -31,5 +31,3 @@ addCarriageReturn <- function(file.in, file.out = file.in) {
     system(paste("sed -e 's/$/\r/' ", file.in, ">", file.out))  
   }
 }
-
-

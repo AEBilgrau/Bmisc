@@ -12,6 +12,7 @@
 #' dimnames(X) <- list(paste0("obs", 1:nrow(X)), paste0("var", 1:ncol(X)))
 #' S <- cor(X)
 #' mininimum.abs.pcor(S)
+#' @export
 mininimum.abs.pcor <- function(S) {
   current.min <- pcor(S, k = 1)
   current.min[is.nan(current.min)] <- 1
