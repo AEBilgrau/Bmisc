@@ -5,6 +5,8 @@ Version: 0.1
 Date: 2014-07-14
 Author: Anders Ellern Bilgrau
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
+URL: http://github.com/AEBilgrau/Bmisc
+BugReports: https://github.com/AEBilgrau/Bmisc/issues
 Description: Biostatisical miscellaneous functions and utilites.
 License: GPL (>=2)
 Imports:
