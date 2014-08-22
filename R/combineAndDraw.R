@@ -68,7 +68,6 @@ combineAndDraw <- function(g1, g2,
   test.orientation <- function(u, v) {
     # Test that g1: u -> v && g2: u <- v
     edgePresent(u, v, g1) && edgePresent(v, u, g2)
-
   }
 
   test.unique <- function(u, v, g1, g2) {
