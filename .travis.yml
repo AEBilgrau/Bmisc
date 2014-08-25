@@ -11,8 +11,8 @@ before_install:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
 install:
-  - ./travis-tool.sh bioc_install biomaRt Biobase BiocGenerics Rgraphviz
-  - ./travis-tool.sh install_deps WGCNA gRbase graph
+  - ./travis-tool.sh bioc_install biomaRt Biobase BiocGenerics Rgraphviz RBGL impute
+  - ./travis-tool.sh install_deps 
 
 script: ./travis-tool.sh run_tests
 
