@@ -80,7 +80,7 @@ combineAndDraw <- function(g1, g2,
   eu2 <- buildEdgeList(gu)
   eub <- buildEdgeList(gu)
 
-  for (i in 1:length(eub)) {
+  for (i in seq_along(eub)) {
     u <- from(eub[[i]])
     v <- to(eub[[i]])
 
@@ -144,7 +144,7 @@ combineAndDraw <- function(g1, g2,
   if (length(cols) == 1) {
     cols <- rep(cols, length(nodes))
   }
-  for (i in 1:length(nodes)) {
+  for (i in seq_along(nodes)) {
     stopifnot(names(nodes)[i] == names(cols)[i])
     nodes[[i]]@attrs$fillcolor <- cols[i]
     nodes[[i]]@attrs$color     <- cols[i]
