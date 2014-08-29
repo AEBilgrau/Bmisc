@@ -57,7 +57,12 @@ combineAndDraw <- function(g1, g2,
   stopifnot(require("igraph"))
   stopifnot(require("Rgraphviz"))
   stopifnot(require("graph"))
-
+  
+  # Make sure both graphs are directed
+  g1@graphData$edgemode <- "directed"
+  g2@graphData$edgemode <- "directed"
+  
+  # Combine
   gu <- igraph.to.graphNEL(graph.union(igraph.from.graphNEL(g1),
                                        igraph.from.graphNEL(g2),
                                        byname = TRUE))
