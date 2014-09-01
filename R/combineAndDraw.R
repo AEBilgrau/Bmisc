@@ -27,15 +27,16 @@
 #'   \code{\link[Rgraphviz]{plot.graphNEL}}
 #' @examples
 #' library("gRbase")
+#' library("Rgraphviz")
 #' g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
-#'                    ~J|K, ~K|J, ~L|M))
-#' g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A,           ~I|H,
+#'                    ~J|K, ~K|J, ~L|M, ~X|Y, ~Y|X))
+#' g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A, ~I|H,
 #'                    ~J|K, ~K|J, ~L|M, ~M|L))
 #' cc <- combineAndDraw(g1, g2)
 #'
-#' col1 <- rep("green", length(edgeNames(g1)))
+#' col1 <- rep("steelblue", length(edgeNames(g1)))
 #' names(col1) <- edgeNames(g1)
-#' col2 <- rep("red", length(edgeNames(g2)))
+#' col2 <- rep("tomato", length(edgeNames(g2)))
 #' names(col2) <- edgeNames(g2)
 #'
 #' par(oma = c(0,0,0,0)+.4)
@@ -47,11 +48,11 @@
 #' plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
 #' @export
 combineAndDraw <- function(g1, g2,
-                           col1 = "green",
-                           col2 = "red",
-                           cols = "orange",
-                           size = 0.5,
-                           fontsize = 10,
+                           col1 = "steelblue",
+                           col2 = "tomato",
+                           cols,
+                           size,
+                           fontsize,
                            name = "",
                            ...) {
   stopifnot(require("igraph"))
@@ -67,16 +68,17 @@ combineAndDraw <- function(g1, g2,
                                        igraph.from.graphNEL(g2),
                                        byname = TRUE))
   edgePresent <- function (u, v, g) {
+    # True if the edge u -> v is in g
     v %in% graph::edges(g)[[u]]
   }
 
-  test.orientation <- function(u, v) {
-    # Test that g1: u -> v && g2: u <- v
+  test.orientation <- function(u, v, g1, g2) {
+    # Test that u -> v in g1 and u <- v in g2
     edgePresent(u, v, g1) && edgePresent(v, u, g2)
   }
 
   test.unique <- function(u, v, g1, g2) {
-    # TRUE if edge u -> v or v <- u is in g1 and not g2
+    # Test that u -> v or v <- u is in g1 and not g2
     (edgePresent(u, v, g1) && !edgePresent(u, v, g2)) |
       (edgePresent(v, u, g1) && !edgePresent(v, u, g2))
   }
@@ -85,21 +87,24 @@ combineAndDraw <- function(g1, g2,
   eu2 <- buildEdgeList(gu)
   eub <- buildEdgeList(gu)
 
+
   for (i in seq_along(eub)) {
+
     u <- from(eub[[i]])
     v <- to(eub[[i]])
 
     if (eub[[i]]@attrs$dir == "both") {
       # Fix "bi-directed" edges, dir == "both"
       # Managing differing egde orientations
-      if (test.orientation(u, v)) {
+      
+      if (test.orientation(u, v, g1, g2)) {
         # If g1: u -> v && g2: u <- v
         eu1[[i]]@attrs$color <- col1
         eu1[[i]]@attrs$dir <- "forward"
         eu2[[i]]@attrs$color <- col2
         eu2[[i]]@attrs$dir <- "back"
       }
-      if (test.orientation(v, u)) {
+      if (test.orientation(v, u, g1, g2)) {
         # If g1: u <- v && g2: u -> v
         eu1[[i]]@attrs$color <- col1
         eu1[[i]]@attrs$dir <- "back"
@@ -116,12 +121,22 @@ combineAndDraw <- function(g1, g2,
       }
 
       if (edgePresent(u, v, g1) && edgePresent(v, u, g1) &&
-            edgePresent(u, v, g2) && edgePresent(v, u, g2)) {
+          edgePresent(u, v, g2) && edgePresent(v, u, g2)) {
         eu1[[i]]@attrs$color <- "Black"
         eu2[[i]]@attrs$color <- "Black"
       }
+      
+      # Handle double edges present g1 but not in g2
+      if (!edgePresent(u, v, g2) && !edgePresent(v, u, g2)) {
+        eu2[[i]]@attrs$dir <- "none"
+        eu2[[i]]@attrs$color <-"#00000000"
+      }
 
-
+      if (!edgePresent(u, v, g1) && !edgePresent(v, u, g1)) {
+        eu1[[i]]@attrs$dir <- "none"
+        eu1[[i]]@attrs$color <-"#00000000"
+      }
+      
     } else {
 
       # If not a bi-directed edges in the merged graph
@@ -140,24 +155,24 @@ combineAndDraw <- function(g1, g2,
 
   nodes <- buildNodeList(gu)
 
-  if (length(fontsize) == 1) {
+  if (!missing(fontsize) && length(fontsize) == 1) {
     fontsize <- rep(fontsize, length(nodes))
   }
-  if (length(size) == 1) {
+  if (!missing(size) && length(size) == 1) {
     size <- rep(size, length(nodes))
   }
-  if (length(cols) == 1) {
+  if (!missing(cols) && length(cols) == 1) {
     cols <- rep(cols, length(nodes))
   }
   for (i in seq_along(nodes)) {
-    stopifnot(names(nodes)[i] == names(cols)[i])
-    nodes[[i]]@attrs$fillcolor <- cols[i]
-    nodes[[i]]@attrs$color     <- cols[i]
-    nodes[[i]]@attrs$fontsize  <- fontsize[i]
+    if (!missing(cols)) {    stopifnot(names(nodes)[i] == names(cols)[i])
+                             nodes[[i]]@attrs$fillcolor <- cols[i]
+                             nodes[[i]]@attrs$color     <- cols[i]}
+    if (!missing(fontsize))  nodes[[i]]@attrs$fontsize  <- fontsize[i]
+    if (!missing(size))      nodes[[i]]@attrs$height    <- size[i]
+    if (!missing(size))      nodes[[i]]@attrs$width     <- size[i]
     nodes[[i]]@attrs$shape     <- "circle"
-    nodes[[i]]@attrs$fixedsize <- FALSE
-    nodes[[i]]@attrs$height    <- size[i]
-    nodes[[i]]@attrs$width     <- size[i]
+    nodes[[i]]@attrs$fixedsize <- FALSE  
   }
 
   aggu1 <- agopen(gu, edges = eu1, nodes = nodes, name = name, ...)
@@ -169,4 +184,3 @@ combineAndDraw <- function(g1, g2,
 
 # str(graph.par())
 # str(getDefaultAttrs())
-

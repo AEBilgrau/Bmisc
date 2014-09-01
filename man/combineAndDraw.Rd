@@ -3,8 +3,8 @@
 \alias{combineAndDraw}
 \title{Draw two oriented graphs with same layout}
 \usage{
-combineAndDraw(g1, g2, col1 = "green", col2 = "red", cols = "orange",
-  size = 0.5, fontsize = 10, name = "", ...)
+combineAndDraw(g1, g2, col1 = "steelblue", col2 = "tomato", cols, size,
+  fontsize, name = "", ...)
 }
 \arguments{
 \item{g1}{A graphNEL object}
@@ -44,15 +44,16 @@ The function works by combining \code{g1} and \code{g2} and making
 }
 \examples{
 library("gRbase")
+library("Rgraphviz")
 g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
-                   ~J|K, ~K|J, ~L|M))
-g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A,           ~I|H,
+                   ~J|K, ~K|J, ~L|M, ~X|Y, ~Y|X))
+g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A, ~I|H,
                    ~J|K, ~K|J, ~L|M, ~M|L))
 cc <- combineAndDraw(g1, g2)
 
-col1 <- rep("green", length(edgeNames(g1)))
+col1 <- rep("steelblue", length(edgeNames(g1)))
 names(col1) <- edgeNames(g1)
-col2 <- rep("red", length(edgeNames(g2)))
+col2 <- rep("tomato", length(edgeNames(g2)))
 names(col2) <- edgeNames(g2)
 
 par(oma = c(0,0,0,0)+.4)
