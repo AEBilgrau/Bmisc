@@ -48,7 +48,7 @@ library("Rgraphviz")
 g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
                    ~J|K, ~K|J, ~L|M, ~X|Y, ~Y|X))
 g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A, ~I|H,
-                   ~J|K, ~K|J, ~L|M, ~M|L))
+                   ~J|K, ~K|J, ~L|M, ~M|L, ~W|V, ~V|W))
 cc <- combineAndDraw(g1, g2)
 
 col1 <- rep("steelblue", length(edgeNames(g1)))
@@ -57,7 +57,7 @@ col2 <- rep("tomato", length(edgeNames(g2)))
 names(col2) <- edgeNames(g2)
 
 par(oma = c(0,0,0,0)+.4)
-layout(rbind(1:2,c(3,6),4:5))
+layout(rbind(c(1,1,2,2), c(0,3,3,0), c(4,4,5,5)))
 plot(g1, edgeAttrs = list(color = col1), main = "Graph 1"); box()
 plot(g2, edgeAttrs = list(color = col2), main = "Graph 2"); box()
 plot(cc[[3]], main = "Merged graph"); box()

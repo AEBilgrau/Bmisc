@@ -31,7 +31,7 @@
 #' g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
 #'                    ~J|K, ~K|J, ~L|M, ~X|Y, ~Y|X))
 #' g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A, ~I|H,
-#'                    ~J|K, ~K|J, ~L|M, ~M|L))
+#'                    ~J|K, ~K|J, ~L|M, ~M|L, ~W|V, ~V|W))
 #' cc <- combineAndDraw(g1, g2)
 #'
 #' col1 <- rep("steelblue", length(edgeNames(g1)))
@@ -40,7 +40,7 @@
 #' names(col2) <- edgeNames(g2)
 #'
 #' par(oma = c(0,0,0,0)+.4)
-#' layout(rbind(1:2,c(3,6),4:5))
+#' layout(rbind(c(1,1,2,2), c(0,3,3,0), c(4,4,5,5)))
 #' plot(g1, edgeAttrs = list(color = col1), main = "Graph 1"); box()
 #' plot(g2, edgeAttrs = list(color = col2), main = "Graph 2"); box()
 #' plot(cc[[3]], main = "Merged graph"); box()
@@ -126,15 +126,14 @@ combineAndDraw <- function(g1, g2,
         eu2[[i]]@attrs$color <- "Black"
       }
       
-      # Handle double edges present g1 but not in g2
+      # Handle double edges in gu not present in g1 or g2
       if (!edgePresent(u, v, g2) && !edgePresent(v, u, g2)) {
-        eu2[[i]]@attrs$dir <- "none"
-        eu2[[i]]@attrs$color <-"#00000000"
+        eu1[[i]]@attrs$color <- col1
+        eu2[[i]]@attrs$color <- "#00000000"
       }
-
       if (!edgePresent(u, v, g1) && !edgePresent(v, u, g1)) {
-        eu1[[i]]@attrs$dir <- "none"
-        eu1[[i]]@attrs$color <-"#00000000"
+        eu1[[i]]@attrs$color <- "#00000000"
+        eu2[[i]]@attrs$color <- col2
       }
       
     } else {
@@ -165,14 +164,23 @@ combineAndDraw <- function(g1, g2,
     cols <- rep(cols, length(nodes))
   }
   for (i in seq_along(nodes)) {
-    if (!missing(cols)) {    stopifnot(names(nodes)[i] == names(cols)[i])
-                             nodes[[i]]@attrs$fillcolor <- cols[i]
-                             nodes[[i]]@attrs$color     <- cols[i]}
-    if (!missing(fontsize))  nodes[[i]]@attrs$fontsize  <- fontsize[i]
-    if (!missing(size))      nodes[[i]]@attrs$height    <- size[i]
-    if (!missing(size))      nodes[[i]]@attrs$width     <- size[i]
-    nodes[[i]]@attrs$shape     <- "circle"
-    nodes[[i]]@attrs$fixedsize <- FALSE  
+    if (!missing(cols)) {    
+      stopifnot(names(nodes)[i] == names(cols)[i])
+      nodes[[i]]@attrs$fillcolor <- cols[i]
+      nodes[[i]]@attrs$color     <- cols[i]}
+    if (!missing(fontsize)) {
+      nodes[[i]]@attrs$fontsize  <- fontsize[i]
+    }
+    if (!missing(size)) {   
+      nodes[[i]]@attrs$height    <- size[i]
+      nodes[[i]]@attrs$width     <- size[i]
+  
+      if (length(size) > 1) {
+        nodes[[i]]@attrs$fixedsize <- FALSE 
+      }
+    }
+        
+    #nodes[[i]]@attrs$shape     <- "circle"
   }
 
   aggu1 <- agopen(gu, edges = eu1, nodes = nodes, name = name, ...)
