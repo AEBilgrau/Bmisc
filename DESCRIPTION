@@ -25,4 +25,6 @@ Suggests:
     igraph,
     Rgraphviz,
     gRbase,
-    graph
+    graph,
+    SNPchip,
+    oligoClasses
