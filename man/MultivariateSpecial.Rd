@@ -4,8 +4,9 @@
 \alias{MultivariateSpecial}
 \alias{digammap}
 \alias{gammap}
-\alias{ldigammap}
 \alias{lgammap}
+\alias{psigammap}
+\alias{trigammap}
 \title{Multivariate special functions}
 \usage{
 gammap(x, p = 1)
@@ -15,12 +16,19 @@ lgammap(x, p = 1)
 digammap(x, p = 1)
 
 Dgammap(x, p = 1)
+
+psigammap(x, p = 1, deriv = 0)
+
+trigammap(x, p = 1, deriv = 0)
 }
 \arguments{
 \item{x}{A numeric vector of values. The values of \code{x} should be
 strictly greater than \code{(p - 1)/2}.}
 
 \item{p}{An integer giving the dimension. Default is \code{1}.}
+
+\item{deriv}{An integer giving the order of the derivative. Default is
+\code{0}.}
 }
 \value{
 Returns a numeric vector with the same length as \code{x}.
@@ -34,6 +42,12 @@ Returns a numeric vector with the same length as \code{x}.
 \code{digammap} is the multivariate digamma function.
 
 \code{Dgammap} is the derivative of the multivariate gamma function.
+
+\code{psigammap} is the \eqn{n}'th derivative log multivariate
+  gamma function (i.e. multivariate polygamma).
+
+\code{trigammap} is the \eqn{2}'nd derivative log multivariate
+  gamma function (i.e. the multivariate trigamma).
 }
 \description{
 Special matematical functions related to the multivariate gamma function
@@ -47,7 +61,7 @@ Warnings are thown when the functions are evaluated outside its domain.
 }
 \examples{
 gammap(3.2, p = 1)
-gammap(c(0.2, 0.5, 0.9, 1.2, 1.5), p = 3)
+gammap(c(0.2, 0.5, 0.9, 1.2, 1.5), p = 3)   # x < (p-1)/2  !
 lgammap(3.1, p = 2)
 digammap(2, p = 3)
 Dgammap(3.2, p = 1)

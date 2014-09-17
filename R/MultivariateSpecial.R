@@ -6,10 +6,12 @@
 #' base package.
 #'
 #' @rdname MultivariateSpecial
-#' @aliases MultivariateSpecial gammap lgammap Dgammap ldigammap
+#' @aliases MultivariateSpecial
 #' @param x A numeric vector of values. The values of \code{x} should be 
 #'   strictly greater than \code{(p - 1)/2}.
 #' @param p An integer giving the dimension. Default is \code{1}.
+#' @param deriv An integer giving the order of the derivative. Default is 
+#'   \code{0}.
 #' @return Returns a numeric vector with the same length as \code{x}.
 #'   Similar to \code{\link{gamma}} and related functions \code{NaN}s are 
 #'   returned with warning when the function is evaluated outside its domain
@@ -72,6 +74,27 @@ Dgammap <- function(x, p = 1) {
   return(gammap(x, p)*digammap(x,p))
 }
 
+#' @rdname MultivariateSpecial
+#' @return \code{psigammap} is the \eqn{n}'th derivative log multivariate 
+#'   gamma function (i.e. multivariate polygamma).
+#' @export
+psigammap <- function(x, p = 1, deriv = 0) {
+  stopifnot(length(p) == 1)
+  terms <- sapply(seq_len(p) - 1, function(j) psigamma(x - j/2, deriv = deriv))
+  dim(terms) <- c(length(x), p)
+  return(rowSums(terms))
+}
+
+#' @rdname MultivariateSpecial
+#' @return \code{trigammap} is the \eqn{2}'nd derivative log multivariate 
+#'   gamma function (i.e. the multivariate trigamma).
+#' @export
+trigammap <- function(x, p = 1, deriv = 0) {
+  stopifnot(length(p) == 1)
+  terms <- sapply(seq_len(p) - 1, function(j) trigamma(x - j/2))
+  dim(terms) <- c(length(x), p)
+  return(rowSums(terms))
+}
 
 plotMultivariateSpecial <- function() {
   # A nice plot of the functions
