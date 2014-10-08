@@ -5,7 +5,7 @@ Biostatistical miscellaneous functions and utilities
 
 My frequently used biostatistical miscellaneous R functions and utilities. While many functions are useful in general, the aim of package is to be particularly useful for general microarray analysis, gene network analysis, and other biostatistical applications.
 
-While most functions are for build for convenience some are optimized for speed through the `Rcpp` and `RcppArmadillio` packages. `Bmisc` uses `roxygen2` for documentation of the package.
+While most functions are for build for convenience some are optimized for speed through the **Rcpp** and **RcppArmadillio** packages. **Bmisc** uses **roxygen2** for documentation of the package.
 
 ## Installation
 If you wish to install the latest version of Bmisc directly from the master branch here at GitHub, run 
