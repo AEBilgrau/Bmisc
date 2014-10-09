@@ -34,8 +34,6 @@ differential.cor.test <- function(cor1, cor2, N1, N2) {
   Z.scores <- (Z1 - Z2)/sqrt(1/(N1 - 3) + 1/(N2 - 3))
   
   # Normalizing Z.scores
-  #Z.scores <-
-  #  (Z.scores - mean(Z.scores, na.rm = TRUE))/sd(Z.scores, na.rm = TRUE)
   diag(Z.scores) <- 0
   
   # Compute P-values
