@@ -1,6 +1,6 @@
 #' Perform rowwise Welch t-tests.
 #' 
-#' This functions performs a Welch two-sample t-test for each row in two 
+#' This function performs rowwise Welch two-sample t-test in two 
 #' matrices with the same height in a fast manner.
 #' 
 #' @param x A numeric matrix of the values of the first group. Usually the 
@@ -12,9 +12,9 @@
 #'   deviations, estimated difference, the standard error of the difference,
 #'   the t statistic, the degrees of freedom, and the p-values.
 #'   
-#' @details A Welch t-test is perform for each row in \code{x} and \code{y}. 
-#'   The i'th row of \code{x} is tested against the i'th row of \code{y}
-#'   and the result is seen in the i'th row of the output.
+#' @details A Welch t-test is performed for each row in \code{x} and \code{y}. 
+#'   The \eqn{i}'th row of \code{x} is tested against the \eqn{i}'th row of 
+#'   \code{y} and the result is seen in the \eqn{i}'th row of the output.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @examples
 #' # Create some toy data
@@ -49,8 +49,6 @@ welch.t.tests <- function(x, y) {
   df    <- var^2/( varx^2/(nx^2*(nx - 1)) + vary^2/(ny^2*(ny - 1)) )
   pval  <- 2*pt(-abs(t), df = df) 
   
-  return(data.frame(meanx, meany, varx, 
-                    vary, sd.pool, diff, 
-                    se, t, df, pval))
+  return(data.frame(meanx, meany, varx, vary, sd.pool, diff, se, t, df, pval))
 }
 

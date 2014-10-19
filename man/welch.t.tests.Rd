@@ -19,13 +19,13 @@ A \code{data.frame} with the same number of rows as x containing the
   the t statistic, the degrees of freedom, and the p-values.
 }
 \description{
-This functions performs a Welch two-sample t-test for each row in two
+This function performs rowwise Welch two-sample t-test in two
 matrices with the same height in a fast manner.
 }
 \details{
-A Welch t-test is perform for each row in \code{x} and \code{y}.
-  The i'th row of \code{x} is tested against the i'th row of \code{y}
-  and the result is seen in the i'th row of the output.
+A Welch t-test is performed for each row in \code{x} and \code{y}.
+  The \eqn{i}'th row of \code{x} is tested against the \eqn{i}'th row of
+  \code{y} and the result is seen in the \eqn{i}'th row of the output.
 }
 \examples{
 # Create some toy data
