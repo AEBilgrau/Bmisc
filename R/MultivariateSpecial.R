@@ -9,9 +9,9 @@
 #' @aliases MultivariateSpecial
 #' @param x A numeric vector of values. The values of \code{x} should be 
 #'   strictly greater than \code{(p - 1)/2}.
-#' @param p An integer giving the dimension. Default is \code{1}.
-#' @param deriv An integer giving the order of the derivative. Default is 
-#'   \code{0}.
+#' @param p A (single) integer giving the dimension. Default is \code{1}.
+#' @param deriv A (single) integer giving the order of the derivative. 
+#'   Default is \code{0}.
 #' @return Returns a numeric vector with the same length as \code{x}.
 #'   Similar to \code{\link{gamma}} and related functions \code{NaN}s are 
 #'   returned with warning when the function is evaluated outside its domain
@@ -44,17 +44,6 @@ gammap <- function(x, p = 1) {
     dim(terms) <- c(length(x), p)
     return(t * exp(rowSums(log(terms))))  #== apply(terms, 1, prod)
   })
-}
-
-#' @rdname MultivariateSpecial
-#' @return \code{lgammap} is the log multivariate gamma function. 
-#' @export
-lgammap <- function(x, p = 1) {
-  stopifnot(length(p) == 1)
-  const <- log(pi)*p*(p - 1)/4
-  terms <- sapply(seq_len(p) - 1, function(j) lgamma(x - j/2))
-  dim(terms) <- c(length(x), p)
-  return(const + rowSums(terms))
 }
 
 #' @rdname MultivariateSpecial

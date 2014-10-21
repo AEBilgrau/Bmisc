@@ -11,8 +11,6 @@
 \usage{
 gammap(x, p = 1)
 
-lgammap(x, p = 1)
-
 digammap(x, p = 1)
 
 Dgammap(x, p = 1)
@@ -20,15 +18,17 @@ Dgammap(x, p = 1)
 psigammap(x, p = 1, deriv = 0)
 
 trigammap(x, p = 1, deriv = 0)
+
+lgammap(x, p = 1L)
 }
 \arguments{
 \item{x}{A numeric vector of values. The values of \code{x} should be
 strictly greater than \code{(p - 1)/2}.}
 
-\item{p}{An integer giving the dimension. Default is \code{1}.}
+\item{p}{A (single) integer giving the dimension. Default is \code{1}.}
 
-\item{deriv}{An integer giving the order of the derivative. Default is
-\code{0}.}
+\item{deriv}{A (single) integer giving the order of the derivative.
+Default is \code{0}.}
 }
 \value{
 Returns a numeric vector with the same length as \code{x}.
@@ -36,8 +36,6 @@ Returns a numeric vector with the same length as \code{x}.
   returned with warning when the function is evaluated outside its domain
 
   \code{gammap} is the multivariate gamma function.
-
-\code{lgammap} is the log multivariate gamma function.
 
 \code{digammap} is the multivariate digamma function.
 
@@ -48,6 +46,8 @@ Returns a numeric vector with the same length as \code{x}.
 
 \code{trigammap} is the \eqn{2}'nd derivative log multivariate
   gamma function (i.e. the multivariate trigamma).
+
+\code{lgammap} is the log multivariate gamma function.
 }
 \description{
 Special matematical functions related to the multivariate gamma function
@@ -58,6 +58,10 @@ base package.
 \details{
 Warnings are thown when the functions are evaluated outside its domain.
   Run \code{Bmisc:::plotMultivariateSpecial()} for more info.
+}
+\note{
+For \code{lgammp}, warnings of the type \code{"value out of range in
+  'lgamma'"} is due to evaluation in the half integers below \eqn{(p-1)/2}.
 }
 \examples{
 gammap(3.2, p = 1)
