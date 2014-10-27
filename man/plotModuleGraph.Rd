@@ -3,7 +3,7 @@
 \alias{plotModuleGraph}
 \title{Plot the graphical representation of a weighted adjacency amatrix}
 \usage{
-plotModuleGraph(amat, diff.exprs = NULL, label = rownames(amat),
+plotModuleGraph(amat, diff.exprs = NULL, labels = rownames(amat),
   vcol = "Black", ecol = "Black", layout = layout.circle, ...)
 }
 \arguments{
@@ -12,7 +12,7 @@ plotModuleGraph(amat, diff.exprs = NULL, label = rownames(amat),
 \item{diff.exprs}{A numeric vector of lencth \code{ncol(amat)} giving the
 importance (e.g.\ evidence for differential expression) of the node/gene.}
 
-\item{label}{The labels of the nodes.}
+\item{labels}{The labels of the nodes.}
 
 \item{vcol}{The colors of the nodes. Default is black.}
 
@@ -37,7 +37,7 @@ amat[upper.tri(amat)] <- amat[lower.tri(amat)]
 
 # Plot the graph
 plotModuleGraph(amat,
-                label = "",
+                labels = "",
                 vcol = 1:10,
                 diff.exprs = 3 + 3*runif(10))
 }

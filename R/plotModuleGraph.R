@@ -6,7 +6,7 @@
 #' @param amat A numeric adjacency a matrix with values between 0 and 1.
 #' @param diff.exprs A numeric vector of lencth \code{ncol(amat)} giving the
 #'   importance (e.g.\ evidence for differential expression) of the node/gene.
-#' @param label The labels of the nodes.
+#' @param labels The labels of the nodes.
 #' @param vcol The colors of the nodes. Default is black.
 #' @param ecol The colour of the edges. Default is black.
 #' @param layout A function providing the layout of the graph.
@@ -21,13 +21,13 @@
 #'
 #' # Plot the graph
 #' plotModuleGraph(amat,
-#'                 label = "",
+#'                 labels = "",
 #'                 vcol = 1:10,
 #'                 diff.exprs = 3 + 3*runif(10))
 #' @export
 plotModuleGraph <- function(amat,
                             diff.exprs = NULL,
-                            label = rownames(amat),
+                            labels = rownames(amat),
                             vcol = "Black",
                             ecol = "Black",
                             layout = layout.circle,
@@ -70,7 +70,7 @@ plotModuleGraph <- function(amat,
        vertex.label.cex = 0.8,
        vertex.label.color = "black",
        vertex.label.dist = 0.0,
-       vertex.label = label,... )
+       vertex.label = labels, ...)
 
   return(invisible(graph))
 }
