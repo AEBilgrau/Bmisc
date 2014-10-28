@@ -27,4 +27,7 @@ Suggests:
     gRbase,
     graph,
     SNPchip,
-    oligoClasses
+    oligoClasses,
+    adephylo,
+    ape,
+    Hmisc
