@@ -12,7 +12,7 @@
 #' @param layout A function providing the layout of the graph.
 #'   See \link[igraph]{layout}.
 #' @param \dots Aguments passed to \code{plot.igraph}.
-#' @return Invisibly returns the igraph-object
+#' @return Invisibly returns the igraph-object and the layout in a \code{list}.
 #' @author Anders Ellern Bilgrau <abilgrau (at) amath.aau.dk>
 #' @examples
 #' # Construct a random adjacency matrix
@@ -72,5 +72,5 @@ plotModuleGraph <- function(amat,
        vertex.label.dist = 0.0,
        vertex.label = labels, ...)
 
-  return(invisible(graph))
+  return(invisible(list(graph = graph, layout = l)))
 }

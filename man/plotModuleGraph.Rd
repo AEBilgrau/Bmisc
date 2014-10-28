@@ -24,7 +24,7 @@ See \link[igraph]{layout}.}
 \item{\dots}{Aguments passed to \code{plot.igraph}.}
 }
 \value{
-Invisibly returns the igraph-object
+Invisibly returns the igraph-object and the layout in a \code{list}.
 }
 \description{
 A function of for plotting the graphical representation of a weigted
