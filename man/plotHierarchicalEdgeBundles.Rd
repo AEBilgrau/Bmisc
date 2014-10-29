@@ -29,6 +29,8 @@ Plots to a new device.
 }
 \description{
 Visualization of networks using Hierarchical Edge Bundles.
+Currently, Bezier curves are used and not B-splines for the bundling.
+Hopefully, this will be updated in future versions.
 }
 \examples{
 if (require("igraph")) {

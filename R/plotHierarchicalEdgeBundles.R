@@ -1,6 +1,8 @@
 #' Hierarchical Edge Bundling
 #' 
-#' Visualization of networks using Hierarchical Edge Bundles.
+#' Visualization of networks using Hierarchical Edge Bundles. 
+#' Currently, Bezier curves are used and not B-splines for the bundling. 
+#' Hopefully, this will be updated in future versions.
 #' 
 #' @param phylo A `phylo` object.
 #' @param graph A \code{igraph} object.
@@ -85,10 +87,13 @@ plotHierarchicalEdgeBundles <-
 
 #' Straightened Bezier curves
 #' 
+#' Function for straightning Bezier curves.
 #' 
 #' @param x Some x-values
 #' @param y Some y-values (optional)
-#' @param beta The amount of straightening.
+#' @param beta A numeric values that control amount of straightening.
+#'   A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
+#'   \eqn{0} is a straight line.
 #' @param evaluation The number of evaluations of the Bezier curve.
 #' @return Returns the 
 #' @author Anders Ellern Bilgrau

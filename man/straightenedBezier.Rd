@@ -10,7 +10,9 @@ straightenedBezier(x, y, beta = 0.5, evaluation = 100)
 
 \item{y}{Some y-values (optional)}
 
-\item{beta}{The amount of straightening.}
+\item{beta}{A numeric values that control amount of straightening.
+A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
+\eqn{0} is a straight line.}
 
 \item{evaluation}{The number of evaluations of the Bezier curve.}
 }
@@ -18,7 +20,7 @@ straightenedBezier(x, y, beta = 0.5, evaluation = 100)
 Returns the
 }
 \description{
-Straightened Bezier curves
+Function for straightning Bezier curves.
 }
 \author{
 Anders Ellern Bilgrau
