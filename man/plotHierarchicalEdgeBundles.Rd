@@ -3,7 +3,7 @@
 \alias{plotHierarchicalEdgeBundles}
 \title{Hierarchical Edge Bundling}
 \usage{
-plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, use.mrca = TRUE,
+plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, use.only.mrca = TRUE,
   simplify = FALSE, ..., args.lines = list(), debug = FALSE)
 }
 \arguments{
@@ -13,7 +13,7 @@ plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, use.mrca = TRUE,
 
 \item{beta}{The amount of bundling.}
 
-\item{use.mrca}{Should the only the most recent common ancestor or the
+\item{use.only.mrca}{Should the only the most recent common ancestor or the
 full shortest path be used?}
 
 \item{simplify}{Simplify the paths by taking the convex hull.}
@@ -34,18 +34,20 @@ Hopefully, this will be updated in future versions.
 }
 \examples{
 if (require("igraph")) {
-  graph <- erdos.renyi.game(n = 200, p = 0.05)
+  n <- 100
+  graph <- erdos.renyi.game(n = n, p = 0.02)
+  V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
   wt <- walktrap.community(graph, modularity=TRUE)
   phylo <- asPhylo(wt)
   plotHierarchicalEdgeBundles(phylo,
                               graph,
                               beta = 0.2,
-                              use.mrca = FALSE,
-                              type = "unrooted",
+                              use.only.mrca = FALSE,
+                              type = "fan", #or "unrooted"
                               use.edge.length = TRUE,
                               simplify = FALSE,
                               lab4ut = "axial",
-                              args.lines = list(col = "#FF000060"))
+                              args.lines = list(col = "#FF00FFFF"))
 }
 }
 \author{

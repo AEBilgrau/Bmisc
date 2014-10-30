@@ -7,7 +7,7 @@
 #' @param phylo A `phylo` object.
 #' @param graph A \code{igraph} object.
 #' @param beta The amount of bundling.
-#' @param use.mrca Should the only the most recent common ancestor or the
+#' @param use.only.mrca Should the only the most recent common ancestor or the
 #'   full shortest path be used?
 #' @param simplify Simplify the paths by taking the convex hull.
 #' @param ... Arguments passed to \code{\link[ape]{plot.phylo}}.
@@ -22,26 +22,27 @@
 #'   Transactions on 12.5 (2006): 741-748.
 #' @examples
 #' if (require("igraph")) {
-#'   graph <- erdos.renyi.game(n = 200, p = 0.05)
+#'   n <- 100
+#'   graph <- erdos.renyi.game(n = n, p = 0.02)
+#'   V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
 #'   wt <- walktrap.community(graph, modularity=TRUE)
 #'   phylo <- asPhylo(wt)
 #'   plotHierarchicalEdgeBundles(phylo, 
 #'                               graph,
 #'                               beta = 0.2,
-#'                               use.mrca = FALSE,
-#'                               type = "unrooted", 
+#'                               use.only.mrca = FALSE,
+#'                               type = "fan", #or "unrooted" 
 #'                               use.edge.length = TRUE,
 #'                               simplify = FALSE,
 #'                               lab4ut = "axial",
-#'                               args.lines = list(col = "#FF000060"))
+#'                               args.lines = list(col = "#FF00FFFF"))
 #' }
 #' @export
-
 plotHierarchicalEdgeBundles <-
   function(phylo, 
            graph,
            beta = 0.5,
-           use.mrca = TRUE,
+           use.only.mrca = TRUE,
            simplify = FALSE,
            ...,
            args.lines = list(),
@@ -50,7 +51,7 @@ plotHierarchicalEdgeBundles <-
   stopifnot(require("adephylo"))
   stopifnot(require("ape"))
     
-  plot(phylo, edge.color = "#00000000", ...)
+  plot(phylo, edge.color = "#00000000", ...)#, type = "fan")#, ...)
   # Get data
   phy.dat <- get("last_plot.phylo", envir = .PlotPhyloEnv)
   pos <- with(phy.dat, data.frame(i = seq_along(xx), x = xx, y = yy))
@@ -61,10 +62,13 @@ plotHierarchicalEdgeBundles <-
   }
   
   es <- get.edgelist(graph)
+  if (!is.null(V(graph)$name)) {
+    es <- structure(match(es, V(graph)$name), dim = dim(es))
+  }
   
   # Shortest paths (with start and end) or path through Most Recent Common 
   # Ancestor
-  if (use.mrca) {
+  if (use.only.mrca) {
     sp <- lapply(seq_len(nrow(es)), function(i) {
       c(es[i,1], getMRCA(phylo, es[i,]), es[i,2])})
   } else {
