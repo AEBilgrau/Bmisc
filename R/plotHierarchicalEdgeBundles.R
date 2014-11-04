@@ -88,35 +88,3 @@ plotHierarchicalEdgeBundles <-
   }
   
 }
-
-#' Straightened Bezier curves
-#' 
-#' Function for straightning Bezier curves.
-#' 
-#' @param x Some x-values
-#' @param y Some y-values (optional)
-#' @param beta A numeric values that control amount of straightening.
-#'   A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
-#'   \eqn{0} is a straight line.
-#' @param evaluation The number of evaluations of the Bezier curve.
-#' @return Returns the 
-#' @author Anders Ellern Bilgrau
-#' @keywords internal
-straightenedBezier <- function(x, y, beta = 0.5, evaluation = 100) {
-
-  stopifnot(require("Hmisc"))
-  if (missing(y)) {
-    y <- x[[2]]
-    x <- x[[1]]
-  }
-  n <- length(x)
-  
-  # Straigten by control points
-  sequ <- (seq_len(n) - 1)/(n - 1)
-  x <- beta*x + (1 - beta)*( x[1] + sequ*(x[n] - x[1]) )
-  y <- beta*y + (1 - beta)*( y[1] + sequ*(y[n] - y[1]) )
-  
-  # Construct and return Bezier
-  return(bezier(x, y, evaluation = evaluation))
-}
-
