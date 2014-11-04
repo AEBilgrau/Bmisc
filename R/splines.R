@@ -5,7 +5,7 @@
 #' 
 #' @param x A vector giving the x-coordinates of the control points. 
 #'   Alternatively, \code{x} can be a \code{list} or \code{data.frame} where
-#'   the two first elements (or columns) are used.
+#'   the two first elements (or columns) are used as \code{x} and \code{y}.
 #' @param y An optional vector giving the y-coordinates of the control points. 
 #' @param order the order of the B-splines. Default is cubic (\code{order = 4}).
 #' @param n.evals integer giving the number of points the spline should be 
@@ -20,13 +20,16 @@
 #' plot(x, pch = 16, col = "grey")
 #' i <- seq_along(x[[1]] - 1)
 #' with(x, arrows(x[i], y[i], x[i+1], y[i+1], col = "grey"))
-#' bSpline(x, order = 4, col = "red")
-#' bSpline(x, order = 5, col = "blue")
-#' print(bSpline(x, order = 6, col = "green"))
+#' lines(bSpline(x, order = 4), col = "red")
+#' lines(bSpline(x, order = 5), col = "blue")
+#' lines(bSpline(x, order = 6), col = "green")
 #' @export
 bSpline <- function(x, y, order = 4, n.evals = 100) {
   if (is.numeric(x)) stopifnot(length(x) >= order)
   if (missing(y)) {
+    if (!is.list(x)) {
+      stop("If y is not supplied, then x must be a list or data.frame.")
+    }
     y <- x[[2]]
     x <- x[[1]]
   }
@@ -34,7 +37,8 @@ bSpline <- function(x, y, order = 4, n.evals = 100) {
   n <- nrow(mat)
   t <- seq(0, 1, length.out = n - order + 2)
   y <- seq(0, 1, length.out = n.evals)
-  return(deboor(mat, t, y, order))
+  ans <- deboor(mat, t, y, order)
+  return(ans)
 }
 
 
@@ -99,16 +103,31 @@ deboor <- function(x, t, y, order) {
 #'   two vectors of control points.
 #' @param y A numeric vector giving the y-coordinates of the control points. 
 #' @param beta A numeric values that control amount of straightening.
-#'   A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
+#'   A \code{beta} of \eqn{1} is a normal spline curve and where as a value of
 #'   \eqn{0} is a straight line.
-#' @param n.evals The number of evaluations of the Bezier curve.
 #' @param order The order of the B-spline. See \code{\link{bSpline}}.
-#' @return Returns a matrix of spline evaluations.
+#' @param n.evals The number of evaluations of the Bezier curve.
+#' @return Returns a \code{n.eval} by 2 matrix of spline evaluations.
 #' @author Anders Ellern Bilgrau
+#' @note The straightening is done by modifying the control points as described
+#'   in the reference.
+#' @references
+#'   Holten, Danny. "Hierarchical edge bundles: Visualization of adjacency 
+#'   relations in hierarchical data." Visualization and Computer Graphics, 
+#'   IEEE Transactions on 12.5 (2006): 741-748.
+#' @examples
+#' x <- list(x = cumsum(rnorm(7)), 
+#'           y = cumsum(rnorm(7)))
+#' plot(x, type = "b", col = "grey", pch = 16)
+#' for (b in seq(0.1, 1, l = 9)) 
+#'   lines(Bmisc:::straightenedBezier(x, beta = b))
 #' @keywords internal
 straightenedBezier <- function(x, y, beta = 0.5, n.evals = 100) {
   stopifnot(require("Hmisc"))
   if (missing(y)) {
+    if (!is.list(x)) {
+      stop("If y is not supplied, then x must be a list or data.frame.")
+    }
     y <- x[[2]]
     x <- x[[1]]
   }
@@ -124,8 +143,14 @@ straightenedBezier <- function(x, y, beta = 0.5, n.evals = 100) {
 }
 
 #' @rdname straightenedBezier
+#' @examples
+#' x <- cumsum(rnorm(7))
+#' y <- cumsum(rnorm(7))
+#' plot(x, y, type = "b", col = "grey", pch = 16)
+#' for (b in seq(0.1, 0.9, l = 9)) 
+#'   lines(Bmisc:::straightenedBSpline(x, y, beta = b))
 #' @keywords internal
-straightenedBSpline <- function(x, y, beta = 0.5, order = 4, n.evals = 100) {
+straightenedBSpline <- function(x, y, order = 4, beta = 0.5, n.evals = 100) {
   if (missing(y)) {
     y <- x[[2]]
     x <- x[[1]]
@@ -138,7 +163,7 @@ straightenedBSpline <- function(x, y, beta = 0.5, order = 4, n.evals = 100) {
   y <- beta*y + (1 - beta)*( y[1] + sequ*(y[n] - y[1]) )
   
   # Construct and return B-spline
-  return(bSpline(x, y, order = order, evaluation = n.evals))
+  return(bSpline(x, y, order = order, n.evals = n.evals))
 }
 
 

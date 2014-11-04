@@ -6,7 +6,7 @@
 \usage{
 straightenedBezier(x, y, beta = 0.5, n.evals = 100)
 
-straightenedBSpline(x, y, beta = 0.5, order = 4, n.evals = 100)
+straightenedBSpline(x, y, order = 4, beta = 0.5, n.evals = 100)
 }
 \arguments{
 \item{x}{A numeric vector giving the x-coordinates of the control points.
@@ -16,7 +16,7 @@ two vectors of control points.}
 \item{y}{A numeric vector giving the y-coordinates of the control points.}
 
 \item{beta}{A numeric values that control amount of straightening.
-A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
+A \code{beta} of \eqn{1} is a normal spline curve and where as a value of
 \eqn{0} is a straight line.}
 
 \item{n.evals}{The number of evaluations of the Bezier curve.}
@@ -24,16 +24,34 @@ A \code{beta} of \eqn{1} is a normal Bezier curve and where as a value of
 \item{order}{The order of the B-spline. See \code{\link{bSpline}}.}
 }
 \value{
-Returns a matrix of spline evaluations.
+Returns a \code{n.eval} by 2 matrix of spline evaluations.
 }
 \description{
 Function for straightning Bezier or B-spline curves.
 }
+\note{
+The straightening is done by modifying the control points as described
+  in the reference.
+}
 \examples{
-x <- list()
+x <- list(x = cumsum(rnorm(7)),
+          y = cumsum(rnorm(7)))
+plot(x, type = "b", col = "grey", pch = 16)
+for (b in seq(0.1, 1, l = 9))
+  lines(Bmisc:::straightenedBezier(x, beta = b))
+x <- cumsum(rnorm(7))
+y <- cumsum(rnorm(7))
+plot(x, y, type = "b", col = "grey", pch = 16)
+for (b in seq(0.1, 0.9, l = 9))
+  lines(Bmisc:::straightenedBSpline(x, y, beta = b))
 }
 \author{
 Anders Ellern Bilgrau
+}
+\references{
+Holten, Danny. "Hierarchical edge bundles: Visualization of adjacency
+  relations in hierarchical data." Visualization and Computer Graphics,
+  IEEE Transactions on 12.5 (2006): 741-748.
 }
 \keyword{internal}
 

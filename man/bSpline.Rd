@@ -8,7 +8,7 @@ bSpline(x, y, order = 4, n.evals = 100)
 \arguments{
 \item{x}{A vector giving the x-coordinates of the control points.
 Alternatively, \code{x} can be a \code{list} or \code{data.frame} where
-the two first elements (or columns) are used.}
+the two first elements (or columns) are used as \code{x} and \code{y}.}
 
 \item{y}{An optional vector giving the y-coordinates of the control points.}
 
@@ -30,9 +30,9 @@ x <- list(x = cumsum(rnorm(2*n)), y = cumsum(rnorm(2*n)))
 plot(x, pch = 16, col = "grey")
 i <- seq_along(x[[1]] - 1)
 with(x, arrows(x[i], y[i], x[i+1], y[i+1], col = "grey"))
-bSpline(x, order = 4, col = "red")
-bSpline(x, order = 5, col = "blue")
-print(bSpline(x, order = 6, col = "green"))
+lines(bSpline(x, order = 4), col = "red")
+lines(bSpline(x, order = 5), col = "blue")
+lines(bSpline(x, order = 6), col = "green")
 }
 \author{
 Anders Ellern Bilgrau
