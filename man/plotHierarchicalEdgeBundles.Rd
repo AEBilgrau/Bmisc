@@ -3,8 +3,8 @@
 \alias{plotHierarchicalEdgeBundles}
 \title{Hierarchical Edge Bundling}
 \usage{
-plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, use.only.mrca = FALSE,
-  simplify = FALSE, ..., args.lines = list(), debug = FALSE)
+plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, include.mrca = FALSE,
+  simplify = FALSE, ..., args.lines = list(), debug = FALSE, use.only)
 }
 \arguments{
 \item{phylo}{A `phylo` object.}
@@ -13,7 +13,7 @@ plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, use.only.mrca = FALSE,
 
 \item{beta}{The amount of bundling.}
 
-\item{use.only.mrca}{Should the only the most recent common ancestor or the
+\item{include.mrca}{Should the only the most recent common ancestor or the
 full shortest path be used?}
 
 \item{simplify}{Simplify the paths by taking the convex hull.}
@@ -23,38 +23,37 @@ full shortest path be used?}
 \item{args.lines}{A list of arguments passed to \code{lines}.}
 
 \item{debug}{Plot some extra info.}
+
+\item{use.only}{An integer vector giving the nodes from which edges are
+to be drawn. E.g. \code{use.only = 1} will only plot the edges from
+vertex 1.}
 }
 \value{
 Plots to a new device.
 }
 \description{
-Visualization of networks using Hierarchical Edge Bundles.
+Visualization of networks using hierarchical edge bundles.
 Currently, Bezier curves are used and not B-splines for the bundling.
 Hopefully, this will be updated in future versions.
 }
 \examples{
-if (require("igraph")) {
-  n <- 25
-  soft <- function(a, c) sign(a)*pmax(abs(a) - c, 0) # Soft thresholding
+n <- 25
 
-  # Create graph
-  adj <- abs(cor(matrix(rnorm(n^2), n, n)))
-  graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
-  V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
-  E(graph)$weight <- E(graph)$weight^2
-  E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
+# Create graph
+adj <- abs(cor(matrix(rnorm(n^2), n, n)))
+graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
+V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
+E(graph)$weight <- E(graph)$weight^2
+E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
 
-  wt <- fastgreedy.community(graph)
-  phylo <- asPhylo(wt)
+phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward"))
 
-  par(mfrow = c(1,3))
-  plot(graph, layout = layout.circle)
-  plot(phylo, type = "fan")
-  plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.90,
-                              debug = FALSE,
-                              simplify = TRUE,
-                              args.lines = list(col = alp("tomato", 30)))
-}
+par(mfrow = c(1,2))
+plot(phylo, type = "fan")
+plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
+                            include.mrca = FALSE,
+                            args.lines = list(col = alp("steelblue", 50)))
+plot(phylo, type = "fan", add = TRUE)
 }
 \author{
 Anders Ellern Bilgrau

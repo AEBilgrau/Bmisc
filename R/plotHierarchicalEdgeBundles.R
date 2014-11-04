@@ -1,18 +1,21 @@
 #' Hierarchical Edge Bundling
 #' 
-#' Visualization of networks using Hierarchical Edge Bundles. 
+#' Visualization of networks using hierarchical edge bundles. 
 #' Currently, Bezier curves are used and not B-splines for the bundling. 
 #' Hopefully, this will be updated in future versions.
 #' 
 #' @param phylo A `phylo` object.
 #' @param graph A \code{igraph} object.
 #' @param beta The amount of bundling.
-#' @param use.only.mrca Should the only the most recent common ancestor or the
+#' @param include.mrca Should the only the most recent common ancestor or the
 #'   full shortest path be used?
 #' @param simplify Simplify the paths by taking the convex hull.
 #' @param ... Arguments passed to \code{\link[ape]{plot.phylo}}.
 #' @param args.lines A list of arguments passed to \code{lines}.
 #' @param debug Plot some extra info.
+#' @param use.only An integer vector giving the nodes from which edges are
+#'   to be drawn. E.g. \code{use.only = 1} will only plot the edges from 
+#'   vertex 1.
 #' @return Plots to a new device.
 #' @seealso See \code{\link[ape]{plot.phylo}}.
 #' @author Anders Ellern Bilgrau
@@ -21,37 +24,44 @@
 #'   relations in hierarchical data." Visualization and Computer Graphics, IEEE 
 #'   Transactions on 12.5 (2006): 741-748.
 #' @examples
-#' if (require("igraph")) {
-#'   n <- 25
+#' library("igraph")
+#' library("ape")
+#' n <- 25
 #'   
-#'   # Create graph
-#'   adj <- abs(cor(matrix(rnorm(n^2), n, n)))
-#'   graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
-#'   V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
-#'   E(graph)$weight <- E(graph)$weight^2
-#'   E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
-#'   
-#'   wt <- fastgreedy.community(graph)
-#'   phylo <- asPhylo(wt)
-#'
-#'   par(mfrow = c(1,3))
-#'   plot(graph, layout = layout.circle)
-#'   plot(phylo, type = "fan")
-#'   plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.90,
-#'                               debug = FALSE,
-#'                               simplify = TRUE,
-#'                               args.lines = list(col = alp("tomato", 50)))
-#' }
+#' # Create graph
+#' adj <- abs(cor(matrix(rnorm(n^2), n, n)))
+#' rownames(adj) <- colnames(adj) <-
+#'   apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
+#' graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
+#' E(graph)$weight <- E(graph)$weight^2
+#' E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
+#' 
+#' phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward.D"))
+#' 
+#' plot(phylo, type = "fan")
+#' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
+#'                             args.lines = list(col = alp("steelblue", 90)))
+#' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.75,
+#'                             args.lines = list(col = alp("steelblue", 90)))
+#'                             
+#' par(mfrow = c(1,2))
+#' plot(phylo, type = "fan")        
+#' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.99,
+#'                             e.use.only = 1,
+#'                             debug = TRUE,
+#'                             args.lines = list(col = alp("steelblue", 1)))
 #' @export
 plotHierarchicalEdgeBundles <-
   function(phylo, 
            graph,
            beta = 0.5,
-           use.only.mrca = FALSE,
+           include.mrca = FALSE,
            simplify = FALSE,
            ...,
            args.lines = list(),
-           debug = FALSE) {
+           debug = FALSE,
+           v.use.only,
+           e.use.only) {
   stopifnot(require("igraph"))
   stopifnot(require("adephylo"))
   stopifnot(require("ape"))
@@ -63,25 +73,25 @@ plotHierarchicalEdgeBundles <-
   # Add points
   if (debug) {
     points(pos$x, pos$y, col="black", pch = 16, cex = 0.5)
-    text(pos$x, pos$y, col="black", pos$i, cex = 0.5)
+    text(pos$x, pos$y, col="black", pos$i, cex = 2)
   }
   
+  # Get edgelist (and convert to numeric if names are present)
   es <- get.edgelist(graph)
   if (!is.null(V(graph)$name)) {
     es <- structure(match(es, V(graph)$name), dim = dim(es))
   }
   
+  if (!missing(v.use.only)) es <- es[es[,1] %in% v.use.only, , drop = FALSE]
+  if (!missing(e.use.only)) es <- es[e.use.only, , drop = FALSE]
+  
   # Shortest paths (with start and end) or path through Most Recent Common 
-  # Ancestor
-  if (use.only.mrca) {
-    sp <- lapply(seq_len(nrow(es)), function(i) {
-      c(es[i,1], getMRCA(phylo, es[i,]), es[i,2])})
-  } else {
-    sp <- sp.tips(phylo, es[, 1], es[, 2])
-    stopifnot(nrow(es) == length(sp))
-    sp <- lapply(seq_along(sp), function(i) 
-      unname(c(es[i, 1], sp[[i]], es[i, 2])))
-  }
+  # Ancestor 
+  sp2 <- sp.tips(phylo, es[, 1], es[, 2], include.mrca = include.mrca)
+  stopifnot(nrow(es) == length(sp2))
+  sp <- lapply(seq_along(sp2), function(i) unname(c(es[i,1],sp2[[i]],es[i,2])))
+  names(sp) <- names(sp2)
+  
   # Plot spline curve for each path
   for (path in sp) { 
     d <- pos[path, ]
@@ -90,8 +100,8 @@ plotHierarchicalEdgeBundles <-
       d <- d[match(intersect(d$i, d$i[ch]), d$i), ] # NOT d[match(d$i[ch],d$i),]
     }
     ord <- ifelse(length(d$x) >= 4, 4, length(d$x))
+    if (debug) lines(d$x, d$y)
     tmp <- straightenedBSpline(d$x, d$y, order = ord, beta = beta)
     do.call(lines, c(tmp, args.lines))
   }
-  
 }
