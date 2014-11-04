@@ -34,11 +34,13 @@ The straightening is done by modifying the control points as described
   in the reference.
 }
 \examples{
+# Bezier curves
 x <- list(x = cumsum(rnorm(7)),
           y = cumsum(rnorm(7)))
 plot(x, type = "b", col = "grey", pch = 16)
 for (b in seq(0.1, 1, l = 9))
   lines(Bmisc:::straightenedBezier(x, beta = b))
+# B-splines
 x <- cumsum(rnorm(7))
 y <- cumsum(rnorm(7))
 plot(x, y, type = "b", col = "grey", pch = 16)

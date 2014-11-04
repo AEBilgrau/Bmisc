@@ -15,7 +15,7 @@ the two first elements (or columns) are used as \code{x} and \code{y}.}
 \item{order}{the order of the B-splines. Default is cubic (\code{order = 4}).}
 
 \item{n.evals}{integer giving the number of points the spline should be
-evaluated at. Default is 100..}
+evaluated at. Default is 100.}
 }
 \value{
 Returns the \code{n.points} by 2 matrix of evaluations of the B-spline.

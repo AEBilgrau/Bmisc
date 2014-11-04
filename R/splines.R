@@ -9,7 +9,7 @@
 #' @param y An optional vector giving the y-coordinates of the control points. 
 #' @param order the order of the B-splines. Default is cubic (\code{order = 4}).
 #' @param n.evals integer giving the number of points the spline should be 
-#'   evaluated at. Default is 100..
+#'   evaluated at. Default is 100.
 #' @return 
 #'   Returns the \code{n.points} by 2 matrix of evaluations of the B-spline.
 #' @seealso \code{\link{lines}}
@@ -116,6 +116,7 @@ deboor <- function(x, t, y, order) {
 #'   relations in hierarchical data." Visualization and Computer Graphics, 
 #'   IEEE Transactions on 12.5 (2006): 741-748.
 #' @examples
+#' # Bezier curves
 #' x <- list(x = cumsum(rnorm(7)), 
 #'           y = cumsum(rnorm(7)))
 #' plot(x, type = "b", col = "grey", pch = 16)
@@ -144,6 +145,7 @@ straightenedBezier <- function(x, y, beta = 0.5, n.evals = 100) {
 
 #' @rdname straightenedBezier
 #' @examples
+#' # B-splines
 #' x <- cumsum(rnorm(7))
 #' y <- cumsum(rnorm(7))
 #' plot(x, y, type = "b", col = "grey", pch = 16)
