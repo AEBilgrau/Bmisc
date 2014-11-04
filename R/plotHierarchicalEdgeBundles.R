@@ -22,27 +22,32 @@
 #'   Transactions on 12.5 (2006): 741-748.
 #' @examples
 #' if (require("igraph")) {
-#'   n <- 100
-#'   graph <- erdos.renyi.game(n = n, p = 0.02)
+#'   n <- 25
+#'   
+#'   # Create graph
+#'   adj <- abs(cor(matrix(rnorm(n^2), n, n)))
+#'   graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
 #'   V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
-#'   wt <- walktrap.community(graph, modularity=TRUE)
+#'   E(graph)$weight <- E(graph)$weight^2
+#'   E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
+#'   
+#'   wt <- fastgreedy.community(graph)
 #'   phylo <- asPhylo(wt)
-#'   plotHierarchicalEdgeBundles(phylo, 
-#'                               graph,
-#'                               beta = 0.2,
-#'                               use.only.mrca = FALSE,
-#'                               type = "fan", #or "unrooted" 
-#'                               use.edge.length = TRUE,
-#'                               simplify = FALSE,
-#'                               lab4ut = "axial",
-#'                               args.lines = list(col = "#FF00FFFF"))
+#'
+#'   par(mfrow = c(1,3))
+#'   plot(graph, layout = layout.circle)
+#'   plot(phylo, type = "fan")
+#'   plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.90,
+#'                               debug = FALSE,
+#'                               simplify = TRUE,
+#'                               args.lines = list(col = alp("tomato", 50)))
 #' }
 #' @export
 plotHierarchicalEdgeBundles <-
   function(phylo, 
            graph,
            beta = 0.5,
-           use.only.mrca = TRUE,
+           use.only.mrca = FALSE,
            simplify = FALSE,
            ...,
            args.lines = list(),
@@ -77,14 +82,16 @@ plotHierarchicalEdgeBundles <-
     sp <- lapply(seq_along(sp), function(i) 
       unname(c(es[i, 1], sp[[i]], es[i, 2])))
   }
-  for (path in sp) { # plot bezier curve each path
+  # Plot spline curve for each path
+  for (path in sp) { 
     d <- pos[path, ]
     if (simplify) {
       ch <- chull(d$x, d$y)
-      d <- d[match(intersect(d$i, d$i[ch]), d$i), ] # NOT d[match(d$i[ch], d$i),]
+      d <- d[match(intersect(d$i, d$i[ch]), d$i), ] # NOT d[match(d$i[ch],d$i),]
     }
-    #if (debug) { points(d$x, d$y) }
-    do.call(lines, c(straightenedBezier(d$x, d$y, beta = beta), args.lines))
+    ord <- ifelse(length(d$x) >= 4, 4, length(d$x))
+    tmp <- straightenedBSpline(d$x, d$y, order = ord, beta = beta)
+    do.call(lines, c(tmp, args.lines))
   }
   
 }
