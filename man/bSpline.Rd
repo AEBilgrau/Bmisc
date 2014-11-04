@@ -18,7 +18,8 @@ the two first elements (or columns) are used as \code{x} and \code{y}.}
 evaluated at. Default is 100.}
 }
 \value{
-Returns the \code{n.points} by 2 matrix of evaluations of the B-spline.
+Returns a \code{list} of length 2 with entries \code{x} and \code{y} of
+  x and y coordinates corresponding to the evaluations of the B-spline.
 }
 \description{
 Add piecewise B-splines of supplied order to a plot. The function
@@ -38,6 +39,6 @@ lines(bSpline(x, order = 6), col = "green")
 Anders Ellern Bilgrau
 }
 \seealso{
-\code{\link{lines}}
+See also \code{\link{lines}} and \code{\link[Hmisc]{Hmisc::Bezier}}.
 }
 

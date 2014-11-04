@@ -11,8 +11,9 @@
 #' @param n.evals integer giving the number of points the spline should be 
 #'   evaluated at. Default is 100.
 #' @return 
-#'   Returns the \code{n.points} by 2 matrix of evaluations of the B-spline.
-#' @seealso \code{\link{lines}}
+#'   Returns a \code{list} of length 2 with entries \code{x} and \code{y} of 
+#'   x and y coordinates corresponding to the evaluations of the B-spline.
+#' @seealso See also \code{\link{lines}} and \code{\link[Hmisc]{Hmisc::Bezier}}.
 #' @author Anders Ellern Bilgrau
 #' @examples
 #' n <- 20
@@ -38,7 +39,7 @@ bSpline <- function(x, y, order = 4, n.evals = 100) {
   t <- seq(0, 1, length.out = n - order + 2)
   y <- seq(0, 1, length.out = n.evals)
   ans <- deboor(mat, t, y, order)
-  return(ans)
+  return(list(x = ans[,1], y = ans[,2]))
 }
 
 
@@ -107,7 +108,9 @@ deboor <- function(x, t, y, order) {
 #'   \eqn{0} is a straight line.
 #' @param order The order of the B-spline. See \code{\link{bSpline}}.
 #' @param n.evals The number of evaluations of the Bezier curve.
-#' @return Returns a \code{n.eval} by 2 matrix of spline evaluations.
+#' @return
+#'   Returns a \code{list} of length 2 with entries \code{x} and \code{y} of 
+#'   x and y coordinates corresponding to the evaluations of the B-spline.
 #' @author Anders Ellern Bilgrau
 #' @note The straightening is done by modifying the control points as described
 #'   in the reference.

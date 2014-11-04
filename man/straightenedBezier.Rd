@@ -24,7 +24,8 @@ A \code{beta} of \eqn{1} is a normal spline curve and where as a value of
 \item{order}{The order of the B-spline. See \code{\link{bSpline}}.}
 }
 \value{
-Returns a \code{n.eval} by 2 matrix of spline evaluations.
+Returns a \code{list} of length 2 with entries \code{x} and \code{y} of
+  x and y coordinates corresponding to the evaluations of the B-spline.
 }
 \description{
 Function for straightning Bezier or B-spline curves.
