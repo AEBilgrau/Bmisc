@@ -4,7 +4,8 @@
 \title{Hierarchical Edge Bundling}
 \usage{
 plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, include.mrca = FALSE,
-  simplify = FALSE, ..., args.lines = list(), debug = FALSE, use.only)
+  simplify = FALSE, ..., args.lines = list(), debug = FALSE, v.use.only,
+  e.use.only)
 }
 \arguments{
 \item{phylo}{A `phylo` object.}
@@ -24,39 +25,51 @@ full shortest path be used?}
 
 \item{debug}{Plot some extra info.}
 
-\item{use.only}{An integer vector giving the nodes from which edges are
+\item{v.use.only}{An integer vector giving the nodes from which edges are
 to be drawn. E.g. \code{use.only = 1} will only plot the edges from
 vertex 1.}
+
+\item{e.use.only}{An integer vector giving the edges to be drawn.
+E.g. \code{use.only = 1} will only draw the first edge.}
 }
 \value{
 Plots to a new device.
 }
 \description{
-Visualization of networks using hierarchical edge bundles.
-Currently, Bezier curves are used and not B-splines for the bundling.
-Hopefully, this will be updated in future versions.
+Visualization of networks using hierarchical edge bundles. Plot a graph
+using a hierchical tree as guies for the edges.
 }
 \examples{
+library("igraph")
+library("ape")
 n <- 25
 
 # Create graph
 adj <- abs(cor(matrix(rnorm(n^2), n, n)))
+rownames(adj) <- colnames(adj) <-
+  apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
 graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
-V(graph)$name <- apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
 E(graph)$weight <- E(graph)$weight^2
 E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
 
-phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward"))
+phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward.D"))
 
+par(mfrow = c(1,3))
+plot(phylo, type = "fan")
+plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
+                            args.lines = list(col = alp("steelblue", 90)))
+plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.85,
+                            args.lines = list(col = alp("steelblue", 90)))
+
+# Extra control of plotting and debugging
 par(mfrow = c(1,2))
 plot(phylo, type = "fan")
 plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
-                            include.mrca = FALSE,
-                            args.lines = list(col = alp("steelblue", 50)))
-plot(phylo, type = "fan", add = TRUE)
+                            v.use.only = 1, debug = FALSE,
+                            args.lines = list(col = alp("red", 1), lwd = 2))
 }
 \author{
-Anders Ellern Bilgrau
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \references{
 Holten, Danny. "Hierarchical edge bundles: Visualization of adjacency
