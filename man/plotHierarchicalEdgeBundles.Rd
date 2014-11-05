@@ -14,16 +14,17 @@ plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, include.mrca = FALSE,
 
 \item{beta}{The amount of bundling.}
 
-\item{include.mrca}{Should the only the most recent common ancestor or the
-full shortest path be used?}
+\item{include.mrca}{Should the only the most recent common ancestor be used
+in the shortest path used for the splines?}
 
-\item{simplify}{Simplify the paths by taking the convex hull.}
+\item{simplify}{Simplify the paths by taking the convex hull of the control
+points. Can sometimes yield better results.}
 
 \item{...}{Arguments passed to \code{\link[ape]{plot.phylo}}.}
 
 \item{args.lines}{A list of arguments passed to \code{lines}.}
 
-\item{debug}{Plot some extra info.}
+\item{debug}{Plot some extra debug info.}
 
 \item{v.use.only}{An integer vector giving the nodes from which edges are
 to be drawn. E.g. \code{use.only = 1} will only plot the edges from

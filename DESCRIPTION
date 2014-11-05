@@ -13,7 +13,8 @@ Imports:
     Rcpp (>= 0.10.6),
     GMCM
 Depends:
-    utils
+    utils,
+    adephylo
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     glasso,
@@ -28,6 +29,5 @@ Suggests:
     graph,
     SNPchip,
     oligoClasses,
-    adephylo,
     ape,
     Hmisc

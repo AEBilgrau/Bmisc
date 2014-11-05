@@ -6,12 +6,13 @@
 #' @param phylo A `phylo` object.
 #' @param graph A \code{igraph} object.
 #' @param beta The amount of bundling.
-#' @param include.mrca Should the only the most recent common ancestor or the
-#'   full shortest path be used?
-#' @param simplify Simplify the paths by taking the convex hull.
+#' @param include.mrca Should the only the most recent common ancestor be used
+#'   in the shortest path used for the splines?
+#' @param simplify Simplify the paths by taking the convex hull of the control
+#'   points. Can sometimes yield better results.
 #' @param ... Arguments passed to \code{\link[ape]{plot.phylo}}.
 #' @param args.lines A list of arguments passed to \code{lines}.
-#' @param debug Plot some extra info.
+#' @param debug Plot some extra debug info.
 #' @param v.use.only An integer vector giving the nodes from which edges are
 #'   to be drawn. E.g. \code{use.only = 1} will only plot the edges from 
 #'   vertex 1.
@@ -66,7 +67,7 @@ plotHierarchicalEdgeBundles <- function(phylo,
                                         e.use.only) {
   
   stopifnot(require("igraph"))
-  stopifnot(require("adephylo"))
+  #stopifnot(require("adephylo"))
   stopifnot(require("ape"))
   
   plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)#, type = "fan")#, ...)
@@ -173,8 +174,7 @@ sp.tips2 <- function(x, tip1, tip2, useTipNames=FALSE,
       pathTwoTips.no.mrca(allPath1[[i]], allPath2[[i]]))
     temp.names <- names(res)
     temp <- sapply(res, function(vec) length(vec) > 0)
-    res[temp] <- lapply(res[temp], function(vec) getNode(x, 
-                                                         vec))
+    res[temp] <- lapply(res[temp], function(vec) getNode(x, vec))
     names(res) <- temp.names
   }
   if (useTipNames) {
