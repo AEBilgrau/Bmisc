@@ -8,7 +8,7 @@ plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, include.mrca = FALSE,
   e.use.only)
 }
 \arguments{
-\item{phylo}{A `phylo` object.}
+\item{phylo}{A \code{phylo} object.}
 
 \item{graph}{A \code{igraph} object.}
 
@@ -37,8 +37,9 @@ E.g. \code{use.only = 1} will only draw the first edge.}
 Plots to a new device.
 }
 \description{
-Visualization of networks using hierarchical edge bundles. Plot a graph
-using a hierchical tree as guies for the edges.
+Visualization of networks using hierarchical edge bundles referenced below.
+Plot a graph using a hierchical tree as guides for the edges.
+This function does not yet (if ever) support the rendering of edges.
 }
 \examples{
 library("igraph")
