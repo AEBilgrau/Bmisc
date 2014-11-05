@@ -115,7 +115,8 @@ plotHierarchicalEdgeBundles <- function(phylo,
     }
     ord <- ifelse(length(d$x) >= 4, 4, length(d$x))
     if (debug) lines(d$x, d$y)
-    tmp <- straightenedBSpline(d$x, d$y, order = ord, beta = beta)
+    tmp <- straightenedBSpline(d$x, d$y, order = ord, beta = beta,
+                               n.evals = 250)
     if (!missing(e.cols)) args.lines$col <- e.cols[i]
     do.call(lines, c(tmp, args.lines))
   }
