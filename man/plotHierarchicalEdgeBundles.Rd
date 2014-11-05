@@ -3,9 +3,9 @@
 \alias{plotHierarchicalEdgeBundles}
 \title{Hierarchical Edge Bundling}
 \usage{
-plotHierarchicalEdgeBundles(phylo, graph, beta = 0.5, include.mrca = FALSE,
-  simplify = FALSE, ..., args.lines = list(), debug = FALSE, v.use.only,
-  e.use.only)
+plotHierarchicalEdgeBundles(phylo, graph, beta = 0.8, include.mrca = FALSE,
+  simplify = FALSE, ..., args.lines = list(), args.points = list(pch = 16,
+  cex = 0.1), debug = FALSE, e.cols, v.use.only, e.use.only)
 }
 \arguments{
 \item{phylo}{A \code{phylo} object.}
@@ -24,7 +24,12 @@ points. Can sometimes yield better results.}
 
 \item{args.lines}{A list of arguments passed to \code{lines}.}
 
+\item{args.points}{A list of arguments passed to \code{points}.}
+
 \item{debug}{Plot some extra debug info.}
+
+\item{e.cols}{A character vector giving the colors of the edges.
+Overrides any use of \code{args.lines$col}.}
 
 \item{v.use.only}{An integer vector giving the nodes from which edges are
 to be drawn. E.g. \code{use.only = 1} will only plot the edges from
@@ -44,17 +49,19 @@ This function does not yet (if ever) support the rendering of edges.
 \examples{
 library("igraph")
 library("ape")
-n <- 25
+n <- 10
 
 # Create graph
-adj <- abs(cor(matrix(rnorm(n^2), n, n)))
-rownames(adj) <- colnames(adj) <-
+corr <- cor(matrix(rnorm(n^2), n, n))
+rownames(corr) <- colnames(corr) <-
   apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
+adj <- abs(corr)
 graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
-E(graph)$weight <- E(graph)$weight^2
-E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
+E(graph)$color <- ifelse(get.lower.tri(corr) < 0, "blue", "red")
 
 phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward.D"))
+plotHierarchicalEdgeBundles(phylo, graph, type = "fan",
+                            e.cols = E(graph)$color)
 
 par(mfrow = c(1,3))
 plot(phylo, type = "fan")

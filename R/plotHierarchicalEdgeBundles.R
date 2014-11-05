@@ -13,7 +13,10 @@
 #'   points. Can sometimes yield better results.
 #' @param ... Arguments passed to \code{\link[ape]{plot.phylo}}.
 #' @param args.lines A list of arguments passed to \code{lines}.
+#' @param args.points A list of arguments passed to \code{points}.
 #' @param debug Plot some extra debug info.
+#' @param e.cols A character vector giving the colors of the edges.
+#'   Overrides any use of \code{args.lines$col}.
 #' @param v.use.only An integer vector giving the nodes from which edges are
 #'   to be drawn. E.g. \code{use.only = 1} will only plot the edges from 
 #'   vertex 1.
@@ -30,18 +33,20 @@
 #' @examples
 #' library("igraph")
 #' library("ape")
-#' n <- 25
+#' n <- 10
 #'   
 #' # Create graph
-#' adj <- abs(cor(matrix(rnorm(n^2), n, n)))
-#' rownames(adj) <- colnames(adj) <-
+#' corr <- cor(matrix(rnorm(n^2), n, n))
+#' rownames(corr) <- colnames(corr) <-
 #'   apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
+#' adj <- abs(corr)
 #' graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
-#' E(graph)$weight <- E(graph)$weight^2
-#' E(graph)$color <- alp("black", E(graph)$weight/max(E(graph)$weight))
+#' E(graph)$color <- ifelse(get.lower.tri(corr) < 0, "blue", "red")
 #' 
 #' phylo <- as.phylo(hclust(as.dist(1 - adj), method = "ward.D"))
-#' 
+#' plotHierarchicalEdgeBundles(phylo, graph, type = "fan",
+#'                             e.cols = E(graph)$color)
+#'
 #' par(mfrow = c(1,3))
 #' plot(phylo, type = "fan")
 #' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
@@ -58,27 +63,28 @@
 #' @export
 plotHierarchicalEdgeBundles <- function(phylo, 
                                         graph,
-                                        beta = 0.5,
+                                        beta = 0.80,
                                         include.mrca = FALSE,
                                         simplify = FALSE,
                                         ...,
                                         args.lines = list(),
+                                        args.points = list(pch = 16, cex = 0.1),
                                         debug = FALSE,
+                                        e.cols,
                                         v.use.only,
                                         e.use.only) {
   
   stopifnot(require("igraph"))
-  #stopifnot(require("adephylo"))
   stopifnot(require("ape"))
   
-  plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)#, type = "fan")#, ...)
+  plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)
   # Get data
   phy.dat <- get("last_plot.phylo", envir = .PlotPhyloEnv)
   pos <- with(phy.dat, data.frame(i = seq_along(xx), x = xx, y = yy))
   # Add points
   if (debug) {
-    points(pos$x, pos$y, col="black", pch = 16, cex = 0.5)
-    text(pos$x, pos$y, col="black", pos$i, cex = 1.5)
+    points(pos$x, pos$y, col = "black", pch = 16, cex = 0.5)
+    text(pos$x, pos$y, col = "black", pos$i, cex = 1.5)
   }
   
   # Get edgelist (and convert to numeric if names are present)
@@ -87,19 +93,21 @@ plotHierarchicalEdgeBundles <- function(phylo,
     es <- structure(match(es, V(graph)$name), dim = dim(es))
   }
   
-  if (!missing(v.use.only)) es <- es[es[,1] %in% v.use.only, , drop = FALSE]
+  if (!missing(v.use.only)) es <- es[es[, 1] %in% v.use.only, , drop = FALSE]
   if (!missing(e.use.only)) es <- es[e.use.only, , drop = FALSE]
   
   # Shortest paths (with start and end) or path through Most Recent Common 
   # Ancestor 
-  sp2 <- #sp.tips(phylo, es[, 1], es[, 2], include.mrca = include.mrca)
-    sp.tips2(phylo, es[, 1], es[, 2], include.mrca = include.mrca)
+  sp2 <- sp.tips2(phylo, es[, 1], es[, 2], include.mrca = include.mrca,
+                  useTipNames = TRUE)
   stopifnot(nrow(es) == length(sp2))
+  # Add start and end
   sp <- lapply(seq_along(sp2), function(i) unname(c(es[i,1],sp2[[i]],es[i,2])))
   names(sp) <- names(sp2)
-  
+   
   # Plot spline curve for each path
-  for (path in sp) { 
+  for (i in seq_along(sp)) { 
+    path <- sp[[i]]
     d <- pos[path, ]
     if (simplify) {
       ch <- chull(d$x, d$y)
@@ -108,14 +116,16 @@ plotHierarchicalEdgeBundles <- function(phylo,
     ord <- ifelse(length(d$x) >= 4, 4, length(d$x))
     if (debug) lines(d$x, d$y)
     tmp <- straightenedBSpline(d$x, d$y, order = ord, beta = beta)
+    if (!missing(e.cols)) args.lines$col <- e.cols[i]
     do.call(lines, c(tmp, args.lines))
   }
+  do.call(points, c(pos[seq_len(vcount(graph)), -1], args.points))
 }
 
 
 # MODIFIED sp.tips from adephylo!
-sp.tips2 <- function(x, tip1, tip2, useTipNames=FALSE, 
-                     quiet=FALSE, include.mrca=TRUE) {
+sp.tips2 <- function(x, tip1, tip2, useTipNames = FALSE, 
+                     quiet = FALSE, include.mrca = TRUE) {
   x <- as(x, "phylo4")
   if (is.character(checkval <- checkPhylo4(x))) 
     stop(checkval)
@@ -144,7 +154,7 @@ sp.tips2 <- function(x, tip1, tip2, useTipNames=FALSE,
   E <- x@edge
   allTips <- unique(c(t1, t2))
   pathTwoTips <- function(path1, path2) {
-    cpath <- c(path1, rev(path2))
+    cpath <- c(path1, rev(path2)) # <- CHANGED HERE, added rev()
     temp <- factor(cpath, levels = unique(cpath))
     CA <- temp[table(temp) == 2][1]
     CA <- as.integer(as.character(CA))
@@ -156,7 +166,7 @@ sp.tips2 <- function(x, tip1, tip2, useTipNames=FALSE,
     return(c(path1, path2))
   }
   pathTwoTips.no.mrca <- function(path1, path2) {
-    cpath <- c(path1, rev(path2))
+    cpath <- c(path1, rev(path2)) # <- CHANGED HERE, added rev()
     temp <- intersect(path1, path2)
     res <- setdiff(cpath, temp)
     return(res)
