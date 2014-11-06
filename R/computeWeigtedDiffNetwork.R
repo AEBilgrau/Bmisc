@@ -67,7 +67,7 @@ computeWeigtedDiffNetwork <- function(x,
     }
     switch(pcor.type,
            "marginal"    = correlation.mat,
-           "partial"     = mininimum.abs.pcor(correlation.mat),
+           "partial"     = minimum.abs.pcor(correlation.mat),
            "fullpartial" = cov2cor(glasso(covariance.mat, rho = rho)$w))
   }
 
