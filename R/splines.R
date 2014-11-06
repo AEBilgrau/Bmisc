@@ -13,7 +13,7 @@
 #' @return 
 #'   Returns a \code{list} of length 2 with entries \code{x} and \code{y} of 
 #'   x and y coordinates corresponding to the evaluations of the B-spline.
-#' @seealso See also \code{\link{lines}} and \code{\link[Hmisc]{Hmisc::Bezier}}.
+#' @seealso See also \code{\link{lines}} and \code{\link[Hmisc]{bezier}}.
 #' @author Anders Ellern Bilgrau
 #' @examples
 #' n <- 20

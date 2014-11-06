@@ -39,6 +39,6 @@ lines(bSpline(x, order = 6), col = "green")
 Anders Ellern Bilgrau
 }
 \seealso{
-See also \code{\link{lines}} and \code{\link[Hmisc]{Hmisc::Bezier}}.
+See also \code{\link{lines}} and \code{\link[Hmisc]{bezier}}.
 }
 
