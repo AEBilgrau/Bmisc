@@ -60,6 +60,7 @@
 #' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
 #'                             v.use.only = 1, debug = FALSE,
 #'                             args.lines = list(col = alp("red", 1), lwd = 2))
+#' @import adephylo
 #' @export
 plotHierarchicalEdgeBundles <- function(phylo, 
                                         graph,
@@ -73,7 +74,7 @@ plotHierarchicalEdgeBundles <- function(phylo,
                                         e.cols,
                                         v.use.only,
                                         e.use.only) {
-  
+
   stopifnot(require("igraph"))
   stopifnot(require("ape"))
   
