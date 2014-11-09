@@ -1,18 +1,17 @@
 #' Hierarchical Edge Bundling
 #' 
-#' Visualization of networks using hierarchical edge bundles referenced below. 
-#' Plot a graph using a hierchical tree as guides for the edges.
-#' This function does not yet (if ever) support the rendering of edges.
+#' Visualization of networks using hierarchical edge bundles referenced below.
+#' Plots a graph using a hierachical tree as guides for the edges.
 #' 
-#' @param phylo A \code{phylo} object.
-#' @param graph A \code{igraph} object.
-#' @param beta The amount of bundling.
+#' @param phylo A \code{phylo} object defining the hierarchy.
+#' @param graph A \code{igraph} object to be drawn.
+#' @param beta A number between 0 and 1 controlling the bundling strength.
 #' @param include.mrca Should the only the most recent common ancestor be used
 #'   in the shortest path used for the splines?
 #' @param simplify Simplify the paths by taking the convex hull of the control
 #'   points. Can sometimes yield better results.
 #' @param ... Arguments passed to \code{\link[ape]{plot.phylo}}.
-#' @param args.lines A list of arguments passed to \code{lines}.
+#' @param args.lines  A list of arguments passed to \code{lines}.
 #' @param args.points A list of arguments passed to \code{points}.
 #' @param debug Plot some extra debug info.
 #' @param e.cols A character vector giving the colors of the edges.
@@ -35,9 +34,9 @@
 #' library("ape")
 #' n <- 10
 #'   
-#' # Create graph
+#' # Create a graph
 #' corr <- cor(matrix(rnorm(n^2), n, n))
-#' rownames(corr) <- colnames(corr) <-
+#' rownames(corr) <- colnames(corr) <- 
 #'   apply(combn(LETTERS, 2), 2, paste0, collapse = "")[1:n]
 #' adj <- abs(corr)
 #' graph <- graph.adjacency(adj, mode = "un", weighted = TRUE, diag = FALSE)
@@ -47,7 +46,7 @@
 #' plotHierarchicalEdgeBundles(phylo, graph, type = "fan",
 #'                             e.cols = E(graph)$color)
 #'
-#' par(mfrow = c(1,3))
+#' par(mfrow = c(1, 3), mar = c(0, 0, 0, 0))
 #' plot(phylo, type = "fan")
 #' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
 #'                             args.lines = list(col = alp("steelblue", 90)))
@@ -56,8 +55,8 @@
 #'              
 #' # Extra control of plotting and debugging               
 #' par(mfrow = c(1,2))
-#' plot(phylo, type = "fan")        
-#' plotHierarchicalEdgeBundles(phylo, graph, type = "fan", beta = 0.95,
+#' plot(phylo, type = "unrooted")        
+#' plotHierarchicalEdgeBundles(phylo, graph, type = "unrooted", beta = 0.8,
 #'                             v.use.only = 1, debug = FALSE,
 #'                             args.lines = list(col = alp("red", 1), lwd = 2))
 #' @import adephylo
