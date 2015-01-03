@@ -143,7 +143,7 @@ straightenedBezier <- function(x, y, beta = 0.5, n.evals = 100) {
   y <- beta*y + (1 - beta)*( y[1] + sequ*(y[n] - y[1]) )
   
   # Construct and return Bezier
-  return(bezier(x, y, evaluation = n.evals))
+  return(Hmisc::bezier(x, y, evaluation = n.evals))
 }
 
 #' @rdname straightenedBezier

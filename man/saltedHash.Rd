@@ -10,12 +10,10 @@ saltedHash(salt, x, algo = "sha256", ...)
 
 \item{x}{A character vector of the strings to be hashed.}
 
-\item{algo}{The hashing algorithm used. See
-\code{\link[digest]{digest}} for
+\item{algo}{The hashing algorithm used. See \code{\link[digest]{digest}} for
 possible values.}
 
-\item{\dots}{Additional parameters passed to
-\code{\link[digest]{digest}}.}
+\item{\dots}{Additional parameters passed to \code{\link[digest]{digest}}.}
 }
 \value{
 A character vector
@@ -27,7 +25,7 @@ of strings prior to a hashing of the complete string.
 \examples{
 x <- c("AVerySecretString", "AnotherSecretSting")
 saltedHash("SomeSalt", x = x, algo = "md5")
-digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5")
+#digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5")
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>

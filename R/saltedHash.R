@@ -4,18 +4,16 @@
 #' of strings prior to a hashing of the complete string.
 #' @param salt A character containing the salt
 #' @param x A character vector of the strings to be hashed.
-#' @param algo The hashing algorithm used. See 
-#'   \code{\link[digest]{digest}} for 
+#' @param algo The hashing algorithm used. See \code{\link[digest]{digest}} for 
 #'   possible values.
-#' @param \dots Additional parameters passed to 
-#'   \code{\link[digest]{digest}}.
+#' @param \dots Additional parameters passed to \code{\link[digest]{digest}}.
 #' @return A character vector
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @seealso \code{\link[digest]{digest}}
 #' @examples
 #' x <- c("AVerySecretString", "AnotherSecretSting")
 #' saltedHash("SomeSalt", x = x, algo = "md5")
-#' digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5")
+#' #digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5") 
 #' @export
 saltedHash <- function(salt, x, algo = "sha256", ...) {
   if (!require(digest)) {
@@ -23,7 +21,7 @@ saltedHash <- function(salt, x, algo = "sha256", ...) {
   }
   z <- y <- paste0(salt, x)  # Add salt
   for (i in seq_along(y)) {  # Hashing
-    z[i] <- digest(y[i], algo = algo, ...)
+    z[i] <- digest::digest(y[i], algo = algo, ...)
   }
   return(z)
 }
