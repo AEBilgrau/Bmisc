@@ -60,6 +60,7 @@
 #'                             v.use.only = 1, debug = FALSE,
 #'                             args.lines = list(col = alp("red", 1), lwd = 2))
 #' @import adephylo
+#' @import igraph
 #' @export
 plotHierarchicalEdgeBundles <- function(phylo, 
                                         graph,
@@ -74,7 +75,7 @@ plotHierarchicalEdgeBundles <- function(phylo,
                                         v.use.only,
                                         e.use.only) {
 
-  stopifnot(require("igraph"))
+  #stopifnot(require("igraph"))
   stopifnot(require("ape"))
   
   plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)

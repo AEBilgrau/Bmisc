@@ -24,6 +24,7 @@
 #'                 labels = "",
 #'                 vcol = 1:10,
 #'                 diff.exprs = 3 + 3*runif(10))
+#' @import igraph                 
 #' @export
 plotModuleGraph <- function(amat,
                             diff.exprs = NULL,
@@ -32,9 +33,9 @@ plotModuleGraph <- function(amat,
                             ecol = "Black",
                             layout = layout.circle,
                             ...) {
-  if (!require(igraph)) {
-    stop("The igraph package is needed for this function.")
-  }
+#   if (!require("igraph")) {
+#     stop("The igraph package is needed for this function.")
+#   }
 
   # Create full graph
   graph <- graph.adjacency(amat, mode = "undirected",

@@ -14,7 +14,8 @@ Imports:
     GMCM
 Depends:
     utils,
-    adephylo
+    adephylo,
+    igraph
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     glasso,
@@ -23,7 +24,6 @@ Suggests:
     BiocGenerics,
     biomaRt,
     digest,
-    igraph,
     Rgraphviz,
     gRbase,
     graph,

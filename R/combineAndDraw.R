@@ -46,6 +46,7 @@
 #' plot(cc[[3]], main = "Merged graph"); box()
 #' plot(cc[[1]], main = "Graph 1 (laid out as merged graph)"); box()
 #' plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
+#' @import igraph 
 #' @export
 combineAndDraw <- function(g1, g2,
                            col1 = "steelblue",
@@ -55,7 +56,7 @@ combineAndDraw <- function(g1, g2,
                            fontsize,
                            name = "",
                            ...) {
-  stopifnot(require("igraph"))
+  #stopifnot(require("igraph"))
   stopifnot(require("Rgraphviz"))
   stopifnot(require("graph"))
   
