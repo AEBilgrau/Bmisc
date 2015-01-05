@@ -21,23 +21,23 @@ of \code{"chr1"}, ..., \code{"chr22"}, \code{"chrX"}, or \code{"chrY"}.}
 \item{taper}{A numeric givning the amount of tapering near the ends of the
 chromosome and the centromere.}
 
-\item{build}{UCSC genome build. Supported builds are "hg18" and "hg19".}
+\item{build}{Which UCSC genome build to use.
+Supported builds are \code{"hg18"} and \code{"hg19"}.}
 
-\item{\dots}{Arguments passed to polygon.}
+\item{\dots}{Arguments passed to \code{\link{polygon}}.}
 }
 \description{
-\code{plotChromosome} draws a chromosome with an interface akin to
-\code{rect} with the given coordinates.
+\code{plotChromosome} draws a chromosome and cytobands with an interface
+akin to \code{\link{rect}} with the given coordinates.
 }
 \note{
-Some of the code is borrowed from \code{plotIdiogram} in the \code{SNPchip}
-  package by Robert Scharpf and Jason Ting.
+Some of the code is borrowed from \code{\link[SNPchip]{plotIdiogram}} in
+  the \code{SNPchip} package by Robert Scharpf and Jason Ting.
 }
 \examples{
 dat <- cumsum(rnorm(100))/sqrt(seq_len(100))
   plot(dat, ylab = "Something", type = "h", ylim = c(-3, 3),
        col = ifelse(dat > 0, "red", "blue"), lwd = 2)
-
   plotChromosome("chr10", xleft = 0, ybot = -3, xright = 100, ytop = -2.8)
 }
 \author{
@@ -45,7 +45,7 @@ Anders Ellern Bilgrau \cr
   Modified code by Robert Scharpf and Jason Ting
 }
 \seealso{
-\code{\link[SNPchip]{plotIdiogram}} \cr
+\code{\link{rect}}, \code{\link[SNPchip]{plotIdiogram}},
   \code{\link[oligoClasses]{getSequenceLengths}}
 }
 
