@@ -75,7 +75,6 @@ plotHierarchicalEdgeBundles <- function(phylo,
                                         v.use.only,
                                         e.use.only) {
 
-  #stopifnot(require("igraph"))
   stopifnot(require("ape"))
   
   plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)
@@ -199,27 +198,4 @@ sp.tips2 <- function(x, tip1, tip2, useTipNames = FALSE,
   return(res)
 }  
 environment(sp.tips2) <- asNamespace("adephylo")
-
-
-# tip2tip <- function(phylo, t1, t2, include.mrca = FALSE) {
-#   x <- as(phylo, "phylo4")
-#   #     mrca <- MRCA(x, t1, t2)
-#   #     path <-  c(t1, .tipToRoot(x, t1, mrca), 
-#   #                if(include.mrca) {mrca}, 
-#   #                rev(.tipToRoot(x, t2, mrca)), t2)
-#   N <- nTips(x)
-#   root <- getNode(x, N + 1)
-#   t1 <- getNode(x, tip1)
-#   t2 <- getNode(x, tip2)
-#   allTips <- unique(c(t1, t2))    
-#   allPathToRoot <- lapply(allTips, function(i) 
-#     .tipToRoot(x, i, root, include.root =TRUE))
-#   names(allPathToRoot) <- allTips
-#   allPath1 <- allPathToRoot[as.character(t1)]
-#   allPath2 <- allPathToRoot[as.character(t2)]
-#   res <- lapply(seq_along(allPath1), function(i) 
-#     pathTwoTips(allPath1[[i]], allPath2[[i]]))
-# }
-# return(paths)
-
 
