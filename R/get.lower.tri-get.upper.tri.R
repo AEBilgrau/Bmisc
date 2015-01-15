@@ -1,7 +1,9 @@
 #' Vectorize the upper and lower triangluar matrix
 #'
+#' Get and set the upper and lower triangular matrix in vector form.
+#' 
 #' @aliases get.upper.tri
-#' @param x A numeric matrix.
+#' @param x A \code{matrix}.
 #' @param diag logical. Should the diagonal be included?
 #' @return \code{get.lower.tri} returns a numeric vector of the entries in the
 #'   below the diagonal of \code{x}. The length is dependent on argument 
@@ -18,7 +20,16 @@
 #' get.lower.tri(x, diag = TRUE)
 #' @export
 get.lower.tri <- function (x, diag = FALSE) {
-  x[lower.tri(x, diag = diag)]
+  return(x[lower.tri(x, diag = diag)])
+}
+
+#' @rdname get.lower.tri
+#' @param value A vector of the same data type a \code{x} of the same length
+#'   as \code{get.lower.tri}.
+#' @export
+`get.lower.tri<-` <- function(x, value, diag = FALSE) {
+  x[lower.tri(x, diag = diag)] <- value
+  return(x)
 }
 
 #' @rdname get.lower.tri
@@ -32,5 +43,13 @@ get.lower.tri <- function (x, diag = FALSE) {
 #' get.upper.tri(x, diag = TRUE)
 #' @export
 get.upper.tri <- function (x, diag = FALSE) {
-  x[upper.tri(x, diag = diag)]
+  return(x[upper.tri(x, diag = diag)])
 }
+
+#' @rdname get.lower.tri
+#' @export
+`get.upper.tri<-` <- function(x, value, diag = FALSE) {
+  x[upper.tri(x, diag = diag)] <- value
+  return(x)
+}
+
