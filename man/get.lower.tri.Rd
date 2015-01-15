@@ -43,9 +43,14 @@ The returned length is dependent on \code{diag}. If
 print(x <- matrix(1:25, ncol = 5))
 get.lower.tri(x)
 get.lower.tri(x, diag = TRUE)
-print(x <- matrix(1:9, ncol = 3))
-get.upper.tri(x)
-get.upper.tri(x, diag = TRUE)
+
+print(y <- matrix(1:9, ncol = 3))
+get.upper.tri(y)
+get.upper.tri(y, diag = TRUE)
+
+get.upper.tri(y) <- get.lower.tri(y)  # Fill the upper tri with the lower
+print(y)
+get.upper.tri(y)
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
