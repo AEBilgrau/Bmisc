@@ -1,14 +1,18 @@
 #' Add Carriage Return
 #' 
-#' Unix system only use different characters for the newline. Windows uses 
-#' carriage return. This function adds the carriage return.
+#' Unix based systems use only the line feed (\code{LF}, \code{"\\n"}) character 
+#' for line breaks whereas Windows both line feed and carriage return 
+#' (\code{CR}, \code{"\\r"}). This function adds the carriage return in order
+#' for files to be read properly on windows.
+#' 
 #' @param file.in The path and name of the input file. A character of length 1.
 #' @param file.out The path and name of the output file. A character of 
 #'   length 1. Default is to overwrite.
 #' @return Nothing is returned. Creates (or overwrites if file.out is not 
 #'   given) a file with added carriage returns.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
-#' @note Useful on unix systems to make windows readable txt files
+#' @note Useful on Unix systems to make Windows readable \code{.txt} and other
+#'   plain-text files.
 #' @examples
 #' tmp.dir <- tempdir()
 #' file.in <- file.path(tmp.dir, "NewFile.txt")

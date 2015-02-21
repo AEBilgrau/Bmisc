@@ -16,11 +16,14 @@ Nothing is returned. Creates (or overwrites if file.out is not
   given) a file with added carriage returns.
 }
 \description{
-Unix system only use different characters for the newline. Windows uses
-carriage return. This function adds the carriage return.
+Unix based systems use only the line feed (\code{LF}, \code{"\\n"}) character
+for line breaks whereas Windows both line feed and carriage return
+(\code{CR}, \code{"\\r"}). This function adds the carriage return in order
+for files to be read properly on windows.
 }
 \note{
-Useful on unix systems to make windows readable txt files
+Useful on Unix systems to make Windows readable \code{.txt} and other
+  plain-text files.
 }
 \examples{
 tmp.dir <- tempdir()
