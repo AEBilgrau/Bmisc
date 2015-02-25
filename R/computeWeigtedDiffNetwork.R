@@ -1,6 +1,6 @@
 #' Find differential networks between two classes
 #'
-#' This function attemps to find differential networks between two classes.
+#' This function attempts to find differential networks between two classes.
 #' First, it computes the partial correlation (either unconditioned, the
 #' smallest first order conditioned, or full conditioned) for each group.
 #' Second it tests each partial correlation for differential correlation using
@@ -9,7 +9,7 @@
 #'
 #' @param x is the expression matrix where columns correspond to
 #'   samples/subjects and rows to genes.
-#' @param class is the factor enconding ABC and GCB samples
+#' @param class is the factor encoding ABC and GCB samples
 #' @param gene.universe character vector giving the names of the features to be
 #'   used. I.e. a subset of \code{colnames(x)}.
 #' @param name A character giving the name of the dataset.
@@ -24,11 +24,11 @@
 #'     correlation.}
 #'   \item{adjacency}{A matrix of 1 - P-values for the hypothesis of no
 #'     differential (partial) correlation}
-#'   \item{tom.dissimilarity}{A matrix of topological overlap disimilarities.}
+#'   \item{tom.dissimilarity}{A matrix of topological overlap dissimilarities.}
 #' @details If \code{pcor.type} is \code{"partial"} then all 1 order partial
 #'   correlations are computed (i.e. the partial correlation given a third
 #'   feature) and the minimal partial correlation is used.
-#' @note The toplogical overlap matrix is computed on the P-values.
+#' @note The topological overlap matrix is computed on the P-values.
 #' @export
 computeWeigtedDiffNetwork <- function(x,
                                       class,
