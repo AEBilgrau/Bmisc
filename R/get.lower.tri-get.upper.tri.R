@@ -1,4 +1,4 @@
-#' Vectorize the upper and lower triangluar matrix
+#' Vectorize the upper and lower triangular matrix
 #'
 #' Get and set the upper and lower triangular matrix in vector form.
 #' 
