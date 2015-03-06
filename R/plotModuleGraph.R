@@ -5,7 +5,7 @@
 #'
 #' @param amat A numeric adjacency a matrix with values between 0 and 1.
 #' @param diff.exprs A numeric vector of lencth \code{ncol(amat)} giving the
-#'   importance (e.g.\ evidence for differential expression) of the node/gene.
+#'   importance (e.g. evidence for differential expression) of the node/gene.
 #' @param labels The labels of the nodes.
 #' @param vcol The colors of the nodes. Default is black.
 #' @param ecol The colour of the edges. Default is black.
