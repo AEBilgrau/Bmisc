@@ -7,18 +7,14 @@
 using namespace Rcpp;
 
 // lgammap
-Rcpp::NumericVector lgammap(const Rcpp::NumericVector& x, const int p = 1);
+Rcpp::NumericVector lgammap(const Rcpp::NumericVector& x, const int p);
 RcppExport SEXP Bmisc_lgammap(SEXP xSEXP, SEXP pSEXP) {
 BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type x(xSEXP );
-        Rcpp::traits::input_parameter< const int >::type p(pSEXP );
-        Rcpp::NumericVector __result = lgammap(x, p);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type p(pSEXP);
+    __result = Rcpp::wrap(lgammap(x, p));
+    return __result;
 END_RCPP
 }
