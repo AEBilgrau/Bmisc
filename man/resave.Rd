@@ -30,8 +30,7 @@ file. If the file does not exist, \code{resave} functions as \code{save}.
 This is a modified version of a function created by user "flodel" at
   \href{stack overflow.}{http://stackoverflow.com/questions/11813096/updating-an-existing-rdata-file}
 }
-\author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+\examples{
 file <- file.path(tempdir(), "myFile.RData") # File
 a <- list(LETTERS)
 
@@ -41,6 +40,9 @@ b <- pi  # Create a new object "b"
 a <- c(a, list(letters))  # Modify "a"
 
 resave(a, b, file = file)  # Update a and add b
+}
+\author{
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 }
 \seealso{
 See Also: \code{\link{save}}
