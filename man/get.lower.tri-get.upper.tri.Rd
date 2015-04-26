@@ -52,6 +52,10 @@ get.upper.tri(y, diag = TRUE)
 get.upper.tri(y) <- get.lower.tri(y)  # Fill the upper tri with the lower
 print(y)
 get.upper.tri(y)
+
+print(x)
+get.lower.tri(x, diag = TRUE) <- get.upper.tri(x, diag = TRUE)
+print(x)
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>

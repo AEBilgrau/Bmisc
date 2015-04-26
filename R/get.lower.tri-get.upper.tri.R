@@ -26,6 +26,10 @@
 #' get.upper.tri(y) <- get.lower.tri(y)  # Fill the upper tri with the lower
 #' print(y)
 #' get.upper.tri(y)
+#' 
+#' print(x)
+#' get.lower.tri(x, diag = TRUE) <- get.upper.tri(x, diag = TRUE)
+#' print(x)
 #' @export
 get.lower.tri <- function (x, diag = FALSE) {
   return(x[lower.tri(x, diag = diag)])
@@ -35,7 +39,7 @@ get.lower.tri <- function (x, diag = FALSE) {
 #' @param value A vector of the same data type a \code{x} of the same length
 #'   as \code{get.lower.tri}.
 #' @export
-`get.lower.tri<-` <- function(x, value, diag = FALSE) {
+`get.lower.tri<-` <- function(x, diag = FALSE, value) {
   x[lower.tri(x, diag = diag)] <- value
   return(x)
 }
@@ -51,7 +55,7 @@ get.upper.tri <- function (x, diag = FALSE) {
 
 #' @rdname get.lower.tri-get.upper.tri
 #' @export
-`get.upper.tri<-` <- function(x, value, diag = FALSE) {
+`get.upper.tri<-` <- function(x, diag = FALSE, value) {
   x[upper.tri(x, diag = diag)] <- value
   return(x)
 }
