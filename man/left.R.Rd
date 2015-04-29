@@ -24,7 +24,9 @@ right(x, ...)
 \arguments{
 \item{x}{The object.}
 
-\item{n}{A single \code{integer}. If}
+\item{n}{A single \code{integer}. If positive, the \code{n} left/right-most
+parts. If negative, it retuns all but the \code{n} left/right-most
+parts.}
 
 \item{\dots}{Arguments passed to other methods.}
 }
@@ -35,10 +37,11 @@ Usually returns an object of the same class as \code{x} but small and
 \description{
 Extension of the functionality of \code{head} and \code{tail} with functions
 \code{left} and \code{right} and combinations hereof.
-These functions returns the top-, bottom-, left-, and right-most parts of
-objects. The functions are oriented toward \code{matrix},
-\code{data.frame}, and other matrix-like objects classes but are generic and
-may extended to other classes if sensical.
+Like \code{head} and \code{tail} returns the top and bottom parts of an
+object, \code{left} and \code{right} return the left- and right-most parts of
+the object. The functions are primarily oriented toward classes
+\code{matrix}, \code{data.frame}, and other matrix-like objects classes but
+are generic and may be extended to other classes if sensical.
 }
 \details{
 \code{top} and \code{bot} are simply
