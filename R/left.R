@@ -10,7 +10,7 @@
 #'
 #' @param x The object.
 #' @param n A single \code{integer}. If positive, the \code{n} left/right-most
-#'   parts. If negative, it retuns all but the \code{n} left/right-most 
+#'   parts. If negative, it returns all but the \code{n} left/right-most 
 #'   parts.
 #' @param \dots Arguments passed to other methods.
 #' @return Usually returns an object of the same class as \code{x} but small and

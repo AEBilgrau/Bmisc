@@ -25,7 +25,7 @@ right(x, ...)
 \item{x}{The object.}
 
 \item{n}{A single \code{integer}. If positive, the \code{n} left/right-most
-parts. If negative, it retuns all but the \code{n} left/right-most
+parts. If negative, it returns all but the \code{n} left/right-most
 parts.}
 
 \item{\dots}{Arguments passed to other methods.}
