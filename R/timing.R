@@ -3,7 +3,7 @@
 #' Times a function or evaulation and appends the timing results as an
 #' attribute to the object.
 #' 
-#' @param expr A valid \proglang{R} expression or function call.
+#' @param expr A valid R expression or function call.
 #' @return Returns the result of the evaluated \code{expr} with an attribute
 #'   called \code{"timing"} containing the evaulation time.
 #' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>

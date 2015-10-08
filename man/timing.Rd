@@ -7,7 +7,7 @@
 timing(expr)
 }
 \arguments{
-\item{expr}{A valid \proglang{R} expression or function call.}
+\item{expr}{A valid R expression or function call.}
 }
 \value{
 Returns the result of the evaluated \code{expr} with an attribute
