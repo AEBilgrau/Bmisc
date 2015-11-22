@@ -15,7 +15,7 @@
 #' @seealso See Also: \code{\link{save}}
 #' @note This is a modified version of a function created by user "flodel" at 
 #'   \href{stack overflow.}{http://stackoverflow.com/questions/11813096/updating-an-existing-rdata-file}
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' file <- file.path(tempdir(), "myFile.RData") # File
 #' a <- list(LETTERS) 

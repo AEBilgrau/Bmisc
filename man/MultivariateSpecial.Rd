@@ -75,7 +75,7 @@ Dgammap(3.2, p = 1)
 Bmisc:::plotMultivariateSpecial()
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 The \link{Special} mathematical functions.

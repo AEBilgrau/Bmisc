@@ -6,7 +6,7 @@
 #' @param add \code{logical}. Should the matrix be added to the current plot 
 #'   device.
 #' @param \dots Arguments passed to \code{\link{rect}}.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @return
 #'   Invisibly returns the x and y coordinates and the corresponding colours.
 #' @details The colours are plotted as squares as given by \code{x} on the grid

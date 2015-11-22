@@ -41,6 +41,6 @@ t.test(x[1,], y[1, ])
 welch.t.tests(x[1, , drop = FALSE], y[1, , drop = FALSE])
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

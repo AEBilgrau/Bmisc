@@ -28,7 +28,7 @@ y <- matrix(rnorm(50), 10, 5)
 rowSds(y)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link{rowMeans}}, \code{\link{colMeans}}

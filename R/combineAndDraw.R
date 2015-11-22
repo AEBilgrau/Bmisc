@@ -21,7 +21,7 @@
 #' @details The function works by combining \code{g1} and \code{g2} and making
 #'   unique edges of \code{g2} invisible in the merged graph and vice versa
 #'   for the unique edges of \code{g1}.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso
 #'   \code{\link[Rgraphviz]{agopen}},
 #'   \code{\link[Rgraphviz]{plot.graphNEL}}

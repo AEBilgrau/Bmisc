@@ -6,7 +6,7 @@
 #' @param file A \code{character} of length one specifying the \code{.RData} 
 #'   file to remove objects from.
 #' @param \dots Arguments passed to \code{save}.
-#' @author Anders E Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders E Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' file <- paste(tempfile(), ".RData", sep = "")
 #' a <- 1

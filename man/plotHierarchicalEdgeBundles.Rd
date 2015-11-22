@@ -78,7 +78,7 @@ plotHierarchicalEdgeBundles(phylo, graph, type = "unrooted", beta = 0.8,
                             args.lines = list(col = alp("red", 1), lwd = 2))
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \references{
 Holten, Danny. "Hierarchical edge bundles: Visualization of adjacency

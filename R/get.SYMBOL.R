@@ -9,7 +9,7 @@
 #'   can be retrieved using the function \code{listAttributes}.
 #' @param \dots arguments passed to \code{getBM}.
 #' @return  a \code{data.frame} with columns corresponding to the matched gene identifiers.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @export
 get.SYMBOL <- function(es,
                        subset = featureNames(es), 

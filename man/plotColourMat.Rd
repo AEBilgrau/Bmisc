@@ -42,6 +42,6 @@ axis(1)
 axis(2)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

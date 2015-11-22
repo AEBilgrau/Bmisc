@@ -6,7 +6,7 @@
 #' @param expr A valid R expression or function call.
 #' @return Returns the result of the evaluated \code{expr} with an attribute
 #'   called \code{"timing"} containing the evaulation time.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' test <- function() mean(rnorm(1e6))
 #' a <- timing(test())

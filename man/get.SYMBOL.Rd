@@ -24,6 +24,6 @@ These functions uses biomaRt to get gene symbols and ensembl gene identifies
 for an ExpressionSet object.
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

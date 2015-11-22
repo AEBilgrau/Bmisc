@@ -19,7 +19,7 @@ Convert from bioconductor database array name to biomaRt's array names
 Note, not all arrays are implemented.
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link[biomaRt]{useMart}}, \code{\link[biomaRt]{listMarts}},

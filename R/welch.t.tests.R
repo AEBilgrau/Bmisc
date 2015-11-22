@@ -15,7 +15,7 @@
 #' @details A Welch t-test is performed for each row in \code{x} and \code{y}. 
 #'   The \eqn{i}'th row of \code{x} is tested against the \eqn{i}'th row of 
 #'   \code{y} and the result is seen in the \eqn{i}'th row of the output.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' # Create some toy data
 #' x <- replicate(10, rnorm(20, 0, 1))

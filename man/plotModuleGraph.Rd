@@ -43,6 +43,6 @@ plotModuleGraph(amat,
                 diff.exprs = 3 + 3*runif(10))
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) amath.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

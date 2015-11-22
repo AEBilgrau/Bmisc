@@ -4,7 +4,7 @@ Title: Biostatistical miscellaneous functions
 Version: 0.1
 Date: 2014-07-14
 Author: Anders Ellern Bilgrau
-Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
+Maintainer: Anders Ellern Bilgrau <anders.ellern.bilgrau@gmail.com>
 URL: https://github.com/AEBilgrau/B-misc
 BugReports: https://github.com/AEBilgrau/Bmisc/issues
 Description: Biostatisical miscellaneous functions and utilites.

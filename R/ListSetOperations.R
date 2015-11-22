@@ -8,7 +8,7 @@
 #'   \code{intersect}, and \code{setdiff} but on lists.
 #' @param x A \code{list} of \code{character} vectors.
 #' @param y A \code{list} of \code{character} vectors.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso \code{\link{union}}, \code{\link{intersect}}, \code{\link{setdiff}}
 #' @examples
 #' set.seed(1)

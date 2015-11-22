@@ -23,7 +23,7 @@ S <- cor(X)
 minimum.abs.pcor(S)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link{pcor}}

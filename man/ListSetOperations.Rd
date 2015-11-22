@@ -44,7 +44,7 @@ Intersect(x)  # The intersection of all vectors in x
 Setdiff(x, y)  # All elements in the intersection of x, but not in any y
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link{union}}, \code{\link{intersect}}, \code{\link{setdiff}}

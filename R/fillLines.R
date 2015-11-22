@@ -12,7 +12,7 @@
 #'   a neat trick to get the area under the curve is to set 
 #'   \code{y2 = rep(-Inf, length(x))}.
 #' @seealso \code{\link{polygon}}
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @export
 #' @examples
 #' # Random example 1

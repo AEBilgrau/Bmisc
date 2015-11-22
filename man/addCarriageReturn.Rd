@@ -42,6 +42,6 @@ addCarriageReturn(file.in, file.out)
 #system(paste("open", file.out))
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

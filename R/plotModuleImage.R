@@ -9,7 +9,7 @@
 #' @param xlab.at The position of the labels in of the x-axis.
 #' @param ylab.at The position of the labels in of the y-axis.
 #' @param \dots Arguments passed to \code{\link{image}}.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' # Construct a random adjacency matrix
 #' amat <- replicate(10, runif(10))

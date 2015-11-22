@@ -21,7 +21,7 @@
 #'   Warnings are thown when the functions are evaluated outside its domain.
 #'   Run \code{Bmisc:::plotMultivariateSpecial()} for more info.
 #' @author
-#'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#'   Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso The \link{Special} mathematical functions.
 #' @examples
 #' gammap(3.2, p = 1)

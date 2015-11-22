@@ -7,7 +7,7 @@
 #' @param col A character vector of the colours used of length \eqn{n - 1}.
 #' @param add Should the key be added to the current plot device?
 #' @param \dots Arguments passed to \code{\link{rect}}.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' brks <- seq(0, 1, length.out = 8)
 #' cls <- rainbow(7)

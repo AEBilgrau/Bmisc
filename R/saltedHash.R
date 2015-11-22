@@ -8,7 +8,7 @@
 #'   possible values.
 #' @param \dots Additional parameters passed to \code{\link[digest]{digest}}.
 #' @return A character vector
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso \code{\link[digest]{digest}}
 #' @examples
 #' x <- c("AVerySecretString", "AnotherSecretSting")

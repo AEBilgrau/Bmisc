@@ -26,6 +26,6 @@ Returns a \code{list} with entries:
 Functions to classify new data on the basis of a LDA/QDA fit.
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

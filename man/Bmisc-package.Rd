@@ -12,6 +12,6 @@ Useful for general microarray analysis, gene network analysis, and other
 biostatistical applications.
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

@@ -10,7 +10,7 @@
 #'   length 1. Default is to overwrite.
 #' @return Nothing is returned. Creates (or overwrites if file.out is not 
 #'   given) a file with added carriage returns.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @note Useful on Unix systems to make Windows readable \code{.txt} and other
 #'   plain-text files.
 #' @examples

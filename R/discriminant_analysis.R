@@ -13,7 +13,7 @@
 #'   \item{counts}{The number of observations in each class.}
 #'   \item{means}{The estimated means for each class.}
 #'   \item{sigmas}{The estimated covariance matrix for each class.}
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @export 
 lda.fit <- function(classes, vars) {
   qda <- qda.fit(classes, vars)
@@ -67,7 +67,7 @@ qda2lda <- function(myqda) {
 #'   \item{class}{A vector giving the predicted classes of the observations.}
 #'   \item{posterior}{A matrix of posterior probabilities of belonging to the 
 #'     classes.}
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @export 
 lda.predict <- function(fit, newdata) {
   theta <- fit

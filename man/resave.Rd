@@ -42,7 +42,7 @@ a <- c(a, list(letters))  # Modify "a"
 resave(a, b, file = file)  # Update a and add b
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 See Also: \code{\link{save}}

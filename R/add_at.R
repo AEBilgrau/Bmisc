@@ -7,7 +7,7 @@
 #' @param x A character vector of feature name
 #' @return \code{add_at} and \code{rm_at} both return a character of the same
 #'   length as \code{x} with and without \code{"_at"}, respectively.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' add_at(c("hello", "world", "with_at"))
 #' @export

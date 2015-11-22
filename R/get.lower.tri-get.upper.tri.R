@@ -12,7 +12,7 @@
 #'   \code{diag == TRUE}, then the length is \code{ncol(x)*(ncol(x)-1)/2}. If 
 #'   \code{FALSE}, then the length is \code{ncol(x)*(ncol(x)+1)/2}.
 #' @seealso \code{\link{lower.tri}}, \code{\link{upper.tri}}
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @export
 #' @examples
 #' print(x <- matrix(1:25, ncol = 5))

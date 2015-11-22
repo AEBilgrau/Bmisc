@@ -5,7 +5,7 @@
 #' 
 #' @param S A numeric covariancematrix 
 #' @return A numeric matrix.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso \code{\link{pcor}}
 #' @examples
 #' X <- replicate(3, rnorm(5))

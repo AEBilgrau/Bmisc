@@ -60,7 +60,7 @@ right(tail(x))
 \author{
 Modified code from \code{\link{head}} and \code{\link{tail}} and
   the corresponding class-specific methods. \cr
-  Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+  Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 Main documentation of \code{\link{head}} and \code{\link{tail}}

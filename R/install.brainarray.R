@@ -13,7 +13,7 @@
 #' @param path A charcter of length 1. The path describing where the downloaded
 #'   files are saved.
 #' @return Invisibly returns the location of the saved files.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @seealso \code{\link{tempdir}}, \code{\link{install.packages}}
 #' @references
 #'   See \url{http://brainarray.mbni.med.umich.edu}.

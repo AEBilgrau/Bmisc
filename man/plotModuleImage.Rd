@@ -40,6 +40,6 @@ rownames(amat) <- colnames(amat) <- paste0("Gene", 1:10)
 plotModuleImage(amat, srt = 30)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

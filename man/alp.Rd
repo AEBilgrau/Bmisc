@@ -26,6 +26,6 @@ x <- c("Blue", "#402000", NA, "Tomato", "#00FF0250")
 alp(x, alpha = 0.5)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

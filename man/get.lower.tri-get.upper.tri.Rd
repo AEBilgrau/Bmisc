@@ -58,7 +58,7 @@ get.lower.tri(x, diag = TRUE) <- get.upper.tri(x, diag = TRUE)
 print(x)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link{lower.tri}}, \code{\link{upper.tri}}

@@ -30,6 +30,6 @@ lst <- load(file)
 print(lst)  # Only "c" remains
 }
 \author{
-Anders E Bilgrau <abilgrau (at) math.aau.dk>
+Anders E Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 

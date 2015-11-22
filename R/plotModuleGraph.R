@@ -13,7 +13,7 @@
 #'   See \link[igraph]{layout}.
 #' @param \dots Aguments passed to \code{plot.igraph}.
 #' @return Invisibly returns the igraph-object and the layout in a \code{list}.
-#' @author Anders Ellern Bilgrau <abilgrau (at) amath.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' # Construct a random adjacency matrix
 #' amat <- replicate(10, runif(10))

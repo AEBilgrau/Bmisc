@@ -66,7 +66,7 @@ plot(cc[[1]], main = "Graph 1 (laid out as merged graph)"); box()
 plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link[Rgraphviz]{agopen}},

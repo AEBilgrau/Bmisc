@@ -37,7 +37,7 @@ tmp.path <- install.brainarray("hgu133a", version = "18.0.0", type = "ensg")
 print(tmp.path)
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \references{
 See \url{http://brainarray.mbni.med.umich.edu}.

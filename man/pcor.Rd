@@ -26,7 +26,7 @@ S <- cor(X)
 pcor(S, 2)
 }
 \author{
-Anders Ellernsta Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 }
 \seealso{
 \code{\link{cor}}

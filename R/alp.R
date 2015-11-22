@@ -8,7 +8,7 @@
 #'  If \code{alpha = 0} is 
 #'  completely transparent and  \code{alpha = 1} is opaque.
 #' @return A character of hexadecimal values with alpha value added.
-#' @author Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+#' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
 #' @examples
 #' x <- c("Blue", "#402000", NA, "Tomato", "#00FF0250")
 #' alp(x, alpha = 0.5)
