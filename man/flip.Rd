@@ -2,7 +2,7 @@
 % Please edit documentation in R/flip.R
 \name{flip}
 \alias{flip}
-\title{Flip names and values}
+\title{Flip vector names and values}
 \usage{
 flip(x)
 }
@@ -10,16 +10,22 @@ flip(x)
 \item{x}{A named vector.}
 }
 \value{
-A character vector.
+A named character vector.
 }
 \description{
-Flips or switches names and values of vectors.
+Simply flips or switches values and names of named vectors. This is e.g.
+useful when named character vectors are used a mapping.
 }
 \examples{
 x <- structure(1:5, names = LETTERS[1:5])
 x
 flip(x)
 flip(flip(x))
+
+
+y <- structure(c("a", "b", "c"), names = c("abel", "bob", "charlie"))
+y["bob"]
+flip(y)["c"]
 }
 \author{
 Anders Ellern Bilgrau
