@@ -68,6 +68,7 @@ qda2lda <- function(myqda) {
 #'   \item{posterior}{A matrix of posterior probabilities of belonging to the 
 #'     classes.}
 #' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
+#' @import GMCM
 #' @export 
 lda.predict <- function(fit, newdata) {
   theta <- fit
@@ -77,7 +78,7 @@ lda.predict <- function(fit, newdata) {
   vars <- as.matrix(newdata)
   names(theta) <- c("m", "d", "pie", "mu", "sigma")
   theta$sigma <- lapply(theta$sigma, correctForStableInversion)
-  kap <- GMCM:::EStep(x = as.matrix(vars), theta = theta)
+  kap <- GMCM::EStep(x = as.matrix(vars), theta = theta)
   return(list(class = apply(kap, 1, which.max), posterior = kap))
 }
 
