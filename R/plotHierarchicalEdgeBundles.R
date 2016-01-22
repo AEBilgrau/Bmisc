@@ -75,7 +75,7 @@ plotHierarchicalEdgeBundles <- function(phylo,
                                         v.use.only,
                                         e.use.only) {
 
-  stopifnot(require("ape"))
+  stopifnot(requireNamespace("ape"))
   
   plot(phylo, edge.color = ifelse(debug,"grey","#00000000"), ...)
   # Get data

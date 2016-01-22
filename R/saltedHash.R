@@ -16,7 +16,7 @@
 #' #digest(paste0("SomeSalt", "AVerySecretString"), algo = "md5") 
 #' @export
 saltedHash <- function(salt, x, algo = "sha256", ...) {
-  if (!require(digest)) {
+  if (!requireNamespace("digest")) {
     stop("Package digest is need to use the function.")
   }
   z <- y <- paste0(salt, x)  # Add salt

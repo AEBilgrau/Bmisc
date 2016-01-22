@@ -59,7 +59,7 @@ computeWeigtedDiffNetwork <- function(x,
                    pcor.type,   # Type of correlation to compute
                    rho = 0) {   # If glasso is used, the level of regularization
     if (pcor.type == "fullpartial") {
-      if (!require("glasso")) {
+      if (!requireNamespace("glasso")) {
         stop("The glasso package is needed")
       }
     } else {
@@ -96,7 +96,7 @@ computeWeigtedDiffNetwork <- function(x,
 
   # Topological overlap
   tom.dissimilarity <- NULL
-  if (use.TOM && require("WGCNA")) {
+  if (use.TOM && requireNamespace("WGCNA")) {
     cat("Computing TOM\n")
     tom.similarity    <- TOMsimilarity(adjacency, TOMType = "unsigned")
     tom.dissimilarity <- 1 - tom.similarity

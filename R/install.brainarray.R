@@ -62,7 +62,7 @@ install.brainarray <- function(array,
 
     # Is pkg installed... ?
     if (!(force.download | force.reinstall) &
-          require(pkg, character.only = TRUE)) {
+          requireNamespace(pkg)) {
 
       # ... and is it the correct version?
       if (packageVersion(pkg) == version) {
@@ -85,7 +85,7 @@ install.brainarray <- function(array,
                        repos = NULL, type = "source")
 
       # Require package
-      require(pkg, character.only = TRUE)
+      requireNamespace(pkg)
     }
 
   }
