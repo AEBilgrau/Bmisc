@@ -56,8 +56,8 @@ computeWeigtedDiffNetwork <- function(x,
 
   # Compute partial correlations (0'th order, min 1'st order, or Ni'th order)
   mycor <- function(covariance.mat, # The correlation matrix
-                   pcor.type,   # Type of correlation to compute
-                   rho = 0) {   # If glasso is used, the level of regularization
+                    pcor.type, # Type of correlation to compute
+                    rho = 0) { # If glasso is used, the level of regularization
     if (pcor.type == "fullpartial") {
       if (!requireNamespace("glasso")) {
         stop("The glasso package is needed")
@@ -68,7 +68,7 @@ computeWeigtedDiffNetwork <- function(x,
     switch(pcor.type,
            "marginal"    = correlation.mat,
            "partial"     = minimum.abs.pcor(correlation.mat),
-           "fullpartial" = cov2cor(glasso(covariance.mat, rho = rho)$w))
+           "fullpartial" = cov2cor(glasso::glasso(covariance.mat, rho = rho)$w))
   }
 
   pcorrelation.abc <- mycor(covariance.abc, pcor.type = pcor.type, rho = rho)
@@ -98,7 +98,7 @@ computeWeigtedDiffNetwork <- function(x,
   tom.dissimilarity <- NULL
   if (use.TOM && requireNamespace("WGCNA")) {
     cat("Computing TOM\n")
-    tom.similarity    <- TOMsimilarity(adjacency, TOMType = "unsigned")
+    tom.similarity    <- WGCNA::TOMsimilarity(adjacency, TOMType = "unsigned")
     tom.dissimilarity <- 1 - tom.similarity
     dimnames(tom.dissimilarity) <- dimnames(adjacency)
   }
