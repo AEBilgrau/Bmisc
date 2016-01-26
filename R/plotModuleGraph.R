@@ -33,9 +33,6 @@ plotModuleGraph <- function(amat,
                             ecol = "Black",
                             layout = layout.circle,
                             ...) {
-#   if (!require("igraph")) {
-#     stop("The igraph package is needed for this function.")
-#   }
 
   # Create full graph
   graph <- graph.adjacency(amat, mode = "undirected",

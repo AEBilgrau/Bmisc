@@ -8,7 +8,7 @@
 #'   \code{\link[biomaRt]{useDataset}}, \code{\link[biomaRt]{listDatasets}}
 #' @export
 get.attribute <- function(es) {
-  if (!require("biomaRt")) {
+  if (!requireNamespace("biomaRt")) {
     stop("The package biomaRt is required to use the function.")
   }
   array <-

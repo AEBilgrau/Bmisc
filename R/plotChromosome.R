@@ -24,10 +24,12 @@
 #'   \code{\link{rect}}, \code{\link[SNPchip]{plotIdiogram}},
 #'   \code{\link[oligoClasses]{getSequenceLengths}}
 #' @examples
+#' if (require("SNPchip")) {
 #'   dat <- cumsum(rnorm(100))/sqrt(seq_len(100))
 #'   plot(dat, ylab = "Something", type = "h", ylim = c(-3, 3), 
 #'        col = ifelse(dat > 0, "red", "blue"), lwd = 2)
 #'   plotChromosome("chr10", xleft = 0, ybot = -3, xright = 100, ytop = -2.8)
+#' }
 #' @export
 plotChromosome <- function(chromosome = "chr1",
                            xleft = 0,
@@ -37,13 +39,13 @@ plotChromosome <- function(chromosome = "chr1",
                            taper = 0.2,
                            build = "hg19", ...) {
 
-  stopifnot(require("oligoClasses"))
-  stopifnot(require("SNPchip"))
+  stopifnot(requireNamespace("oligoClasses"))
+  stopifnot(requireNamespace("SNPchip"))
 
   cytoband <- getCytoband(build)
   cytoband <- cytoband[cytoband[, "chrom"] == chromosome, ]
   rownames(cytoband) <- cytoband[,"name"]
-  sl <- getSequenceLengths(build)[chromosome]
+  sl <- oligoClasses::getSequenceLengths(build)[chromosome]
 
   cytoband_p <- cytoband[grep("^p", rownames(cytoband), value = TRUE), ]
   cytoband_q <- cytoband[grep("^q", rownames(cytoband), value = TRUE), ]

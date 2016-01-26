@@ -28,6 +28,10 @@ right(x, ...)
 parts. If negative, it returns all but the \code{n} left/right-most
 parts.}
 
+\item{addcolnums}{Logical. Should the column 'fake' numbers be added to the
+output as column names?
+Default is \code{TRUE}.}
+
 \item{\dots}{Arguments passed to other methods.}
 }
 \value{
@@ -56,6 +60,9 @@ left(x, n = -2L)
 right(x)
 right(x, n = -2)
 right(tail(x))
+
+right(x, addcolnums = TRUE)
+right(x, addcolnums = FALSE)
 }
 \author{
 Modified code from \code{\link{head}} and \code{\link{tail}} and

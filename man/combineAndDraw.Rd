@@ -44,8 +44,8 @@ The function works by combining \code{g1} and \code{g2} and making
   for the unique edges of \code{g1}.
 }
 \examples{
-library("gRbase")
-library("Rgraphviz")
+if (require("gRbase") && require("graph") && require("Rgraphviz")) {
+
 g1 <- dagList(list(~A|B, ~A|C, ~A|D, ~E, ~F|A, ~G, ~H|I, ~I|H,
                    ~J|K, ~K|J, ~L|M, ~X|Y, ~Y|X))
 g2 <- dagList(list(~A|B, ~C|A, ~D, ~A|E, ~F|A, ~I|H,
@@ -64,6 +64,8 @@ plot(g2, edgeAttrs = list(color = col2), main = "Graph 2"); box()
 plot(cc[[3]], main = "Merged graph"); box()
 plot(cc[[1]], main = "Graph 1 (laid out as merged graph)"); box()
 plot(cc[[2]], main = "Graph 2 (laid out as merged graph)"); box()
+
+}
 }
 \author{
 Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>

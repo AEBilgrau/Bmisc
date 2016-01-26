@@ -15,7 +15,7 @@ get.SYMBOL <- function(es,
                        subset = featureNames(es), 
                        attributes = NULL, 
                        ...) {
-  if (!require("biomaRt")) {
+  if (!requireNamespace("biomaRt")) {
     stop("The package biomaRt is required to use the function.")
   }
   mart <- useMart("ensembl")

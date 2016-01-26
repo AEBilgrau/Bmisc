@@ -36,10 +36,12 @@ Some of the code is borrowed from \code{\link[SNPchip]{plotIdiogram}} in
   the \code{SNPchip} package by Robert Scharpf and Jason Ting.
 }
 \examples{
-dat <- cumsum(rnorm(100))/sqrt(seq_len(100))
+if (require("SNPchip")) {
+  dat <- cumsum(rnorm(100))/sqrt(seq_len(100))
   plot(dat, ylab = "Something", type = "h", ylim = c(-3, 3),
        col = ifelse(dat > 0, "red", "blue"), lwd = 2)
   plotChromosome("chr10", xleft = 0, ybot = -3, xright = 100, ytop = -2.8)
+}
 }
 \author{
 Anders Ellern Bilgrau \cr

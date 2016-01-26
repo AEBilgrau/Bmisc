@@ -13,6 +13,9 @@
 #'   parts. If negative, it returns all but the \code{n} left/right-most 
 #'   parts.
 #' @param \dots Arguments passed to other methods.
+#' @param addcolnums Logical. Should the column 'fake' numbers be added to the 
+#'   output as column names?
+#'   Default is \code{TRUE}.
 #' @return Usually returns an object of the same class as \code{x} but small and
 #'   more compact.
 #' @author Modified code from \code{\link{head}} and \code{\link{tail}} and 
@@ -30,6 +33,9 @@
 #' right(x)
 #' right(x, n = -2)
 #' right(tail(x))
+#' 
+#' right(x, addcolnums = TRUE)
+#' right(x, addcolnums = FALSE)
 #' @rdname left.R
 #' @export
 left <- function(x, ...) {
