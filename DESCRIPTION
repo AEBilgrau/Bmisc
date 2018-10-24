@@ -31,3 +31,4 @@ Suggests:
     oligoClasses,
     ape,
     Hmisc
+RoxygenNote: 6.1.0
