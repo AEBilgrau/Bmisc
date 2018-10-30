@@ -45,8 +45,7 @@ install.brainarray <- function(array,
   # Prepare to download
   # Base URL to the brainarray site
   base.url <-
-    paste0("http://brainarray.mbni.med.umich.edu/Brainarray/Database/",
-           "CustomCDF/", version, "/" , type, ".download")
+    paste0("http://mbni.org/customcdf/", version, "/", type, ".download")
 
   # Path to download files to
   if (missing(path)) {
@@ -92,7 +91,3 @@ install.brainarray <- function(array,
 
   return(invisible(file.path(path, files)))
 }
-
-
-
-
