@@ -20,6 +20,8 @@ ones <- function(...) {
   if (any(is.dimnames)) {
     dimnames <- args$dimnames
     args <- args[!is.dimnames]
+  } else {
+    dimnames <- list()
   }
   return(array(1, dim = unlist(args), dimnames = dimnames))
 }
@@ -36,6 +38,8 @@ zeros <- function(...) {
   if (any(is.dimnames)) {
     dimnames <- args$dimnames
     args <- args[!is.dimnames]
+  } else {
+    dimnames <- list()
   }
   return(array(0, dim = unlist(args), dimnames = dimnames))
 }
