@@ -5,9 +5,9 @@
 \alias{Bmisc-package}
 \alias{Bmisc}
 \alias{bmisc}
-\title{My biostatistical miscellaneous functions}
+\title{Biostatistical miscellaneous functions}
 \description{
-My frequently used biostatistical miscellaneous R functions and utilities.
+Frequently used biostatistical miscellaneous R functions and utilities.
 Useful for general microarray analysis, gene network analysis, and other
 biostatistical applications.
 }
