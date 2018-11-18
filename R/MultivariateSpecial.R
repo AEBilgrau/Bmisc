@@ -85,6 +85,7 @@ trigammap <- function(x, p = 1, deriv = 0) {
   return(rowSums(terms))
 }
 
+#' @importFrom graphics par curve abline axis legend
 plotMultivariateSpecial <- function() {
   # A nice plot of the functions
   par(mfrow = c(2,2), mar =  c(1, 2, 1.3, -1) + 1.1)

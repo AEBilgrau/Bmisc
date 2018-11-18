@@ -30,6 +30,9 @@
 #'        col = ifelse(dat > 0, "red", "blue"), lwd = 2)
 #'   plotChromosome("chr10", xleft = 0, ybot = -3, xright = 100, ytop = -2.8)
 #' }
+#' @importFrom oligoClasses getSequenceLengths
+#' @importFrom SNPchip getCytoband
+#' @importFrom graphics polygon segments
 #' @export
 plotChromosome <- function(chromosome = "chr1",
                            xleft = 0,
@@ -45,7 +48,7 @@ plotChromosome <- function(chromosome = "chr1",
   cytoband <- getCytoband(build)
   cytoband <- cytoband[cytoband[, "chrom"] == chromosome, ]
   rownames(cytoband) <- cytoband[,"name"]
-  sl <- oligoClasses::getSequenceLengths(build)[chromosome]
+  sl <- getSequenceLengths(build)[chromosome]
 
   cytoband_p <- cytoband[grep("^p", rownames(cytoband), value = TRUE), ]
   cytoband_q <- cytoband[grep("^q", rownames(cytoband), value = TRUE), ]

@@ -29,6 +29,8 @@
 #'   correlations are computed (i.e. the partial correlation given a third
 #'   feature) and the minimal partial correlation is used.
 #' @note The topological overlap matrix is computed on the P-values.
+#' @importFrom stats cov cov2cor
+#' @importFrom utils flush.console
 #' @export
 computeWeigtedDiffNetwork <- function(x,
                                       class,

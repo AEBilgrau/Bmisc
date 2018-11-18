@@ -20,6 +20,7 @@
 #' @examples
 #' tmp.path <- install.brainarray("hgu133a", version = "18.0.0", type = "ensg")
 #' print(tmp.path)
+#' @importFrom utils packageVersion download.file install.packages
 #' @export
 
 # Use a package (e.g. digest) to read the brainarray package and avoid most

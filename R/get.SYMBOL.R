@@ -10,6 +10,8 @@
 #' @param \dots arguments passed to \code{getBM}.
 #' @return  a \code{data.frame} with columns corresponding to the matched gene identifiers.
 #' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
+#' @importFrom Biobase featureNames
+#' @importFrom biomaRt useMart useDataset getBM
 #' @export
 get.SYMBOL <- function(es,
                        subset = featureNames(es), 

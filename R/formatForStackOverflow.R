@@ -21,6 +21,7 @@
 #'   
 #'   print(mtcars)
 #' ")
+#' @importFrom utils capture.output
 #' @export
 formatForStackOverflow <- function(user_code, comment_eval = TRUE, file = "") {
   # Capture user code

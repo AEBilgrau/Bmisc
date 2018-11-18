@@ -19,6 +19,7 @@
 #'
 #' # Plot the graph
 #' plotModuleImage(amat, srt = 30)
+#' @importFrom graphics par image
 #' @export
 plotModuleImage <- function(amat,
                             print.xlab = TRUE,

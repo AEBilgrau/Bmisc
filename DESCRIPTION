@@ -11,24 +11,22 @@ Description: Biostatisical miscellaneous functions and utilites.
 License: GPL (>=2)
 Imports:
     Rcpp (>= 0.10.6),
-    GMCM
-Depends:
+    GMCM,
     utils,
     adephylo,
-    igraph
-LinkingTo: Rcpp, RcppArmadillo
-Suggests:
-    glasso,
-    WGCNA,
+    igraph,
+    Rgraphviz,
     Biobase,
     BiocGenerics,
     biomaRt,
+    glasso,
+    WGCNA,
     digest,
-    Rgraphviz,
     gRbase,
     graph,
     SNPchip,
     oligoClasses,
     ape,
     Hmisc
+LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 6.1.0

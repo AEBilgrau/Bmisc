@@ -24,7 +24,8 @@
 #'                 labels = "",
 #'                 vcol = 1:10,
 #'                 diff.exprs = 3 + 3*runif(10))
-#' @import igraph                 
+#' @import igraph    
+#' @importFrom stats sd
 #' @export
 plotModuleGraph <- function(amat,
                             diff.exprs = NULL,

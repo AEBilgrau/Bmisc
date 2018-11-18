@@ -17,6 +17,7 @@
 #' @note
 #'   The software is available at the website
 #'   \url{http://zhoulab.usc.edu/tensor/}.
+#' @importFrom utils write.table
 #' @export
 writeForNetsTensor <- function(x.list,
                                out.dir = "netsdata",

@@ -13,7 +13,6 @@
 #'   \code{y2 = rep(-Inf, length(x))}.
 #' @seealso \code{\link{polygon}}
 #' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
-#' @export
 #' @examples
 #' # Random example 1
 #' x  <- seq(-2*pi, 2*pi, length.out = 100)
@@ -43,6 +42,7 @@
 #' plot(1, type = "n", xlim = c(-r,r), ylim = c(-h, h), asp = 1,
 #'      xlab = "", ylab = "")
 #' fillLines(x, y1, y2, col = "gold", lwd = 2, border = "orange") 
+#' @importFrom graphics polygon
 #' @export
 fillLines <- function (x, y1, y2 = rep(0, length(x)), ...) {
   if (length(x) != length(y1) | length(x) != length(y2)) {

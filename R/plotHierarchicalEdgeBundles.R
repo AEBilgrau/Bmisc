@@ -61,6 +61,8 @@
 #'                             args.lines = list(col = alp("red", 1), lwd = 2))
 #' @import adephylo
 #' @import igraph
+#' @importFrom grDevices chull colors
+#' @importFrom graphics points text lines
 #' @export
 plotHierarchicalEdgeBundles <- function(phylo, 
                                         graph,

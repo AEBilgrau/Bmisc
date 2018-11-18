@@ -12,6 +12,7 @@
 #' @examples
 #' x <- c("Blue", "#402000", NA, "Tomato", "#00FF0250")
 #' alp(x, alpha = 0.5)
+#' @importFrom grDevices rgb col2rgb
 #' @export
 alp <- function (x, alpha) {
   # Add alpha value to colours

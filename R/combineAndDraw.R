@@ -49,6 +49,7 @@
 #' 
 #' }
 #' @import igraph 
+#' @importFrom Rgraphviz to from buildNodeList agopen
 #' @export
 combineAndDraw <- function(g1, g2,
                            col1 = "steelblue",
@@ -59,7 +60,7 @@ combineAndDraw <- function(g1, g2,
                            name = "",
                            ...) {
 
-  stopifnot(requireNamespace("Rgraphviz"))
+  # stopifnot(requireNamespace("Rgraphviz"))
   stopifnot(requireNamespace("graph"))
   
   # Make sure both graphs are directed
@@ -148,7 +149,7 @@ combineAndDraw <- function(g1, g2,
         eu2[[i]]@attrs$color <-"#00000000"
       }
       if (test.unique(u, v, g2, g1)) {
-        eu1[[i]]@attrs$color <-"#00000000"
+        eu1[[i]]@attrs$color <- "#00000000"
         eu2[[i]]@attrs$color <- col2
       }
     }

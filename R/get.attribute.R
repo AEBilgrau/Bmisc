@@ -6,6 +6,7 @@
 #' @note Note, not all arrays are implemented. 
 #' @seealso \code{\link[biomaRt]{useMart}}, \code{\link[biomaRt]{listMarts}}, 
 #'   \code{\link[biomaRt]{useDataset}}, \code{\link[biomaRt]{listDatasets}}
+#' @importFrom BiocGenerics annotation
 #' @export
 get.attribute <- function(es) {
   if (!requireNamespace("biomaRt")) {

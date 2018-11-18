@@ -14,6 +14,7 @@
 #' plotColourKey(brks, cls)
 #' axis(1)
 #' axis(2)
+#' @importFrom graphics plot rect
 #' @export
 plotColourKey <- function(breaks, col, add = FALSE, ...) {
   stopifnot(length(col) + 1 == length(breaks))

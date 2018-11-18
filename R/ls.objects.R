@@ -30,6 +30,7 @@
 #' Bmisc:::.ls.objects()
 #' Bmisc:::.ls.objects(order.by = "Size")
 #' lsos()
+#' @importFrom utils object.size
 .ls.objects <- function(pos = 1L,
                         pattern,
                         order.by,

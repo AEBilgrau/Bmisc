@@ -27,6 +27,7 @@
 #' # To perform a single t test
 #' t.test(x[1,], y[1, ])
 #' welch.t.tests(x[1, , drop = FALSE], y[1, , drop = FALSE])
+#' @importFrom stats pt
 #' @export
 welch.t.tests <- function(x, y) {
   if (!(is.matrix(x) & is.numeric(x) & is.matrix(y) & is.numeric(y))) {

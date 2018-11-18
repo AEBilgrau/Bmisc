@@ -27,6 +27,8 @@
 #' plotColourMat(y, add = TRUE)
 #' axis(1)
 #' axis(2)
+#' @importFrom graphics rect plot 
+#' @importFrom grDevices colors
 #' @export
 plotColourMat <- function(x, add = FALSE, ...) {
   if (missing(x)) {
