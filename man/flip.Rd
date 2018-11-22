@@ -4,10 +4,13 @@
 \alias{flip}
 \title{Flip vector names and values}
 \usage{
-flip(x)
+flip(x, convert = TRUE)
 }
 \arguments{
 \item{x}{A named vector.}
+
+\item{convert}{logical. If \code{TRUE}, an attempt will be made to coerce 
+the flipped values into a \code{numeric}.}
 }
 \value{
 A named character vector.
@@ -23,9 +26,10 @@ flip(x)
 flip(flip(x))
 
 
-y <- structure(c("a", "b", "c"), names = c("abel", "bob", "charlie"))
-y["bob"]
-flip(y)["c"]
+y <- structure(c("a", "b", "c", "d", "e", "f", "g"), 
+   names = c("albert", "bob", "charlie", "dennis", "eddie", "frank", "hugo"))
+y["hugo"]
+flip(y)["a"]
 }
 \author{
 Anders Ellern Bilgrau
