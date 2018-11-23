@@ -12,7 +12,7 @@
 #'   does not exist \code{resave} functions exactly as \code{save} and creates 
 #'   a new file. If it does exist the \code{file} is overwritten with the 
 #'   updated objects. 
-#' @seealso See Also: \code{\link{save}}
+#' @seealso See Also: \code{\link{save}}, \code{\link{load}}
 #' @note This is a modified version of a function created by user "flodel" at 
 #'   \href{stack overflow.}{http://stackoverflow.com/questions/11813096/updating-an-existing-rdata-file}
 #' @author Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>

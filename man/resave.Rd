@@ -42,7 +42,7 @@ a <- c(a, list(letters))  # Modify "a"
 resave(a, b, file = file)  # Update a and add b
 }
 \seealso{
-See Also: \code{\link{save}}
+See Also: \code{\link{save}}, \code{\link{load}}
 }
 \author{
 Anders Ellern Bilgrau <anders.ellern.bilgrau (at) gmail.com>
