@@ -2,7 +2,7 @@
 % Please edit documentation in R/splines.R
 \name{deboor}
 \alias{deboor}
-\title{De Boor's algorihmn for evaluating B-splines}
+\title{De Boor's algorithm for evaluating B-splines}
 \usage{
 deboor(x, t, y, order)
 }
